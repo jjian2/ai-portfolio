@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI 여행 플래너 | 최지안 포트폴리오</title>
+
+    <meta name="description"
+          content="Spring Boot, FastAPI, OpenAI API와 RAG를 활용한 AI 여행 플래너 프로젝트입니다.">
+
+    <link rel="stylesheet"
+          th:href="@{/css/common.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/project-detail.css}">
+</head>
+
+<body>
+
+<!-- =========================
+     Header
+========================= -->
+<header class="detail-header">
+
+    <div class="detail-header-inner">
+
+        <a th:href="@{/}"
+           class="detail-logo">
+            JIAN<span>.</span>
+        </a>
+
+        <nav class="detail-nav">
+            <a th:href="@{/#home}">Home</a>
+            <a th:href="@{/#projects}">Projects</a>
+            <a th:href="@{/#skills}">Skills</a>
+            <a th:href="@{/#contact}">Contact</a>
+        </nav>
+
+        <a th:href="@{/projects}"
+           class="back-projects-button">
+            ← 프로젝트 목록
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- =========================
+         Hero
+    ========================= -->
+    <section class="project-detail-hero">
+
+        <div class="detail-glow"></div>
+
+        <div class="container">
+
+            <div class="detail-breadcrumb">
+
+                <a th:href="@{/}">
+                    Home
+                </a>
+
+                <span>/</span>
+
+                <a th:href="@{/projects}">
+                    Projects
+                </a>
+
+                <span>/</span>
+
+                <strong>
+                    AI 여행 플래너
+                </strong>
+
+            </div>
+
+
+            <div class="detail-hero-layout">
+
+                <div class="detail-hero-content">
+
+                    <p class="detail-category">
+                        AI · LLM · TRAVEL SERVICE
+                    </p>
+
+                    <h1>
+                        AI 여행<br>
+                        플래너
+                    </h1>
+
+                    <p class="detail-subtitle">
+                        여행 조건을 입력하면 AI가 일정과 장소를 추천하는
+                        맞춤형 여행 계획 서비스
+                    </p>
+
+                    <p class="detail-description">
+                        사용자의 여행지, 기간, 인원, 예산,
+                        여행 스타일과 이동수단을 입력받아
+                        AI가 날짜별 여행 일정을 생성합니다.
+                        추천 장소와 지도, 체크리스트, 여행 가계부,
+                        마이페이지 기능을 하나의 서비스에 구성했습니다.
+                    </p>
+
+                    <div class="detail-actions">
+
+                        <a href="https://github.com/jjian2/AI-Travel-Planner"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="button button-primary">
+                            GitHub 보기 →
+                        </a>
+
+                        <a href="#overview"
+                           class="button button-link">
+                            프로젝트 살펴보기 ↓
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-hero-visual">
+
+                    <div class="project-cover travel-planner-cover">
+
+                        <div class="cover-grid"></div>
+
+                        <div class="cover-symbol">
+                            ✈
+                        </div>
+
+                        <div class="cover-text">
+                            <span>
+                                AI TRAVEL PLANNER
+                            </span>
+
+                            <strong>
+                                여행 계획을 AI와 함께
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-summary">
+
+                <div>
+                    <span>개발 형태</span>
+                    <strong>개인 프로젝트</strong>
+                </div>
+
+                <div>
+                    <span>개발 기간</span>
+                    <strong>2026.07 - 진행 중</strong>
+                </div>
+
+                <div>
+                    <span>담당 역할</span>
+                    <strong>기획·프론트·백엔드·AI 연동</strong>
+                </div>
+
+                <div>
+                    <span>기여도</span>
+                    <strong>100%</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Overview
+    ========================= -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>01. OVERVIEW</p>
+
+                <h2>프로젝트 개요</h2>
+
+            </div>
+
+
+            <div class="overview-grid">
+
+                <article class="overview-card">
+
+                    <span>PROJECT GOAL</span>
+
+                    <h3>
+                        복잡한 여행 준비를
+                        하나의 서비스로 통합
+                    </h3>
+
+                    <p>
+                        관광지 검색, 일정 작성, 지도 확인,
+                        예산 관리와 체크리스트 작성을
+                        각각 다른 서비스에서 처리하지 않고
+                        하나의 웹 서비스에서 관리할 수 있도록 구성했습니다.
+                    </p>
+
+                </article>
+
+
+                <article class="overview-card">
+
+                    <span>AI OBJECTIVE</span>
+
+                    <h3>
+                        여행 조건을 이해하는
+                        맞춤형 일정 생성
+                    </h3>
+
+                    <p>
+                        여행지, 날짜, 인원, 예산,
+                        여행 유형과 이동수단을 입력받아
+                        OpenAI API가 사용자의 조건에 맞는
+                        날짜별 여행 일정을 생성하도록 설계했습니다.
+                    </p>
+
+                </article>
+
+
+                <article class="overview-card">
+
+                    <span>SERVICE STRUCTURE</span>
+
+                    <h3>
+                        Spring Boot와 FastAPI를
+                        분리한 서버 구조
+                    </h3>
+
+                    <p>
+                        회원과 여행 데이터는 Spring Boot에서 관리하고,
+                        장소 검색, 날씨 조회, RAG 검색과
+                        AI 일정 생성은 FastAPI 서버가 담당하도록
+                        역할을 분리했습니다.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Role
+    ========================= -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>02. ROLE</p>
+
+                <h2>담당 역할</h2>
+
+            </div>
+
+
+            <div class="role-layout">
+
+                <div class="role-introduction">
+
+                    <h3>
+                        서비스 기획부터 화면,
+                        백엔드와 AI 서버 연동까지
+                        전체 개발을 진행했습니다.
+                    </h3>
+
+                    <p>
+                        사용자가 여행 조건을 입력하고,
+                        생성된 일정을 지도와 가계부에서
+                        실제로 활용할 수 있도록
+                        서비스 전체 흐름을 설계했습니다.
+                    </p>
+
+                </div>
+
+
+                <div class="role-list">
+
+                    <article class="role-item">
+
+                        <span>01</span>
+
+                        <div>
+                            <h3>서비스 구조 설계</h3>
+
+                            <p>
+                                Spring Boot 웹 서버와 FastAPI AI 서버를
+                                분리하고 API 통신 구조를 설계했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+
+                    <article class="role-item">
+
+                        <span>02</span>
+
+                        <div>
+                            <h3>화면 및 사용자 기능 구현</h3>
+
+                            <p>
+                                여행 일정, 장소 지도, 가계부,
+                                체크리스트와 마이페이지 화면을 구현했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+
+                    <article class="role-item">
+
+                        <span>03</span>
+
+                        <div>
+                            <h3>외부 API 연동</h3>
+
+                            <p>
+                                Google Places API, Google Maps,
+                                Weather API와 OpenAI API를 연동했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+
+                    <article class="role-item">
+
+                        <span>04</span>
+
+                        <div>
+                            <h3>RAG 데이터 구축</h3>
+
+                            <p>
+                                여행 문서를 전처리하고 임베딩하여
+                                ChromaDB에 저장하고 검색 기능을 구현했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Tech Stack
+    ========================= -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>03. TECH STACK</p>
+
+                <h2>사용 기술</h2>
+
+            </div>
+
+
+            <div class="detail-tech-grid">
+
+                <article class="detail-tech-card">
+
+                    <span>BACKEND</span>
+
+                    <h3>Java · Spring Boot</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Java 21</span>
+                        <span>Spring Boot</span>
+                        <span>Spring Security</span>
+                        <span>JPA</span>
+                        <span>REST API</span>
+                    </div>
+
+                </article>
+
+
+                <article class="detail-tech-card">
+
+                    <span>AI SERVER</span>
+
+                    <h3>Python · FastAPI</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Python</span>
+                        <span>FastAPI</span>
+                        <span>Uvicorn</span>
+                        <span>OpenAI API</span>
+                    </div>
+
+                </article>
+
+
+                <article class="detail-tech-card">
+
+                    <span>RAG</span>
+
+                    <h3>Embedding · ChromaDB</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>RAG</span>
+                        <span>Embedding</span>
+                        <span>ChromaDB</span>
+                        <span>PDF</span>
+                        <span>CSV</span>
+                        <span>JSON</span>
+                    </div>
+
+                </article>
+
+
+                <article class="detail-tech-card">
+
+                    <span>EXTERNAL API</span>
+
+                    <h3>Places · Maps · Weather</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Google Places API v1</span>
+                        <span>Google Maps</span>
+                        <span>Weather API</span>
+                    </div>
+
+                </article>
+
+
+                <article class="detail-tech-card">
+
+                    <span>DATABASE</span>
+
+                    <h3>MySQL</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>MySQL</span>
+                        <span>Spring Data JPA</span>
+                        <span>Hibernate</span>
+                    </div>
+
+                </article>
+
+
+                <article class="detail-tech-card">
+
+                    <span>FRONTEND</span>
+
+                    <h3>HTML · CSS · JavaScript</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Thymeleaf</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Architecture
+    ========================= -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>04. ARCHITECTURE</p>
+
+                <h2>시스템 구조</h2>
+
+            </div>
+
+
+            <div class="architecture-box">
+
+                <div class="architecture-item">
+
+                    <span>USER</span>
+
+                    <strong>사용자</strong>
+
+                    <p>
+                        여행 조건 입력 및 서비스 이용
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    ↓
+                </div>
+
+
+                <div class="architecture-item">
+
+                    <span>FRONTEND</span>
+
+                    <strong>
+                        HTML · CSS · JavaScript · Thymeleaf
+                    </strong>
+
+                    <p>
+                        여행 일정, 장소, 지도,
+                        가계부와 마이페이지 화면
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    ↓
+                </div>
+
+
+                <div class="architecture-item architecture-main">
+
+                    <span>WEB SERVER</span>
+
+                    <strong>
+                        Spring Boot · Java
+                    </strong>
+
+                    <p>
+                        회원, 여행 일정,
+                        가계부와 서비스 데이터 처리
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    ↓
+                </div>
+
+
+                <div class="architecture-item architecture-main">
+
+                    <span>AI SERVER</span>
+
+                    <strong>
+                        FastAPI · Python
+                    </strong>
+
+                    <p>
+                        AI 일정 생성, 장소·날씨 조회,
+                        RAG 검색 기능
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    ↓
+                </div>
+
+
+                <div class="architecture-branch">
+
+                    <div class="architecture-item">
+
+                        <span>DATABASE</span>
+
+                        <strong>MySQL</strong>
+
+                        <p>
+                            회원, 여행 일정과
+                            가계부 데이터 저장
+                        </p>
+
+                    </div>
+
+
+                    <div class="architecture-item">
+
+                        <span>VECTOR DATABASE</span>
+
+                        <strong>ChromaDB</strong>
+
+                        <p>
+                            여행 정보 임베딩 저장과
+                            유사 문서 검색
+                        </p>
+
+                    </div>
+
+
+                    <div class="architecture-item">
+
+                        <span>EXTERNAL API</span>
+
+                        <strong>
+                            OpenAI · Places · Weather
+                        </strong>
+
+                        <p>
+                            AI 일정, 장소 상세 정보와
+                            날씨 데이터 제공
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Features
+    ========================= -->
+    <section class="detail-section detail-section-dark"
+             id="features">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>05. FEATURES</p>
+
+                <h2>핵심 기능</h2>
+
+            </div>
+
+
+            <div class="feature-list">
+
+                <!-- Feature 01 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/ai-travel-planner/travel-main.png}"
+                             alt="AI 여행 플래너 메인 일정 생성 화면">
+
+                    </div>
+
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 01</span>
+
+                        <h3>
+                            AI 맞춤 여행 일정 생성
+                        </h3>
+
+                        <p>
+                            여행지, 기간, 인원, 이동수단,
+                            예산과 여행 스타일을 입력하면
+                            AI가 사용자의 조건에 맞춰
+                            날짜별 여행 일정을 생성합니다.
+                        </p>
+
+                        <ul>
+                            <li>여행지·날짜·인원·예산 입력</li>
+                            <li>여행 유형과 이동수단 선택</li>
+                            <li>OpenAI 기반 날짜별 일정 생성</li>
+                            <li>장소별 예상 시간과 비용 표시</li>
+                            <li>일정별 체크리스트 관리</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Feature 02 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/ai-travel-planner/travel-places.png}"
+                             alt="AI 여행 플래너 방문 장소와 지도 화면">
+
+                    </div>
+
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 02</span>
+
+                        <h3>
+                            방문 장소와 지도 연동
+                        </h3>
+
+                        <p>
+                            AI 일정에 포함된 장소를
+                            Google Places API로 검색하고,
+                            지도 마커와 장소 카드로 함께 표시합니다.
+                        </p>
+
+                        <ul>
+                            <li>Google Places API v1 장소 검색</li>
+                            <li>장소명·주소·좌표·평점 조회</li>
+                            <li>Google Maps 지도 마커 표시</li>
+                            <li>장소 이미지와 예상 비용 제공</li>
+                            <li>Google Maps 상세 페이지 연결</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Feature 03 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/ai-travel-planner/travel-budget.png}"
+                             alt="AI 여행 플래너 여행 가계부 화면">
+
+                    </div>
+
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 03</span>
+
+                        <h3>
+                            여행 가계부와 예산 관리
+                        </h3>
+
+                        <p>
+                            여행 전 총예산을 설정하고,
+                            숙소·교통·식비·쇼핑 등
+                            카테고리별 지출을 기록할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>총예산 설정과 초기화</li>
+                            <li>지출 카테고리 추가와 삭제</li>
+                            <li>날짜·금액·메모별 지출 등록</li>
+                            <li>총지출과 남은 예산 계산</li>
+                            <li>AI 예산 분석 기능 확장 예정</li>
+                            <li>영수증 OCR 기능 확장 예정</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Feature 04 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/ai-travel-planner/travel-mypage.png}"
+                             alt="AI 여행 플래너 마이페이지 화면">
+
+                    </div>
+
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 04</span>
+
+                        <h3>
+                            마이페이지와 회원 관리
+                        </h3>
+
+                        <p>
+                            이름, 아이디와 이메일을 확인하고
+                            수정할 수 있으며, 계정 정보와
+                            생성한 여행 현황도 확인할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>회원 정보 조회와 수정</li>
+                            <li>비밀번호 변경 UI</li>
+                            <li>가입일과 여행 개수 확인</li>
+                            <li>로그아웃과 회원 탈퇴</li>
+                            <li>생성한 여행 목록 연동 예정</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Troubleshooting
+    ========================= -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>06. TROUBLESHOOTING</p>
+
+                <h2>문제 해결 경험</h2>
+
+            </div>
+
+
+            <div class="troubleshooting-list">
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+
+                        <span>01</span>
+
+                        <h3>
+                            Kakao Local API 권한 문제로
+                            장소 검색 API 변경
+                        </h3>
+
+                    </div>
+
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>PROBLEM</span>
+
+                            <p>
+                                Kakao Local API 호출 시
+                                서버에서 500 오류가 발생했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>CAUSE</span>
+
+                            <p>
+                                Kakao Developers 프로젝트에서
+                                필요한 추가 기능 권한을 사용할 수 없었습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>SOLUTION</span>
+
+                            <p>
+                                Google Places API v1으로 전환하고
+                                Text Search API 요청 구조를 구현했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>RESULT</span>
+
+                            <p>
+                                장소명, 주소, 좌표, 평점과
+                                Google Maps URL을 정상 조회했습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+
+                        <span>02</span>
+
+                        <h3>
+                            AI 일정 응답을 화면에서 활용하기 위한
+                            JSON 구조 설계
+                        </h3>
+
+                    </div>
+
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>PROBLEM</span>
+
+                            <p>
+                                자연어 답변만으로는 일정과 지도를
+                                화면에 일관되게 표시하기 어려웠습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>CAUSE</span>
+
+                            <p>
+                                날짜, 시간, 장소, 비용과 좌표가
+                                일정한 형식으로 반환되지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>SOLUTION</span>
+
+                            <p>
+                                날짜별 일정, 장소, 주소, 비용과
+                                좌표 필드를 포함한 JSON 응답을 설계했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>RESULT</span>
+
+                            <p>
+                                일정 카드, 장소 목록과 지도 마커에
+                                동일한 데이터를 활용할 수 있게 됐습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Learned
+    ========================= -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>07. LEARNED</p>
+
+                <h2>배운 점</h2>
+
+            </div>
+
+
+            <div class="learned-grid">
+
+                <article>
+
+                    <span>01</span>
+
+                    <h3>
+                        서버 역할 분리
+                    </h3>
+
+                    <p>
+                        Spring Boot와 FastAPI를 분리하며
+                        일반 웹 서비스와 AI 기능 사이의
+                        API 통신 구조를 이해했습니다.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>02</span>
+
+                    <h3>
+                        외부 API 문제 대응
+                    </h3>
+
+                    <p>
+                        API 권한과 요청 형식을 확인하고,
+                        필요할 경우 대체 API를 선택해
+                        서비스 기능을 유지하는 경험을 했습니다.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>03</span>
+
+                    <h3>
+                        AI 응답의 서비스화
+                    </h3>
+
+                    <p>
+                        단순히 AI 답변을 출력하는 것을 넘어,
+                        화면과 지도에서 활용할 수 있도록
+                        데이터를 구조화하는 중요성을 배웠습니다.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Next Project
+    ========================= -->
+    <section class="next-project-section">
+
+        <div class="container">
+
+            <div class="next-project-box">
+
+                <div>
+
+                    <p>NEXT PROJECT</p>
+
+                    <h2>
+                        대학 학사정보 AI 챗봇
+                        <strong>양동이</strong>
+                    </h2>
+
+                </div>
+
+
+                <a th:href="@{/projects/yangdongi}">
+                    다음 프로젝트 보기 →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     Footer
+========================= -->
+<footer class="detail-footer">
+
+    <div class="container detail-footer-inner">
+
+        <div>
+
+            <a th:href="@{/}"
+               class="detail-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <p>
+                Spring Boot와 AI로 만든 개발자 포트폴리오
+            </p>
+
+        </div>
+
+
+        <div class="detail-footer-links">
+
+            <a th:href="@{/projects}">
+                프로젝트 목록
+            </a>
+
+            <a href="https://github.com/jjian2/AI-Travel-Planner"
+               target="_blank"
+               rel="noopener noreferrer">
+                GitHub
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

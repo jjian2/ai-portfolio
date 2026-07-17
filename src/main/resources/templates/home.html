@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>최지안 | AI Backend Developer</title>
+
+    <meta name="description"
+          content="Spring Boot와 AI 기술을 활용해 실제 서비스를 구현하는 백엔드 개발자 최지안의 포트폴리오입니다.">
+
+    <link rel="stylesheet"
+          th:href="@{/css/common.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/home.css}">
+          
+</head>
+
+<body>
+
+<header class="header" id="header">
+
+    <div class="header-inner">
+
+        <a th:href="@{/}" class="logo">
+            JIAN<span>.</span>
+        </a>
+
+        <nav class="desktop-nav">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+
+            <button type="button"
+                    class="nav-ai-button open-chat-button">
+                AI Assistant
+            </button>
+        </nav>
+
+        <button type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="모바일 메뉴 열기">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+
+        <button type="button"
+                class="nav-ai-button open-chat-button">
+            AI Assistant
+        </button>
+    </nav>
+
+</header>
+
+<main>
+
+    <!-- 메인 화면 -->
+    <section class="hero-section" id="home">
+
+        <div class="hero-glow hero-glow-one"></div>
+        <div class="hero-glow hero-glow-two"></div>
+
+        <div class="container hero-container">
+
+            <div class="hero-content">
+
+                <div class="availability-badge">
+                    <span class="availability-dot"></span>
+                    새로운 기회를 기다리고 있습니다
+                </div>
+
+                <p class="hero-label">
+                    AI BACKEND DEVELOPER
+                </p>
+
+                <h1>
+                    사용자에게 필요한 기능을<br>
+                    끝까지 구현하는<br>
+                    <strong>백엔드 개발자 최지안</strong>입니다.
+                </h1>
+
+                <p class="hero-description">
+                    Java와 Spring Boot를 중심으로 안정적인 웹 서비스를 개발하고,
+                    FastAPI와 RAG 등 AI 기술을 실제 서비스에 연결합니다.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#projects"
+                       class="button button-primary">
+                        프로젝트 보기
+                        <span aria-hidden="true">→</span>
+                    </a>
+
+                    <button type="button"
+                            class="button button-secondary open-chat-button">
+                        AI에게 질문하기
+                    </button>
+
+					<a th:href="@{/files/resume.pdf}"
+					   class="button button-secondary"
+					   download="최지안_이력서.pdf">
+					    이력서 다운로드
+					</a>
+
+                    <a href="https://github.com/jjian2/portfolio"
+                       class="button button-link"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        GitHub 방문
+                    </a>
+
+                </div>
+
+                <div class="hero-stack">
+
+                    <span>Java</span>
+                    <span>Spring Boot</span>
+                    <span>Python</span>
+                    <span>Flask</span>
+                    <span>FastAPI</span>
+                    <span>MySQL</span>
+                    <span>Spring Security</span>
+                    <span>REST API</span>
+                    <span>AI · RAG</span>
+
+                </div>
+
+            </div>
+
+            <div class="hero-visual">
+
+                <div class="code-window">
+
+                    <div class="code-window-header">
+
+                        <div class="window-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <p>developer-profile.json</p>
+
+                    </div>
+
+                    <div class="code-window-body">
+<pre><code><span class="code-bracket">{</span>
+  <span class="code-key">"name"</span>: <span class="code-value">"최지안"</span>,
+  <span class="code-key">"role"</span>: <span class="code-value">"Backend Developer"</span>,
+  <span class="code-key">"mainStack"</span>: <span class="code-bracket">[</span>
+    <span class="code-value">"Java"</span>,
+    <span class="code-value">"Spring Boot"</span>,
+    <span class="code-value">"Python"</span>,
+    <span class="code-value">"MySQL"</span>
+  <span class="code-bracket">]</span>,
+  <span class="code-key">"aiStack"</span>: <span class="code-bracket">[</span>
+    <span class="code-value">"FastAPI"</span>,
+    <span class="code-value">"RAG"</span>,
+    <span class="code-value">"Whisper"</span>
+  <span class="code-bracket">]</span>,
+  <span class="code-key">"status"</span>: <span class="code-value">"Open to work"</span>
+<span class="code-bracket">}</span></code></pre>
+                    </div>
+
+                </div>
+
+                <div class="floating-card floating-card-spring">
+                    <div class="floating-icon">S</div>
+
+                    <div>
+                        <strong>Spring Boot</strong>
+                        <p>Backend Service</p>
+                    </div>
+                </div>
+
+                <div class="floating-card floating-card-ai">
+                    <div class="floating-icon">AI</div>
+
+                    <div>
+                        <strong>AI Integration</strong>
+                        <p>FastAPI · RAG</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <a href="#about"
+           class="scroll-indicator"
+           aria-label="다음 섹션으로 이동">
+            <span>SCROLL</span>
+            <div></div>
+        </a>
+
+    </section>
+
+    <!-- 자기소개 -->
+    <section class="section about-section" id="about">
+
+        <div class="container">
+
+            <div class="section-heading">
+                <p class="section-label">ABOUT ME</p>
+
+                <h2>
+                    기능을 만드는 것에서 멈추지 않고,<br>
+                    문제의 원인을 찾아 해결합니다.
+                </h2>
+            </div>
+
+            <div class="about-layout">
+
+                <div class="about-description">
+
+                    <p>
+                        Java와 Spring Boot를 중심으로 웹 서비스를 개발하고,
+                        Python 기반 Flask와 FastAPI를 활용해 AI 기능을
+                        서비스에 연결한 경험이 있습니다.
+                    </p>
+
+                    <p>
+                        맛집 추천 서비스, 대학 학사정보 AI 챗봇,
+                        뉴스 요약 웹 서비스, 데이터 분석 서비스,
+                        AI 여행 플래너 등 사용자가 직접 이용할 수 있는
+                        프로젝트를 구현했습니다.
+                    </p>
+
+                    <p>
+                        단순히 기능이 실행되는 것에 만족하지 않고,
+                        인증·외부 API·DB·AI 서버가 안정적으로 연결되도록
+                        오류의 원인을 분석하고 개선하는 것을 중요하게 생각합니다.
+                    </p>
+
+                </div>
+
+                <div class="about-list">
+
+                    <article class="about-item">
+
+                        <span class="about-number">01</span>
+
+                        <div>
+                            <h3>Backend Development</h3>
+
+                            <p>
+                                Spring Boot, Spring Security, JPA,
+                                MySQL과 REST API를 활용한 웹 서비스 개발
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="about-item">
+
+                        <span class="about-number">02</span>
+
+                        <div>
+                            <h3>AI Integration</h3>
+
+                            <p>
+                                FastAPI, RAG, STT, TTS, 생성형 AI를
+                                기존 웹 서비스와 연동한 경험
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="about-item">
+
+                        <span class="about-number">03</span>
+
+                        <div>
+                            <h3>Problem Solving</h3>
+
+                            <p>
+                                인증, CORS, API 연동, 데이터 정렬,
+                                지도 마커 동기화 문제 해결
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="about-item">
+
+                        <span class="about-number">04</span>
+
+                        <div>
+                            <h3>Team Collaboration</h3>
+
+                            <p>
+                                프론트엔드, 백엔드, AI 파트와 역할을 나누고
+                                인터페이스를 조율한 팀 프로젝트 경험
+                            </p>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 기술 스택 -->
+    <section class="section skills-section" id="skills">
+
+        <div class="container">
+
+            <div class="section-heading">
+                <p class="section-label">TECH STACK</p>
+                <h2>사용 기술</h2>
+            </div>
+
+            <div class="skills-grid">
+
+                <article class="skill-card">
+
+                    <div class="skill-card-top">
+                        <span>BACKEND</span>
+                        <strong>01</strong>
+                    </div>
+
+                    <h3>Java & Spring</h3>
+
+                    <p>
+                        웹 서비스의 비즈니스 로직, 인증,
+                        데이터 처리 기능을 구현합니다.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>Spring Security</span>
+                        <span>Spring Data JPA</span>
+                        <span>REST API</span>
+                    </div>
+
+                </article>
+
+                <article class="skill-card">
+
+                    <div class="skill-card-top">
+                        <span>AI SERVER</span>
+                        <strong>02</strong>
+                    </div>
+
+                    <h3>Python & AI</h3>
+
+                    <p>
+                        AI 모델과 웹 서비스를 연결하는
+                        API 서버를 개발합니다.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>FastAPI</span>
+                        <span>RAG</span>
+                        <span>Whisper</span>
+                        <span>Edge-TTS</span>
+                    </div>
+
+                </article>
+
+                <article class="skill-card">
+
+                    <div class="skill-card-top">
+                        <span>DATABASE</span>
+                        <strong>03</strong>
+                    </div>
+
+                    <h3>Data & Storage</h3>
+
+                    <p>
+                        서비스 데이터를 구조화하고
+                        안정적으로 저장하고 조회합니다.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>MySQL</span>
+                        <span>MongoDB</span>
+                        <span>ChromaDB</span>
+                        <span>JPA</span>
+                    </div>
+
+                </article>
+
+                <article class="skill-card">
+
+                    <div class="skill-card-top">
+                        <span>FRONTEND</span>
+                        <strong>04</strong>
+                    </div>
+
+                    <h3>Web Interface</h3>
+
+                    <p>
+                        사용자에게 필요한 정보를 명확하게
+                        전달하는 화면을 구현합니다.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Thymeleaf</span>
+                        <span>JSP</span>
+                    </div>
+
+                </article>
+
+                <article class="skill-card">
+
+                    <div class="skill-card-top">
+                        <span>EXTERNAL API</span>
+                        <strong>05</strong>
+                    </div>
+
+                    <h3>API Integration</h3>
+
+                    <p>
+                        외부 데이터를 서비스 기능으로
+                        활용할 수 있도록 연동합니다.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>Kakao Local API</span>
+                        <span>Google Maps</span>
+                        <span>Naver API</span>
+                        <span>OpenAI API</span>
+                    </div>
+
+                </article>
+
+                <article class="skill-card">
+
+                    <div class="skill-card-top">
+                        <span>TOOLS</span>
+                        <strong>06</strong>
+                    </div>
+
+                    <h3>Development Tools</h3>
+
+                    <p>
+                        버전 관리와 협업 도구를 활용해
+                        프로젝트를 관리합니다.
+                    </p>
+
+                    <div class="skill-tags">
+                        <span>Git</span>
+                        <span>GitHub</span>
+                        <span>Eclipse</span>
+                        <span>VS Code</span>
+                        <span>Postman</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 주요 프로젝트 -->
+    <section class="section projects-section" id="projects">
+
+        <div class="container">
+
+            <div class="section-heading project-heading">
+
+                <div>
+                    <p class="section-label">PROJECTS</p>
+                    <h2>주요 프로젝트</h2>
+                </div>
+
+                <a href="/projects"
+                   class="section-link">
+                    전체 프로젝트 보기
+                    <span>→</span>
+                </a>
+
+            </div>
+
+            <div class="projects-grid">
+
+                <!-- AI 여행 플래너 -->
+                <article class="project-card project-card-large">
+
+                    <div class="project-image travel-project">
+
+                        <div class="project-status">
+                            개발 진행 중
+                        </div>
+
+                        <div class="project-symbol">
+                            ✈
+                        </div>
+
+                        <div class="project-image-text">
+                            <span>AI TRAVEL PLANNER</span>
+                            <strong>여행 계획을 AI와 함께</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span>개인 프로젝트</span>
+                            <span>2026.07 - 진행 중</span>
+                        </div>
+
+                        <h3>AI 여행 플래너</h3>
+
+                        <p class="project-summary">
+                            사용자의 여행 지역, 일정과 취향을 기반으로
+                            AI가 여행 코스를 생성하고 지도에 관광지와
+                            맛집을 표시하는 서비스입니다.
+                        </p>
+
+                        <dl class="project-info">
+
+                            <div>
+                                <dt>담당 역할</dt>
+                                <dd>프론트엔드·백엔드·AI 연동 전체 개발</dd>
+                            </div>
+
+                            <div>
+                                <dt>핵심 기능</dt>
+                                <dd>AI 일정 생성, 장소 검색, 지도 연동</dd>
+                            </div>
+
+                        </dl>
+
+                        <div class="project-tags">
+                            <span>Spring Boot</span>
+                            <span>FastAPI</span>
+                            <span>MySQL</span>
+                            <span>Google Maps</span>
+                            <span>Kakao API</span>
+                        </div>
+
+                        <div class="project-actions">
+
+                            <a href="/projects/ai-travel-planner"
+                               class="project-detail-link">
+                                상세 보기 →
+                            </a>
+
+                            <a href="#"
+                               class="project-sub-link">
+                                GitHub
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- 양동이 -->
+                <article class="project-card">
+
+                    <div class="project-image chatbot-project">
+
+                        <div class="project-symbol">
+                            AI
+                        </div>
+
+                        <div class="project-image-text">
+                            <span>YANGDONGI</span>
+                            <strong>대학 학사정보 AI 챗봇</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span>팀 프로젝트</span>
+                            <span>2025</span>
+                        </div>
+
+                        <h3>양동이</h3>
+
+                        <p class="project-summary">
+                            학교 규정과 학과별 정보를 RAG로 검색하고,
+                            음성으로 질문하고 답변받을 수 있는
+                            동양미래대학교 전용 AI 챗봇입니다.
+                        </p>
+
+                        <dl class="project-info">
+
+                            <div>
+                                <dt>담당 역할</dt>
+                                <dd>프론트엔드, Flask 서버, AI API 연동</dd>
+                            </div>
+
+                            <div>
+                                <dt>핵심 기능</dt>
+                                <dd>RAG 검색, STT, TTS, 로그인</dd>
+                            </div>
+
+                        </dl>
+
+                        <div class="project-tags">
+                            <span>Flask</span>
+                            <span>FastAPI</span>
+                            <span>RAG</span>
+                            <span>Whisper</span>
+                            <span>MySQL</span>
+                        </div>
+
+                        <div class="project-actions">
+
+                            <a href="/projects/yangdongi"
+                               class="project-detail-link">
+                                상세 보기 →
+                            </a>
+
+                            <a href="#"
+                               class="project-sub-link">
+                                GitHub
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- 맛누리 -->
+                <article class="project-card">
+
+                    <div class="project-image restaurant-project">
+
+                        <div class="project-symbol">
+                            M
+                        </div>
+
+                        <div class="project-image-text">
+                            <span>MATNURI</span>
+                            <strong>AI 맛집 추천 서비스</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span>팀 프로젝트</span>
+                            <span>2025</span>
+                        </div>
+
+                        <h3>맛누리</h3>
+
+                        <p class="project-summary">
+                            키워드 기반 장소 검색, 지도 표시,
+                            리뷰 수 정렬과 FastAPI 감정 분석을 제공하는
+                            Spring Boot 기반 맛집 추천 서비스입니다.
+                        </p>
+
+                        <dl class="project-info">
+
+                            <div>
+                                <dt>담당 역할</dt>
+                                <dd>백엔드, DB, 지도·외부 API 연동</dd>
+                            </div>
+
+                            <div>
+                                <dt>핵심 기능</dt>
+                                <dd>장소 검색, 지도, 인증, 감정 분석</dd>
+                            </div>
+
+                        </dl>
+
+                        <div class="project-tags">
+                            <span>Spring Boot</span>
+                            <span>Spring Security</span>
+                            <span>MySQL</span>
+                            <span>FastAPI</span>
+                            <span>Kakao API</span>
+                        </div>
+
+                        <div class="project-actions">
+
+                            <a href="/projects/matnuri"
+                               class="project-detail-link">
+                                상세 보기 →
+                            </a>
+
+                            <a href="#"
+                               class="project-sub-link">
+                                GitHub
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- AI 소개 -->
+    <section class="section ai-section">
+
+        <div class="container">
+
+            <div class="ai-promo">
+
+                <div class="ai-promo-content">
+
+                    <p class="section-label">
+                        AI PORTFOLIO ASSISTANT
+                    </p>
+
+                    <h2>
+                        포트폴리오를 읽는 대신,<br>
+                        AI에게 바로 질문해보세요.
+                    </h2>
+
+                    <p>
+                        프로젝트, 담당 역할, 기술 경험,
+                        트러블슈팅 내용을 포트폴리오 문서를 기반으로 답변합니다.
+                    </p>
+
+                    <button type="button"
+                            class="button button-primary open-chat-button">
+                        AI 상담원 열기
+                    </button>
+
+                </div>
+
+                <div class="ai-question-list">
+
+                    <button type="button"
+                            class="sample-question open-chat-button"
+                            data-question="Spring Boot로 구현한 기능을 알려주세요.">
+                        Spring Boot로 구현한 기능을 알려주세요.
+                        <span>→</span>
+                    </button>
+
+                    <button type="button"
+                            class="sample-question open-chat-button"
+                            data-question="양동이 프로젝트의 AI 기능은 무엇인가요?">
+                        양동이 프로젝트의 AI 기능은 무엇인가요?
+                        <span>→</span>
+                    </button>
+
+                    <button type="button"
+                            class="sample-question open-chat-button"
+                            data-question="가장 어려웠던 오류는 무엇이었나요?">
+                        가장 어려웠던 오류는 무엇이었나요?
+                        <span>→</span>
+                    </button>
+
+                    <button type="button"
+                            class="sample-question open-chat-button"
+                            data-question="백엔드 개발 경험을 요약해주세요.">
+                        백엔드 개발 경험을 요약해주세요.
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 연락 -->
+    <section class="section contact-section" id="contact">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <p>CONTACT</p>
+            <h2>함께 이야기해요</h2>
+        </div>
+
+        <div class="contact-layout">
+
+            <div class="contact-introduction">
+
+                <span class="contact-label">
+                    CONTACT ME
+                </span>
+
+                <h3>
+                    채용 및 프로젝트 관련 문의를<br>
+                    남겨주세요.
+                </h3>
+
+                <p>
+                    입력하신 문의는 포트폴리오 관리자 페이지에 저장됩니다.
+                    확인 후 입력하신 이메일을 통해 답변드리겠습니다.
+                </p>
+
+                <div class="contact-information">
+
+                    <div>
+                        <span>EMAIL</span>
+                        <strong>jian030429@gmail.com</strong>
+                    </div>
+
+                    <div>
+                        <span>GITHUB</span>
+
+                        <a href="https://github.com/jjian2/portfolio"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            github.com/jiian2 ↗
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="contact-form-card">
+
+                <div th:if="${contactSuccess}"
+                     class="contact-message contact-message-success"
+                     th:text="${contactSuccess}">
+                </div>
+
+                <div th:if="${contactError}"
+                     class="contact-message contact-message-error"
+                     th:text="${contactError}">
+                </div>
+
+                <form th:action="@{/contact}"
+                      method="post"
+                      class="contact-form">
+
+                    <div class="contact-form-row">
+
+                        <div class="contact-form-group">
+                            <label for="contactName">
+                                이름
+                            </label>
+
+                            <input type="text"
+                                   id="contactName"
+                                   name="name"
+                                   maxlength="50"
+                                   placeholder="이름을 입력해주세요"
+                                   required>
+                        </div>
+
+                        <div class="contact-form-group">
+                            <label for="contactEmail">
+                                이메일
+                            </label>
+
+                            <input type="email"
+                                   id="contactEmail"
+                                   name="email"
+                                   maxlength="100"
+                                   placeholder="example@email.com"
+                                   required>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-form-group">
+                        <label for="contactMessage">
+                            문의 내용
+                        </label>
+
+                        <textarea id="contactMessage"
+                                  name="message"
+                                  rows="7"
+                                  maxlength="2000"
+                                  placeholder="채용 또는 프로젝트 관련 문의를 작성해주세요."
+                                  required></textarea>
+                    </div>
+
+                    <div class="contact-form-bottom">
+
+                        <p>
+                            개인정보는 문의 확인 및 답변 목적으로만 사용됩니다.
+                        </p>
+
+                        <button type="submit"
+                                class="contact-submit-button">
+                            문의 보내기 →
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+
+    <div class="container footer-inner">
+
+        <div>
+            <a th:href="@{/}" class="footer-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <p>
+                Spring Boot와 AI로 만든 개발자 포트폴리오
+            </p>
+        </div>
+
+        <div class="footer-right">
+            <p>© 2026 Choi Jian</p>
+            <p>All rights reserved.</p>
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- AI 챗봇 -->
+<aside class="chatbot" id="chatbot">
+
+    <div class="chatbot-header">
+
+        <div class="chatbot-profile">
+
+            <div class="chatbot-avatar">
+                AI
+            </div>
+
+            <div>
+                <strong>JIAN AI</strong>
+                <span>포트폴리오 AI 상담원</span>
+            </div>
+
+        </div>
+
+		<button type="button"
+		        class="chatbot-close-button"
+		        id="closeChatButton"
+		        aria-label="AI 상담원 닫기">
+		    ×
+		</button>
+
+    </div>
+
+    <div class="chatbot-status">
+        <span></span>
+        온라인 · 포트폴리오 정보를 기반으로 답변합니다
+    </div>
+
+    <div class="chatbot-messages" id="chatMessages">
+
+        <div class="chat-message assistant-message">
+
+            <p>
+                안녕하세요. 최지안의 프로젝트와 기술 경험에 대해 질문해주세요.
+            </p>
+
+            <small>
+                JIAN AI
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="chatbot-suggestions">
+
+        <button type="button"
+                data-question="Spring Boot 경험을 알려주세요.">
+            Spring Boot 경험
+        </button>
+
+        <button type="button"
+                data-question="AI 프로젝트를 알려주세요.">
+            AI 프로젝트
+        </button>
+
+        <button type="button"
+                data-question="담당 역할을 알려주세요.">
+            담당 역할
+        </button>
+
+    </div>
+
+    <form class="chatbot-form" id="chatForm">
+
+        <input type="text"
+               id="chatInput"
+               placeholder="궁금한 내용을 입력하세요."
+               autocomplete="off">
+
+        <button type="submit">
+            전송
+        </button>
+
+    </form>
+
+</aside>
+
+<button type="button"
+        class="floating-chat-button open-chat-button"
+        aria-label="AI 상담원 열기">
+
+    <span class="floating-chat-icon">
+        AI
+    </span>
+
+    <span class="floating-chat-text">
+        AI에게 질문
+    </span>
+
+</button>
+
+<script th:src="@{/js/main.js}"></script>
+
+</body>
+</html>

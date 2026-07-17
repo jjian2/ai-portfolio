@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>맛누리 | 최지안 포트폴리오</title>
+
+    <meta name="description"
+          content="맛집 검색, 지도 연동, 리뷰 수집과 감정 분석을 구현한 맛누리 프로젝트 상세 페이지입니다.">
+
+    <link rel="stylesheet"
+          th:href="@{/css/common.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/project-detail.css}">
+</head>
+
+<body>
+
+<header class="detail-header">
+
+    <div class="detail-header-inner">
+
+        <a th:href="@{/}"
+           class="detail-logo">
+            JIAN<span>.</span>
+        </a>
+
+        <nav class="detail-nav">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/#skills}">Skills</a>
+            <a th:href="@{/#contact}">Contact</a>
+        </nav>
+
+        <a th:href="@{/projects}"
+           class="back-projects-button">
+            ← 프로젝트 목록
+        </a>
+
+    </div>
+
+</header>
+
+<main>
+
+    <!-- 상단 소개 -->
+    <section class="project-detail-hero">
+
+        <div class="detail-glow"></div>
+
+        <div class="container">
+
+            <div class="detail-breadcrumb">
+
+                <a th:href="@{/projects}">
+                    Projects
+                </a>
+
+                <span>/</span>
+
+                <span>맛누리</span>
+
+            </div>
+
+            <div class="detail-hero-layout">
+
+                <div class="detail-hero-content">
+
+                    <p class="detail-category">
+                        BACKEND · AI · WEB SERVICE
+                    </p>
+
+                    <h1>맛누리</h1>
+
+                    <p class="detail-subtitle">
+                        맛집 검색과 리뷰 분석을 결합한
+                        AI 기반 맛집 추천 서비스
+                    </p>
+
+                    <p class="detail-description">
+                        사용자가 지역 또는 음식점 이름을 입력하면
+                        주변 맛집을 검색하고 지도에 위치를 표시합니다.
+                        음식점의 블로그 리뷰를 수집한 뒤
+                        긍정·부정 감정 분석과 키워드 시각화를 제공하여
+                        사용자가 음식점의 특징을 쉽게 파악할 수 있도록 구현했습니다.
+                    </p>
+
+                    <div class="detail-actions">
+
+                        <a href="https://github.com/jjian2/restaurant-recommendation-system"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="button button-primary">
+                            GitHub 보기
+                        </a>
+
+                        <a href="#overview"
+                           class="button button-link">
+                            프로젝트 살펴보기 ↓
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="detail-hero-visual">
+
+                    <div class="project-cover restaurant-cover">
+
+                        <div class="cover-grid"></div>
+
+                        <div class="cover-symbol">
+                            M
+                        </div>
+
+                        <div class="cover-text">
+                            <span>MATNURI</span>
+                            <strong>
+                                Restaurant Recommendation & Review Analysis
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="detail-summary">
+
+                <div>
+                    <span>개발 기간</span>
+                    <strong>2024.11 - 2025.03</strong>
+                </div>
+
+                <div>
+                    <span>프로젝트 형태</span>
+                    <strong>개인 프로젝트</strong>
+                </div>
+
+                <div>
+                    <span>기여도</span>
+                    <strong>100%</strong>
+                </div>
+
+                <div>
+                    <span>개발 방식</span>
+                    <strong>JSP 기반 → Spring Boot 고도화</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 프로젝트 개요 -->
+    <section class="detail-section"
+             id="overview">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>01. OVERVIEW</p>
+
+                <h2>
+                    프로젝트 개요
+                </h2>
+
+            </div>
+
+            <div class="overview-grid">
+
+                <article class="overview-card">
+
+                    <span>어떤 서비스인가요?</span>
+
+                    <h3>
+                        맛집 검색과 리뷰 분석을 한 번에 제공하는 서비스
+                    </h3>
+
+                    <p>
+                        사용자가 원하는 지역이나 음식점 이름을 검색하면
+                        음식점 위치와 정보를 지도에 표시하고,
+                        블로그 리뷰를 수집해 감정 분석과
+                        주요 키워드 시각화를 제공합니다.
+                    </p>
+
+                </article>
+
+                <article class="overview-card">
+
+                    <span>왜 만들었나요?</span>
+
+                    <h3>
+                        검색 결과만으로는 알기 어려운 실제 반응을 보여주기 위해
+                    </h3>
+
+                    <p>
+                        단순한 장소 정보만으로는 음식점의 분위기나
+                        실제 이용자의 반응을 파악하기 어렵습니다.
+                        리뷰 내용을 분석해 긍정·부정 결과와
+                        자주 등장하는 단어를 함께 보여주도록 구현했습니다.
+                    </p>
+
+                </article>
+
+                <article class="overview-card">
+
+                    <span>누구를 위한 서비스인가요?</span>
+
+                    <h3>
+                        방문할 음식점을 빠르게 선택하고 싶은 사용자
+                    </h3>
+
+                    <p>
+                        지도 위치, 음식점 정보, 리뷰 내용과 분석 결과를
+                        여러 사이트에서 따로 찾지 않고
+                        한 화면에서 비교하고 싶은 사용자를 대상으로 합니다.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 담당 역할 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>02. MY ROLE</p>
+
+                <h2>
+                    담당 역할
+                </h2>
+
+            </div>
+
+            <div class="role-layout">
+
+                <div class="role-introduction">
+
+                    <h3>
+                        서비스 기획부터 화면, 백엔드, 데이터베이스와
+                        분석 기능까지 전체 과정을 직접 구현했습니다.
+                    </h3>
+
+                    <p>
+                        초기에는 Java, JSP, Servlet과 MySQL을 기반으로
+                        맛집 검색, 지도 표시, 로그인, 관리자 기능과
+                        리뷰 분석 기능을 구현했습니다.
+                        이후 Spring Boot, Spring Security, JPA와
+                        FastAPI 구조로 고도화하며 서비스 구조를 개선했습니다.
+                    </p>
+
+                </div>
+
+                <div class="role-list">
+
+                    <article class="role-item">
+
+                        <span>01</span>
+
+                        <div>
+                            <h3>전체 서비스 기획 및 화면 구현</h3>
+
+                            <p>
+                                검색 화면, 맛집 추천 화면,
+                                분석 결과 화면과 관리자 페이지의
+                                구조와 사용자 흐름을 직접 설계했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>02</span>
+
+                        <div>
+                            <h3>맛집 검색 및 지도 연동</h3>
+
+                            <p>
+                                지역 또는 음식점 이름을 기반으로
+                                장소 데이터를 검색하고,
+                                음식점 좌표를 지도 마커로 표시했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>03</span>
+
+                        <div>
+                            <h3>리뷰 수집 및 데이터 처리</h3>
+
+                            <p>
+                                음식점 관련 블로그 리뷰 제목과 본문을 수집하고,
+                                분석에 활용할 수 있도록 텍스트 데이터를
+                                전처리했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>04</span>
+
+                        <div>
+                            <h3>감정 분석 및 시각화</h3>
+
+                            <p>
+                                리뷰의 긍정·부정 결과를 차트로 표시하고,
+                                자주 언급된 단어를 워드클라우드로
+                                시각화했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>05</span>
+
+                        <div>
+                            <h3>로그인 및 관리자 기능</h3>
+
+                            <p>
+                                사용자 로그인과 세션 유지,
+                                관리자 페이지 접근과 데이터 관리 기능을
+                                구현했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 기술 스택 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>03. TECH STACK</p>
+
+                <h2>
+                    사용 기술
+                </h2>
+
+            </div>
+
+            <div class="detail-tech-grid">
+
+                <article class="detail-tech-card">
+
+                    <span>INITIAL BACKEND</span>
+
+                    <h3>Java Web</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Java</span>
+                        <span>JSP</span>
+                        <span>Servlet</span>
+                        <span>JDBC</span>
+                        <span>HttpSession</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>ADVANCED BACKEND</span>
+
+                    <h3>Spring Boot</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Spring Boot</span>
+                        <span>Spring Security</span>
+                        <span>Spring Data JPA</span>
+                        <span>Thymeleaf</span>
+                        <span>REST API</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>DATABASE</span>
+
+                    <h3>MySQL</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>MySQL</span>
+                        <span>JPA</span>
+                        <span>Hibernate</span>
+                        <span>SQL</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>AI & DATA</span>
+
+                    <h3>Python Analysis</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Python</span>
+                        <span>FastAPI</span>
+                        <span>감정 분석</span>
+                        <span>WordCloud</span>
+                        <span>Chart.js</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>EXTERNAL API</span>
+
+                    <h3>Map & Search API</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Kakao Local API</span>
+                        <span>Kakao Map API</span>
+                        <span>Google Maps API</span>
+                        <span>Naver Open API</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>FRONTEND</span>
+
+                    <h3>Web Interface</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>JSP</span>
+                        <span>Thymeleaf</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 아키텍처 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>04. ARCHITECTURE</p>
+
+                <h2>
+                    시스템 구조
+                </h2>
+
+            </div>
+
+            <div class="architecture-box">
+
+                <div class="architecture-item">
+
+                    <span>USER</span>
+
+                    <strong>사용자</strong>
+
+                    <p>
+                        맛집 검색, 지도 확인,
+                        리뷰 분석 요청
+                    </p>
+
+                </div>
+
+                <div class="architecture-arrow">
+                    ↓
+                </div>
+
+                <div class="architecture-item">
+
+                    <span>FRONTEND</span>
+
+                    <strong>HTML · CSS · JavaScript</strong>
+
+                    <p>
+                        검색 화면, 지도,
+                        리뷰와 분석 결과 표시
+                    </p>
+
+                </div>
+
+                <div class="architecture-arrow">
+                    ↓
+                </div>
+
+                <div class="architecture-item architecture-main">
+
+                    <span>BACKEND</span>
+
+                    <strong>Spring Boot</strong>
+
+                    <p>
+                        검색 처리, 인증,
+                        데이터 저장, API 통신
+                    </p>
+
+                </div>
+
+                <div class="architecture-branch">
+
+                    <div>
+
+                        <div class="architecture-arrow">
+                            ↓
+                        </div>
+
+                        <div class="architecture-item">
+
+                            <span>DATABASE</span>
+
+                            <strong>MySQL</strong>
+
+                            <p>
+                                사용자, 음식점,
+                                게시글, 검색 기록
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <div class="architecture-arrow">
+                            ↓
+                        </div>
+
+                        <div class="architecture-item">
+
+                            <span>AI SERVER</span>
+
+                            <strong>FastAPI</strong>
+
+                            <p>
+                                리뷰 감정 분석,
+                                키워드 분석 결과 반환
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <div class="architecture-arrow">
+                            ↓
+                        </div>
+
+                        <div class="architecture-item">
+
+                            <span>EXTERNAL API</span>
+
+                            <strong>Kakao · Google · Naver</strong>
+
+                            <p>
+                                장소 검색, 지도 표시,
+                                리뷰 데이터 조회
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 핵심 기능 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>05. FEATURES</p>
+
+                <h2>
+                    핵심 기능
+                </h2>
+
+            </div>
+
+            <div class="feature-list">
+
+                <!-- 기능 1 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/matnuri/matnuri-main.png}"
+                             alt="맛누리 메인 검색 화면">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 01</span>
+
+                        <h3>맛집 검색과 분석 요청</h3>
+
+                        <p>
+                            사용자는 지역 또는 음식점 이름을 입력해
+                            맛집 추천 결과를 조회할 수 있습니다.
+                            분석할 음식점 이름을 입력하면
+                            리뷰 분석 화면으로 이동합니다.
+                        </p>
+
+                        <ul>
+                            <li>지역 또는 음식점 이름 검색</li>
+                            <li>맛집 추천 기능과 분석 기능 분리</li>
+                            <li>사용하기 쉬운 단일 화면 구성</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 2 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/matnuri/matnuri-map.png}"
+                             alt="맛누리 지도와 음식점 추천 결과">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 02</span>
+
+                        <h3>지도 기반 맛집 추천</h3>
+
+                        <p>
+                            검색된 음식점의 위도와 경도 정보를 이용하여
+                            지도에 마커를 표시하고,
+                            하단 카드 목록에서 음식점 이름, 주소와
+                            연락처를 확인할 수 있도록 구현했습니다.
+                        </p>
+
+                        <ul>
+                            <li>음식점 좌표 기반 지도 마커 표시</li>
+                            <li>지도와 음식점 목록 동시 제공</li>
+                            <li>음식점별 리뷰 분석 페이지 연결</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 3 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/matnuri/matnuri-review.png}"
+                             alt="맛누리 블로그 리뷰 목록">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 03</span>
+
+                        <h3>블로그 리뷰 수집 및 목록 제공</h3>
+
+                        <p>
+                            검색한 음식점과 관련된 블로그 리뷰를 수집해
+                            제목, 링크와 리뷰 내용을 목록으로 제공합니다.
+                            사용자는 실제 방문 후기의 주요 내용을
+                            한 페이지에서 확인할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>음식점 이름 기반 블로그 리뷰 검색</li>
+                            <li>리뷰 제목과 본문 미리보기 표시</li>
+                            <li>원문 블로그 링크 연결</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 4 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/matnuri/matnuri-wordcloud.png}"
+                             alt="맛누리 리뷰 키워드 워드클라우드">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 04</span>
+
+                        <h3>리뷰 키워드 워드클라우드</h3>
+
+                        <p>
+                            수집된 리뷰에서 자주 등장하는 단어를 추출하고,
+                            등장 빈도에 따라 크기를 다르게 표현한
+                            워드클라우드로 시각화했습니다.
+                        </p>
+
+                        <ul>
+                            <li>불필요한 조사와 중복 단어 제거</li>
+                            <li>단어 등장 빈도 계산</li>
+                            <li>핵심 키워드 시각화</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 5 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/matnuri/matnuri-chart.png}"
+                             alt="맛누리 긍정 부정 리뷰 감정 분석 차트">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 05</span>
+
+                        <h3>리뷰 감정 분석 차트</h3>
+
+                        <p>
+                            수집된 리뷰 문장을 긍정과 부정으로 분류하고,
+                            각각의 리뷰 개수를 막대 차트로 표시했습니다.
+                            음식점에 대한 전체적인 반응을
+                            시각적으로 빠르게 확인할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>긍정·부정 리뷰 분류</li>
+                            <li>분석 결과 개수 표시</li>
+                            <li>막대 차트를 활용한 결과 시각화</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 트러블슈팅 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>06. TROUBLESHOOTING</p>
+
+                <h2>
+                    문제 해결 경험
+                </h2>
+
+            </div>
+
+            <div class="troubleshooting-list">
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+
+                        <span>01</span>
+
+                        <h3>
+                            지도에 음식점 좌표를 자동으로 표시하기 어려웠던 문제
+                        </h3>
+
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+
+                            <p>
+                                음식점 이름만으로 지도에 정확한 위치를
+                                표시하는 방법이 익숙하지 않아
+                                초기에는 좌표를 직접 입력했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+
+                            <p>
+                                장소 검색 API의 응답 구조와
+                                위도·경도 데이터를 지도 마커로 변환하는
+                                흐름에 대한 이해가 부족했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+
+                            <p>
+                                장소 검색 결과의 좌표 데이터를
+                                JSON 배열로 전달하고,
+                                JavaScript 반복문으로 마커를 생성했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+
+                            <p>
+                                여러 음식점의 좌표를 자동으로 받아
+                                지도에 반복적으로 표시할 수 있게 됐습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+
+                        <span>02</span>
+
+                        <h3>
+                            지도 카드와 마커의 순서가 일치하지 않는 문제
+                        </h3>
+
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+
+                            <p>
+                                음식점 목록을 정렬한 뒤 카드를 선택하면
+                                다른 음식점의 마커가 선택되는 현상이 발생했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+
+                            <p>
+                                카드 목록은 정렬됐지만
+                                지도 마커 배열은 기존 순서를 유지해
+                                배열 인덱스가 서로 달라졌습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+
+                            <p>
+                                정렬된 음식점 데이터를 기준으로
+                                마커를 다시 생성하고,
+                                카드와 마커에 동일한 식별자를 적용했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+
+                            <p>
+                                카드 선택 시 해당 음식점의 마커와
+                                지도 위치가 정확하게 연결됐습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+
+                        <span>03</span>
+
+                        <h3>
+                            로그인 후 세션이 유지되지 않던 문제
+                        </h3>
+
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+
+                            <p>
+                                로그인에 성공해도 다른 페이지로 이동하면
+                                사용자 정보가 사라지거나
+                                다시 로그인해야 하는 문제가 있었습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+
+                            <p>
+                                HttpSession 저장 시점과
+                                페이지 이동 처리 순서가
+                                정확하게 구성되지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+
+                            <p>
+                                로그인 성공 시 사용자 정보를 세션에 저장하고,
+                                페이지 이동 전에 세션 상태를 검사하도록
+                                로직을 수정했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+
+                            <p>
+                                로그인 사용자의 정보가 여러 페이지에서
+                                안정적으로 유지되도록 개선했습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+
+                        <span>04</span>
+
+                        <h3>
+                            Spring Boot와 FastAPI 서버 간 통신 문제
+                        </h3>
+
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+
+                            <p>
+                                Spring Boot에서 FastAPI 분석 서버를 호출할 때
+                                요청이 실패하거나 한글 데이터가
+                                정상적으로 전달되지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+
+                            <p>
+                                서버 간 요청 형식과 Content-Type,
+                                CORS와 문자 인코딩 설정이
+                                서로 일치하지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+
+                            <p>
+                                요청과 응답 DTO를 일치시키고
+                                UTF-8 인코딩과 CORS 설정을 추가해
+                                통신 구조를 정리했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+
+                            <p>
+                                음식점 이름과 리뷰 데이터가 정상 전달되고,
+                                분석 결과를 웹 화면에 표시할 수 있게 됐습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 배운 점 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>07. LEARNED</p>
+
+                <h2>
+                    프로젝트를 통해 배운 점
+                </h2>
+
+            </div>
+
+            <div class="learned-grid">
+
+                <article>
+
+                    <span>01</span>
+
+                    <h3>서비스 전체 흐름 설계</h3>
+
+                    <p>
+                        검색, 지도, 리뷰 수집,
+                        감정 분석과 관리자 기능까지 구현하며
+                        하나의 웹 서비스가 동작하는 전체 흐름을 경험했습니다.
+                    </p>
+
+                </article>
+
+                <article>
+
+                    <span>02</span>
+
+                    <h3>외부 API와 데이터 연동</h3>
+
+                    <p>
+                        장소 검색 API와 지도 API의 응답 데이터를
+                        서비스 화면과 연결하며
+                        JSON 데이터 처리 방식을 익혔습니다.
+                    </p>
+
+                </article>
+
+                <article>
+
+                    <span>03</span>
+
+                    <h3>서버 간 통신 구조</h3>
+
+                    <p>
+                        Spring Boot와 FastAPI를 분리하고
+                        REST API로 연결하면서
+                        서로 다른 서버 간 요청과 응답 구조를 경험했습니다.
+                    </p>
+
+                </article>
+
+                <article>
+
+                    <span>04</span>
+
+                    <h3>데이터 시각화</h3>
+
+                    <p>
+                        텍스트 분석 결과를 워드클라우드와 차트로 표현하며
+                        분석 데이터를 사용자가 이해하기 쉬운 형태로
+                        전달하는 방법을 배웠습니다.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 다음 프로젝트 -->
+    <section class="next-project-section">
+
+        <div class="container">
+
+            <div class="next-project-box">
+
+                <div>
+
+                    <p>NEXT PROJECT</p>
+
+                    <h2>
+                        대학 학사정보 AI 챗봇
+                        <strong>양동이</strong>
+                    </h2>
+
+                </div>
+
+                <a th:href="@{/projects/yangdongi}">
+                    다음 프로젝트 보기 →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="detail-footer">
+
+    <div class="container detail-footer-inner">
+
+        <div>
+
+            <a th:href="@{/}"
+               class="detail-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <p>
+                Spring Boot와 AI로 만든 개발자 포트폴리오
+            </p>
+
+        </div>
+
+        <div class="detail-footer-links">
+
+            <a th:href="@{/}">
+                Home
+            </a>
+
+            <a th:href="@{/projects}">
+                Projects
+            </a>
+
+            <a href="https://github.com/jjian2/restaurant-recommendation-system"
+               target="_blank"
+               rel="noopener noreferrer">
+                GitHub
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>사이버 범죄 데이터 분석 대시보드 | 최지안 포트폴리오</title>
+
+    <meta name="description"
+          content="Pandas와 Streamlit, Matplotlib, Plotly를 활용해 사이버 범죄 데이터를 분석하고 시각화한 대시보드 프로젝트입니다.">
+
+    <link rel="stylesheet"
+          th:href="@{/css/common.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/project-detail.css}">
+
+    <!-- 사이버 범죄 페이지 이미지 크기 전용 보정 -->
+    <style>
+		/* =========================
+		   사이버 범죄 기능 이미지
+		========================= */
+		
+		#features .feature-image {
+		    width: 100%;
+		    height: 390px;
+		
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		
+		    padding: 0;
+		    overflow: hidden;
+		
+		    border: 1px solid var(--border);
+		    border-radius: 20px;
+		
+		    background: #ffffff;
+		}
+		
+		#features .feature-image img {
+		    width: 100%;
+		    height: 100%;
+		
+		    display: block;
+		
+		    object-fit: cover;
+		    object-position: center;
+		
+		    border-radius: 20px;
+		}
+		
+		/* 두 번째 도넛 차트 화면은 여백이 많아서 더 확대 */
+		#features .feature-item:nth-child(2) .feature-image img {
+		    transform: scale(1.15);
+		    
+		}
+		
+		/* 세 번째 대시보드 화면은 비율 유지 */
+		#features .feature-item:nth-child(3) .feature-image {
+		    height: 440px;
+		}
+		
+		#features .feature-item:nth-child(3) .feature-image img {
+		    object-fit: contain;
+		    padding: 12px;
+		    border-radius: 16px;
+		}
+		
+		/* 태블릿 */
+		@media (max-width: 1000px) {
+		    #features .feature-image {
+		        height: 340px;
+		    }
+		
+		    #features .feature-item:nth-child(3) .feature-image {
+		        height: 390px;
+		    }
+		}
+		
+		/* 모바일 */
+		@media (max-width: 700px) {
+		    #features .feature-image,
+		    #features .feature-item:nth-child(3) .feature-image {
+		        height: auto;
+		        min-height: 250px;
+		    }
+		
+		    #features .feature-image img {
+		        height: auto;
+		        object-fit: contain;
+		        transform: none !important;
+		        padding: 10px;
+		    }
+		}
+    </style>
+</head>
+
+<body>
+
+<header class="detail-header">
+
+    <div class="detail-header-inner">
+
+        <a th:href="@{/}"
+           class="detail-logo">
+            JIAN<span>.</span>
+        </a>
+
+        <nav class="detail-nav">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/#skills}">Skills</a>
+            <a th:href="@{/#contact}">Contact</a>
+        </nav>
+
+        <a th:href="@{/projects}"
+           class="back-projects-button">
+            ← 프로젝트 목록
+        </a>
+
+    </div>
+
+</header>
+
+<main>
+
+    <!-- 상단 소개 -->
+    <section class="project-detail-hero">
+
+        <div class="detail-glow"></div>
+
+        <div class="container">
+
+            <div class="detail-breadcrumb">
+                <a th:href="@{/projects}">Projects</a>
+                <span>/</span>
+                <span>사이버 범죄 데이터 분석 대시보드</span>
+            </div>
+
+            <div class="detail-hero-layout">
+
+                <div class="detail-hero-content">
+
+                    <p class="detail-category">
+                        DATA ANALYSIS · STREAMLIT · DASHBOARD
+                    </p>
+
+                    <h1>
+                        사이버 범죄<br>
+                        데이터 대시보드
+                    </h1>
+
+                    <p class="detail-subtitle">
+                        사이버 범죄의 유형과 연도별 흐름을
+                        인터랙티브하게 분석하는 데이터 시각화 서비스
+                    </p>
+
+                    <p class="detail-description">
+                        경찰청 공개 데이터를 기반으로 금융범죄, 사기, 해킹,
+                        성폭력, 도박 등 주요 사이버 범죄의 발생건수와 검거건수를 분석했습니다.
+                        Pandas로 데이터를 전처리하고 Streamlit과 Matplotlib·Plotly를 활용해
+                        사용자가 범죄 유형과 분석 방식을 선택할 수 있는 대시보드로 구현했습니다.
+                    </p>
+
+                    <div class="detail-actions">
+
+                        <a href="https://github.com/jjian2/cybercrime-dashboard"
+                           class="button button-primary"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub 보기
+                        </a>
+
+                        <a href="#overview"
+                           class="button button-link">
+                            프로젝트 살펴보기 ↓
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="detail-hero-visual">
+
+                    <div class="project-cover cyber-cover">
+
+                        <div class="cover-grid"></div>
+
+                        <div class="cover-symbol">
+                            D
+                        </div>
+
+                        <div class="cover-text">
+                            <span>CYBER CRIME DASHBOARD</span>
+                            <strong>Interactive Cyber Crime Data Analysis</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="detail-summary">
+
+                <div>
+                    <span>개발 기간</span>
+                    <strong>2025.04 - 2025.06</strong>
+                </div>
+
+                <div>
+                    <span>프로젝트 형태</span>
+                    <strong>팀 프로젝트</strong>
+                </div>
+
+                <div>
+                    <span>기여도</span>
+                    <strong>70%</strong>
+                </div>
+
+                <div>
+                    <span>담당 역할</span>
+                    <strong>팀장 · 데이터 전처리 · 시각화</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 프로젝트 개요 -->
+    <section class="detail-section"
+             id="overview">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>01. OVERVIEW</p>
+                <h2>프로젝트 개요</h2>
+            </div>
+
+            <div class="overview-grid">
+
+                <article class="overview-card">
+
+                    <span>어떤 서비스인가요?</span>
+
+                    <h3>
+                        사이버 범죄 통계를 한눈에 보는 분석 대시보드
+                    </h3>
+
+                    <p>
+                        연도별·범죄 유형별 발생건수와 검거건수를 비교하고,
+                        범죄 증가율과 주요 통계까지 확인할 수 있는 데이터 분석 서비스입니다.
+                    </p>
+
+                </article>
+
+                <article class="overview-card">
+
+                    <span>왜 만들었나요?</span>
+
+                    <h3>
+                        복잡한 범죄 통계를 쉽게 이해하도록 만들기 위해
+                    </h3>
+
+                    <p>
+                        공개 통계는 표 형태로 제공돼 흐름을 파악하기 어려웠습니다.
+                        이를 그래프와 요약 지표로 변환해 직관적으로 확인하도록 구현했습니다.
+                    </p>
+
+                </article>
+
+                <article class="overview-card">
+
+                    <span>누구를 위한 서비스인가요?</span>
+
+                    <h3>
+                        사이버 범죄 동향을 확인하는 사용자와 분석 담당자
+                    </h3>
+
+                    <p>
+                        특정 범죄의 발생 추이와 검거 현황,
+                        유형별 비중을 빠르게 비교하고 싶은 사용자를 대상으로 구성했습니다.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 담당 역할 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>02. MY ROLE</p>
+                <h2>담당 역할</h2>
+            </div>
+
+            <div class="role-layout">
+
+                <div class="role-introduction">
+
+                    <h3>
+                        팀장으로서 일정과 업무를 조율하고,
+                        데이터 전처리부터 Streamlit UI와 시각화 기능까지 담당했습니다.
+                    </h3>
+
+                    <p>
+                        다양한 범죄 데이터를 연도와 범죄 유형 기준으로 통합하고,
+                        사용자가 분석 옵션을 선택하면 차트가 동적으로 변경되도록 구현했습니다.
+                        또한 발표 과정에서 주요 분석 결과와 범죄 증가 흐름을 설명했습니다.
+                    </p>
+
+                </div>
+
+                <div class="role-list">
+
+                    <article class="role-item">
+                        <span>01</span>
+                        <div>
+                            <h3>팀 일정 및 업무 관리</h3>
+                            <p>
+                                팀장으로서 개발 일정을 정리하고
+                                데이터 수집, 전처리, 시각화 업무를 분배했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>02</span>
+                        <div>
+                            <h3>사이버 범죄 데이터 수집 및 통합</h3>
+                            <p>
+                                경찰청 공개 데이터를 수집하고
+                                서로 다른 연도와 범죄 분류 기준을 통일했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>03</span>
+                        <div>
+                            <h3>Pandas 기반 전처리</h3>
+                            <p>
+                                결측값, 문자열 형식, 범죄 유형명을 정리하고
+                                연도별 발생·검거 통계를 분석 가능한 구조로 변환했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>04</span>
+                        <div>
+                            <h3>Streamlit 대시보드 개발</h3>
+                            <p>
+                                사이드바에서 범죄 유형과 분석 방식을 선택하고
+                                결과 차트가 동적으로 변경되도록 구현했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>05</span>
+                        <div>
+                            <h3>Matplotlib·Plotly 시각화</h3>
+                            <p>
+                                선 그래프, 도넛 차트와 주요 지표 카드로
+                                범죄 흐름과 유형별 비중을 시각화했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 기술 스택 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>03. TECH STACK</p>
+                <h2>사용 기술</h2>
+            </div>
+
+            <div class="detail-tech-grid">
+
+                <article class="detail-tech-card">
+                    <span>LANGUAGE</span>
+                    <h3>Python</h3>
+                    <div class="detail-tech-tags">
+                        <span>Python</span>
+                        <span>Data Analysis</span>
+                        <span>Statistics</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>DATA</span>
+                    <h3>Pandas</h3>
+                    <div class="detail-tech-tags">
+                        <span>Pandas</span>
+                        <span>Data Cleaning</span>
+                        <span>Aggregation</span>
+                        <span>Filtering</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>DASHBOARD</span>
+                    <h3>Streamlit</h3>
+                    <div class="detail-tech-tags">
+                        <span>Streamlit</span>
+                        <span>Sidebar</span>
+                        <span>Interactive UI</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>VISUALIZATION</span>
+                    <h3>Charts</h3>
+                    <div class="detail-tech-tags">
+                        <span>Matplotlib</span>
+                        <span>Plotly</span>
+                        <span>Line Chart</span>
+                        <span>Donut Chart</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>DATA SOURCE</span>
+                    <h3>Public Data</h3>
+                    <div class="detail-tech-tags">
+                        <span>경찰청 공개 데이터</span>
+                        <span>CSV</span>
+                        <span>BigKinds</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>TEAM</span>
+                    <h3>Collaboration</h3>
+                    <div class="detail-tech-tags">
+                        <span>Team Leader</span>
+                        <span>Task Management</span>
+                        <span>Presentation</span>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 데이터 처리 구조 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>04. ARCHITECTURE</p>
+                <h2>데이터 처리 구조</h2>
+            </div>
+
+            <div class="architecture-box">
+
+                <div class="architecture-item">
+                    <span>DATA SOURCE</span>
+                    <strong>경찰청 · BigKinds</strong>
+                    <p>연도별 범죄 통계와 관련 데이터 수집</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>PREPROCESSING</span>
+                    <strong>Pandas</strong>
+                    <p>결측값, 범죄 분류와 연도 형식 정리</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item architecture-main">
+                    <span>ANALYSIS</span>
+                    <strong>Python Statistics</strong>
+                    <p>발생건수, 검거건수, 비중과 증감률 계산</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>VISUALIZATION</span>
+                    <strong>Matplotlib · Plotly</strong>
+                    <p>선 그래프, 도넛 차트와 비교 차트 생성</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>DASHBOARD</span>
+                    <strong>Streamlit</strong>
+                    <p>분석 옵션과 인터랙티브 결과 제공</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 핵심 기능 -->
+    <section class="detail-section"
+             id="features">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>05. FEATURES</p>
+                <h2>핵심 기능</h2>
+            </div>
+
+            <div class="feature-list">
+
+                <!-- 기능 1 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/cyber-crime/cyber-main.png}"
+                             alt="사이버 범죄 데이터 분석 대시보드 메인 화면">
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 01</span>
+
+                        <h3>사이버 범죄 현황 대시보드</h3>
+
+                        <p>
+                            전체 발생건수, 연평균 발생건수,
+                            증가율과 범죄 유형별 비중을
+                            한 화면에서 확인할 수 있도록 구성했습니다.
+                        </p>
+
+                        <ul>
+                            <li>총 발생건수 및 연평균 통계</li>
+                            <li>전체 증가율과 최대 발생 연도</li>
+                            <li>범죄 유형별 도넛 차트</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 2 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/cyber-crime/cyber-report.png}"
+                             alt="2024년 상반기 사이버 범죄 유형별 통계 화면">
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 02</span>
+
+                        <h3>범죄 유형별 비중 분석</h3>
+
+                        <p>
+                            사기, 금융범죄, 해킹, 성범죄, 도박 등
+                            주요 사이버 범죄가 전체에서 차지하는 비율을
+                            도넛 차트로 비교할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>유형별 비중 계산</li>
+                            <li>상반기 범죄 통계 제공</li>
+                            <li>주요 범죄 유형 비교</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 3 -->
+                <article class="feature-item">
+
+                    <div class="feature-image feature-image-tall">
+                        <img th:src="@{/images/projects/cyber-crime/cyber-analysis.png}"
+                             alt="사이버 금융범죄 발생건수와 검거건수 분석 화면">
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 03</span>
+
+                        <h3>범죄 유형별 발생·검거 추이 분석</h3>
+
+                        <p>
+                            사용자가 피싱 등 세부 범죄를 선택하면
+                            연도별 발생건수와 검거건수를 선 그래프로 비교하고,
+                            다양한 분석 옵션을 선택할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>범죄 유형 선택</li>
+                            <li>2018~2023 연도별 추이</li>
+                            <li>발생건수와 검거건수 비교</li>
+                            <li>전체 추이·검거율·비중 분석</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 트러블슈팅 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>06. TROUBLESHOOTING</p>
+                <h2>문제 해결 경험</h2>
+            </div>
+
+            <div class="troubleshooting-list">
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>01</span>
+                        <h3>연도별 범죄 분류 기준이 달라 데이터를 바로 비교할 수 없었던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                공개 데이터마다 범죄 유형명과 분류 기준이 달라
+                                연도별 수치를 단순 병합할 수 없었습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                일부 연도에서 범죄 명칭이 바뀌거나
+                                세부 범죄가 상위 유형으로 통합되어 있었습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                공통 분류 기준을 정의하고
+                                유사한 범죄 유형을 매핑하는 정규화 기준을 만들었습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                여러 연도의 범죄 데이터를 하나의 기준으로 비교하고
+                                추이 그래프를 생성할 수 있었습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>02</span>
+                        <h3>대용량 데이터를 반복 처리하면서 화면 응답이 느려진 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                사용자가 옵션을 변경할 때마다 전체 데이터를 다시 처리해
+                                대시보드 반응 속도가 느려졌습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                필터 변경마다 CSV 로드, 정제와 집계 연산을
+                                처음부터 다시 수행했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                전처리 결과를 재사용하고,
+                                필요한 열과 범죄 유형만 먼저 필터링하도록 구조를 개선했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                분석 옵션 변경 시 차트가 더 빠르게 갱신되도록 개선했습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>03</span>
+                        <h3>운영체제에 따라 한글 그래프가 깨지는 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                macOS와 Windows에서 Matplotlib 차트의
+                                한글 제목과 축 이름이 사각형으로 표시됐습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                각 운영체제에서 사용하는 기본 한글 폰트가 달랐습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                macOS는 AppleGothic,
+                                Windows는 Malgun Gothic을 적용하도록 분기 처리했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                팀원별 개발 환경에서도 한글 그래프가
+                                정상적으로 표시되도록 수정했습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>04</span>
+                        <h3>범죄 유형 선택과 차트 데이터가 일치하지 않았던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                특정 범죄를 선택해도 다른 유형의 수치가
+                                차트에 표시되는 경우가 있었습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                화면 표시명과 데이터프레임 열 이름이 달라
+                                잘못된 컬럼을 참조했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                사용자 표시명과 실제 데이터 컬럼을 연결하는
+                                매핑 딕셔너리를 만들어 필터 로직을 통일했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                선택한 범죄 유형에 맞는 통계와 차트가
+                                정확하게 표시되도록 개선했습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 배운 점 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>07. LEARNED</p>
+                <h2>프로젝트를 통해 배운 점</h2>
+            </div>
+
+            <div class="learned-grid">
+
+                <article>
+                    <span>01</span>
+                    <h3>데이터 정제의 중요성</h3>
+                    <p>
+                        시각화보다 먼저 데이터 분류 기준과 형식을 통일해야
+                        신뢰할 수 있는 분석 결과를 만들 수 있다는 점을 배웠습니다.
+                    </p>
+                </article>
+
+                <article>
+                    <span>02</span>
+                    <h3>인터랙티브 대시보드 설계</h3>
+                    <p>
+                        사용자가 직접 필터를 선택하도록 구성하면서
+                        데이터 분석 결과를 서비스 형태로 전달하는 경험을 했습니다.
+                    </p>
+                </article>
+
+                <article>
+                    <span>03</span>
+                    <h3>시각화와 설명의 결합</h3>
+                    <p>
+                        차트만 보여주는 것보다 핵심 수치와 해석을 함께 제공해야
+                        사용자가 데이터의 의미를 쉽게 이해할 수 있다는 점을 배웠습니다.
+                    </p>
+                </article>
+
+                <article>
+                    <span>04</span>
+                    <h3>팀장 역할과 협업</h3>
+                    <p>
+                        일정 관리와 업무 분배, 결과 통합과 발표를 수행하며
+                        팀 프로젝트에서 소통과 기준 통일의 중요성을 경험했습니다.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 다음 프로젝트 -->
+    <section class="next-project-section">
+
+        <div class="container">
+
+            <div class="next-project-box">
+
+                <div>
+                    <p>NEXT PROJECT</p>
+                    <h2>
+                        학교 정보와 지도를 제공하는
+                        <strong>대학 홈페이지 웹 서비스</strong>
+                    </h2>
+                </div>
+
+                <a th:href="@{/projects/university-web}">
+                    다음 프로젝트 보기 →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="detail-footer">
+
+    <div class="container detail-footer-inner">
+
+        <div>
+
+            <a th:href="@{/}"
+               class="detail-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <p>
+                Spring Boot와 AI로 만든 개발자 포트폴리오
+            </p>
+
+        </div>
+
+        <div class="detail-footer-links">
+
+            <a th:href="@{/}">
+                Home
+            </a>
+
+            <a th:href="@{/projects}">
+                Projects
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

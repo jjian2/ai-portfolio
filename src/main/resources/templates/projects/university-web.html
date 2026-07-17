@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>대학교 홈페이지 웹 서비스 | 최지안 포트폴리오</title>
+
+    <meta name="description"
+          content="Java와 JSP, SQL, Naver Map API를 활용해 캠퍼스 시설과 건물 위치, 학사 정보를 제공하는 대학교 홈페이지 웹 서비스 프로젝트입니다.">
+
+    <link rel="stylesheet"
+          th:href="@{/css/common.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/project-detail.css}">
+
+    <style>
+        /* =========================
+           대학 홈페이지 기능 이미지 보정
+        ========================= */
+
+        #features .feature-image {
+            width: 100%;
+            height: 390px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0;
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            background: #ffffff;
+        }
+
+        #features .feature-image img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: contain;
+            object-position: center;
+
+            border-radius: 20px;
+        }
+
+        /* 메인 화면과 지도는 카드 안을 꽉 채우기 */
+        #features .feature-item:nth-child(1) .feature-image img,
+        #features .feature-item:nth-child(4) .feature-image img {
+            object-fit: cover;
+        }
+
+        /* 건물·시설 화면은 내용이 많아 조금 더 높은 카드 사용 */
+        #features .feature-item:nth-child(2) .feature-image,
+        #features .feature-item:nth-child(3) .feature-image {
+            height: 430px;
+        }
+        .architecture-branch{
+		    display:flex;
+		    justify-content:center;
+		    align-items:flex-start;
+		    gap:70px;
+		    margin-top:20px;
+		}
+
+        @media (max-width: 900px) {
+            #features .feature-image,
+            #features .feature-item:nth-child(2) .feature-image,
+            #features .feature-item:nth-child(3) .feature-image {
+                height: auto;
+                min-height: 280px;
+            }
+
+            #features .feature-image img {
+                height: auto;
+                max-height: 540px;
+                object-fit: contain !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #features .feature-image,
+            #features .feature-item:nth-child(2) .feature-image,
+            #features .feature-item:nth-child(3) .feature-image {
+                min-height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="detail-header">
+
+    <div class="detail-header-inner">
+
+        <a th:href="@{/}"
+           class="detail-logo">
+            JIAN<span>.</span>
+        </a>
+
+        <nav class="detail-nav">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/#skills}">Skills</a>
+            <a th:href="@{/#contact}">Contact</a>
+        </nav>
+
+        <a th:href="@{/projects}"
+           class="back-projects-button">
+            ← 프로젝트 목록
+        </a>
+
+    </div>
+
+</header>
+
+<main>
+
+    <!-- 상단 소개 -->
+    <section class="project-detail-hero">
+
+        <div class="detail-glow"></div>
+
+        <div class="container">
+
+            <div class="detail-breadcrumb">
+                <a th:href="@{/projects}">Projects</a>
+                <span>/</span>
+                <span>대학교 홈페이지 웹 서비스</span>
+            </div>
+
+            <div class="detail-hero-layout">
+
+                <div class="detail-hero-content">
+
+                    <p class="detail-category">
+                        JAVA · JSP · SQL · MAP API
+                    </p>
+
+                    <h1>
+                        대학교 홈페이지<br>
+                        웹 서비스
+                    </h1>
+
+                    <p class="detail-subtitle">
+                        신입생과 재학생이 학교 시설과 위치 정보를
+                        직관적으로 확인할 수 있도록 만든 캠퍼스 안내 서비스
+                    </p>
+
+                    <p class="detail-description">
+                        동양미래대학교의 주요 건물, 학사 서비스, 공지사항과 캠퍼스 지도를
+                        하나의 웹사이트에서 확인할 수 있도록 구현했습니다.
+                        Java와 JSP 기반으로 전체 화면과 메뉴 구조를 설계하고,
+                        지도 API와 SQL 연동을 통해 위치 정보와 로그인 기능을 제공했습니다.
+                    </p>
+
+                    <div class="detail-actions">
+
+                        <a href="https://github.com/jjian2/university-web-service"
+                           class="button button-primary"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub 보기
+                        </a>
+
+                        <a href="#overview"
+                           class="button button-link">
+                            프로젝트 살펴보기 ↓
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="detail-hero-visual">
+
+                    <div class="project-cover university-cover">
+
+                        <div class="cover-grid"></div>
+
+                        <div class="cover-symbol">
+                            W
+                        </div>
+
+                        <div class="cover-text">
+                            <span>UNIVERSITY WEB SERVICE</span>
+                            <strong>Campus Information & Map Platform</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="detail-summary">
+
+                <div>
+                    <span>개발 기간</span>
+                    <strong>2024.04 - 2024.06</strong>
+                </div>
+
+                <div>
+                    <span>프로젝트 형태</span>
+                    <strong>팀 프로젝트</strong>
+                </div>
+
+                <div>
+                    <span>기여도</span>
+                    <strong>80%</strong>
+                </div>
+
+                <div>
+                    <span>담당 역할</span>
+                    <strong>팀장 · UI 설계 · 지도 API · 로그인</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 프로젝트 개요 -->
+    <section class="detail-section"
+             id="overview">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>01. OVERVIEW</p>
+                <h2>프로젝트 개요</h2>
+            </div>
+
+            <div class="overview-grid">
+
+                <article class="overview-card">
+
+                    <span>어떤 서비스인가요?</span>
+
+                    <h3>
+                        학교 시설과 학사 정보를 제공하는 캠퍼스 안내 웹사이트
+                    </h3>
+
+                    <p>
+                        주요 건물, 도서관, 학사 일정, 공지사항과 지도 정보를
+                        하나의 화면 흐름으로 확인할 수 있도록 구현한 서비스입니다.
+                    </p>
+
+                </article>
+
+                <article class="overview-card">
+
+                    <span>왜 만들었나요?</span>
+
+                    <h3>
+                        신입생이 학교 정보를 쉽게 찾도록 돕기 위해
+                    </h3>
+
+                    <p>
+                        처음 학교를 방문하는 사용자가 건물 위치와 시설 정보를
+                        여러 페이지에서 찾지 않아도 되도록 통합된 안내 구조를 만들었습니다.
+                    </p>
+
+                </article>
+
+                <article class="overview-card">
+
+                    <span>누구를 위한 서비스인가요?</span>
+
+                    <h3>
+                        신입생, 재학생과 학교 방문자
+                    </h3>
+
+                    <p>
+                        캠퍼스 시설 위치, 학사 서비스와 주변 편의시설 정보를
+                        빠르게 확인하고 싶은 사용자를 대상으로 했습니다.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 담당 역할 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>02. MY ROLE</p>
+                <h2>담당 역할</h2>
+            </div>
+
+            <div class="role-layout">
+
+                <div class="role-introduction">
+
+                    <h3>
+                        팀장으로서 전체 페이지 구조와 메뉴 흐름을 설계하고,
+                        캠퍼스 지도와 건물 소개 화면, 로그인 기능을 담당했습니다.
+                    </h3>
+
+                    <p>
+                        사용자가 학교 정보를 쉽게 탐색하도록 메인 화면과 건물 소개,
+                        지도 페이지의 UI를 통일했습니다. 지도 API를 연동해 캠퍼스 건물과
+                        주변 시설을 표시하고, JSP와 SQL을 연결해 로그인 세션을 구현했습니다.
+                    </p>
+
+                </div>
+
+                <div class="role-list">
+
+                    <article class="role-item">
+                        <span>01</span>
+                        <div>
+                            <h3>전체 페이지 및 메뉴 구조 설계</h3>
+                            <p>
+                                메인 화면, 학교 소개, 건물 안내, 학사 정보와 지도 페이지의
+                                이동 흐름과 메뉴 구조를 설계했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>02</span>
+                        <div>
+                            <h3>캠퍼스 메인 화면 구현</h3>
+                            <p>
+                                학교 전경 이미지, 검색창과 주요 메뉴를 배치해
+                                학교 홈페이지 형태의 메인 화면을 제작했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>03</span>
+                        <div>
+                            <h3>건물 및 시설 소개 UI</h3>
+                            <p>
+                                도서관, 1호관, 2호관 등 주요 건물을 카드 형태로 구성하고
+                                시설 설명과 상세 버튼을 제공했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>04</span>
+                        <div>
+                            <h3>지도 API 연동</h3>
+                            <p>
+                                캠퍼스 건물과 주변 음식점·카페·편의시설을
+                                지도 마커로 확인할 수 있도록 구현했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>05</span>
+                        <div>
+                            <h3>SQL 로그인 및 세션 처리</h3>
+                            <p>
+                                사용자 정보를 데이터베이스에 저장하고
+                                JSP 세션 기반 로그인과 페이지 접근 흐름을 구현했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 기술 스택 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>03. TECH STACK</p>
+                <h2>사용 기술</h2>
+            </div>
+
+            <div class="detail-tech-grid">
+
+                <article class="detail-tech-card">
+                    <span>BACKEND</span>
+                    <h3>Java Web</h3>
+                    <div class="detail-tech-tags">
+                        <span>Java</span>
+                        <span>JSP</span>
+                        <span>Servlet</span>
+                        <span>Session</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>FRONTEND</span>
+                    <h3>Web UI</h3>
+                    <div class="detail-tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Responsive Layout</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>DATABASE</span>
+                    <h3>SQL</h3>
+                    <div class="detail-tech-tags">
+                        <span>SQL</span>
+                        <span>User Data</span>
+                        <span>Login</span>
+                        <span>Session</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>MAP</span>
+                    <h3>Naver Map API</h3>
+                    <div class="detail-tech-tags">
+                        <span>Map API</span>
+                        <span>Marker</span>
+                        <span>Coordinates</span>
+                        <span>Campus Map</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>UI DESIGN</span>
+                    <h3>Campus Interface</h3>
+                    <div class="detail-tech-tags">
+                        <span>Card UI</span>
+                        <span>Carousel</span>
+                        <span>Navigation</span>
+                        <span>Search</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>TEAM</span>
+                    <h3>Collaboration</h3>
+                    <div class="detail-tech-tags">
+                        <span>Team Leader</span>
+                        <span>Task Management</span>
+                        <span>Presentation</span>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 시스템 구조 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>04. ARCHITECTURE</p>
+                <h2>시스템 구조</h2>
+            </div>
+
+            <div class="architecture-box">
+
+                <div class="architecture-item">
+                    <span>USER</span>
+                    <strong>사용자</strong>
+                    <p>학교 정보, 건물과 지도 검색</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>FRONTEND</span>
+                    <strong>HTML · CSS · JavaScript</strong>
+                    <p>메인 화면, 건물 카드와 지도 UI</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item architecture-main">
+                    <span>WEB SERVER</span>
+                    <strong>Java · JSP · Servlet</strong>
+                    <p>화면 이동, 로그인과 데이터 처리</p>
+                </div>
+
+                <div class="architecture-branch">
+
+                    <div>
+                        <div class="architecture-arrow">↓</div>
+                        <div class="architecture-item">
+                            <span>DATABASE</span>
+                            <strong>SQL</strong>
+                            <p>사용자 정보와 로그인 데이터 저장</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="architecture-arrow">↓</div>
+                        <div class="architecture-item">
+                            <span>EXTERNAL API</span>
+                            <strong>Naver Map API</strong>
+                            <p>캠퍼스와 주변 시설 위치 표시</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 핵심 기능 -->
+    <section class="detail-section"
+             id="features">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>05. FEATURES</p>
+                <h2>핵심 기능</h2>
+            </div>
+
+            <div class="feature-list">
+
+                <!-- 기능 1 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/university-web/university-main.png}"
+                             alt="동양미래대학교 홈페이지 메인 화면">
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 01</span>
+
+                        <h3>학교 홈페이지 메인 화면</h3>
+
+                        <p>
+                            학교 전경 이미지를 활용해 메인 화면을 구성하고,
+                            검색창과 학과·동아리·캠퍼스 메뉴를 제공했습니다.
+                        </p>
+
+                        <ul>
+                            <li>학교 대표 이미지와 검색창</li>
+                            <li>로그인·학과·동아리 메뉴</li>
+                            <li>직관적인 캠퍼스 홈페이지 UI</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 2 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/university-web/university-buildings.png}"
+                             alt="동양미래대학교 내부 건물 소개 화면">
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 02</span>
+
+                        <h3>교내 건물 카드 소개</h3>
+
+                        <p>
+                            도서관, 1호관, 2호관 등 주요 건물을
+                            사진과 설명이 포함된 카드로 제공하고,
+                            이전·다음 버튼으로 탐색할 수 있도록 구현했습니다.
+                        </p>
+
+                        <ul>
+                            <li>건물별 이미지와 설명</li>
+                            <li>카드형 시설 안내</li>
+                            <li>슬라이드 탐색 기능</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 3 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/university-web/university-facilities.png}"
+                             alt="학교 시설 소개와 캠퍼스 맵 화면">
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 03</span>
+
+                        <h3>학교 시설 및 캠퍼스 맵 안내</h3>
+
+                        <p>
+                            원서 접수, DMMC, 기숙사 등 주요 시설 설명과 함께
+                            캠퍼스 건물 위치를 그림 형태의 지도에서 확인할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>주요 학교 시설 소개</li>
+                            <li>건물 위치가 표시된 캠퍼스 맵</li>
+                            <li>신입생을 위한 위치 안내</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 4 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/university-web/university-map.png}"
+                             alt="동양미래대학교 주변 시설 지도 화면">
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 04</span>
+
+                        <h3>캠퍼스 주변 지도 검색</h3>
+
+                        <p>
+                            지도 API를 연동해 캠퍼스 건물과 주변 음식점,
+                            카페와 편의시설을 마커로 확인할 수 있도록 구현했습니다.
+                        </p>
+
+                        <ul>
+                            <li>캠퍼스 위치 지도 표시</li>
+                            <li>주변 시설별 마커 제공</li>
+                            <li>음식점·카페·편의점 필터</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 트러블슈팅 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>06. TROUBLESHOOTING</p>
+                <h2>문제 해결 경험</h2>
+            </div>
+
+            <div class="troubleshooting-list">
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>01</span>
+                        <h3>캠퍼스 건물 마커를 자동으로 생성하기 어려웠던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                건물별 좌표 데이터를 자동으로 불러와
+                                지도에 마커를 생성하는 과정이 제대로 동작하지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                지도 API가 요구하는 좌표 형식과
+                                JavaScript 데이터 구조를 정확히 맞추지 못했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                각 건물의 위도와 경도를 직접 조사해 정리하고,
+                                마커 생성 코드를 반복 구조로 구성했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                캠퍼스와 주변 시설 위치를 지도에 안정적으로 표시할 수 있었습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>02</span>
+                        <h3>로그인 후 세션이 유지되지 않아 페이지 이동 시 로그아웃되는 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                로그인 성공 후 다른 페이지로 이동하면
+                                사용자 로그인 정보가 사라지는 문제가 발생했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                HttpSession 조건 처리와 리다이렉트 흐름이
+                                페이지마다 일관되게 적용되지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                로그인 처리 로직과 세션 검증을 분리하고,
+                                페이지 이동 시 동일한 세션 값을 사용하도록 수정했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                로그인 이후 여러 페이지를 이동해도 인증 상태가 유지됐습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>03</span>
+                        <h3>건물 카드 이미지 크기가 제각각이라 레이아웃이 흔들리는 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                건물 사진마다 비율이 달라 카드 높이와
+                                설명 영역의 위치가 일정하지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                원본 이미지 크기를 그대로 사용해
+                                카드별 렌더링 높이가 달라졌습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                이미지 영역의 높이를 고정하고
+                                object-fit 속성과 공통 카드 스타일을 적용했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                건물 카드가 동일한 크기로 정렬되어 화면 완성도가 높아졌습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>04</span>
+                        <h3>기능이 많아지면서 페이지 이동 구조가 복잡해진 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                건물, 학사 일정, 공지사항과 지도 기능이 추가되면서
+                                사용자가 원하는 정보를 찾기 어려워졌습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                기능 중심으로 페이지를 추가해
+                                전체 메뉴 계층과 사용자 흐름이 명확하지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                상단 메뉴와 메인 카드 메뉴를 구분하고,
+                                학교 소개·학사·지도 중심으로 정보 구조를 재정리했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                주요 기능으로 이동하는 경로가 단순해지고 사용성이 개선됐습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 배운 점 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>07. LEARNED</p>
+                <h2>프로젝트를 통해 배운 점</h2>
+            </div>
+
+            <div class="learned-grid">
+
+                <article>
+                    <span>01</span>
+                    <h3>전체 웹 서비스 흐름</h3>
+                    <p>
+                        프론트엔드와 Java 백엔드, SQL을 연결하며
+                        화면부터 데이터 처리까지 전체 서비스 흐름을 경험했습니다.
+                    </p>
+                </article>
+
+                <article>
+                    <span>02</span>
+                    <h3>지도 API 연동</h3>
+                    <p>
+                        좌표 데이터와 마커 생성 과정을 직접 구현하며
+                        외부 API를 웹 서비스에 적용하는 방법을 배웠습니다.
+                    </p>
+                </article>
+
+                <article>
+                    <span>03</span>
+                    <h3>로그인과 세션 처리</h3>
+                    <p>
+                        로그인 상태 유지와 페이지 접근 제어를 구현하면서
+                        서버 세션과 인증 흐름을 이해했습니다.
+                    </p>
+                </article>
+
+                <article>
+                    <span>04</span>
+                    <h3>사용자 중심 정보 구조</h3>
+                    <p>
+                        기능을 단순히 나열하는 것이 아니라
+                        사용자가 쉽게 탐색할 수 있는 메뉴와 페이지 구조가 중요하다는 점을 배웠습니다.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 다음 프로젝트 -->
+    <section class="next-project-section">
+
+        <div class="container">
+
+            <div class="next-project-box">
+
+                <div>
+                    <p>NEXT PROJECT</p>
+                    <h2>
+                        이미지에서 고래를 탐지하고 분류하는
+                        <strong>AI 이미지 인식 프로젝트</strong>
+                    </h2>
+                </div>
+
+                <a th:href="@{/projects/ai-image-recognition}">
+                    다음 프로젝트 보기 →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="detail-footer">
+
+    <div class="container detail-footer-inner">
+
+        <div>
+
+            <a th:href="@{/}"
+               class="detail-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <p>
+                Spring Boot와 AI로 만든 개발자 포트폴리오
+            </p>
+
+        </div>
+
+        <div class="detail-footer-links">
+
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>자기소개서 감정 분석 | 최지안 포트폴리오</title>
+
+    <meta name="description"
+          content="KoBERT 기반으로 자기소개서 문장의 감정과 자신감 표현을 분석하고 시각화하는 AI 웹 서비스 프로젝트입니다.">
+
+    <link rel="stylesheet"
+          th:href="@{/css/common.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/project-detail.css}">
+</head>
+
+<body>
+
+<header class="detail-header">
+
+    <div class="detail-header-inner">
+
+        <a th:href="@{/}"
+           class="detail-logo">
+            JIAN<span>.</span>
+        </a>
+
+        <nav class="detail-nav">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/#skills}">Skills</a>
+            <a th:href="@{/#contact}">Contact</a>
+        </nav>
+
+        <a th:href="@{/projects}"
+           class="back-projects-button">
+            ← 프로젝트 목록
+        </a>
+
+    </div>
+
+</header>
+
+<main>
+
+    <!-- 상단 소개 -->
+    <section class="project-detail-hero">
+
+        <div class="detail-glow"></div>
+
+        <div class="container">
+
+            <div class="detail-breadcrumb">
+                <a th:href="@{/projects}">Projects</a>
+                <span>/</span>
+                <span>자기소개서 감정 분석</span>
+            </div>
+
+            <div class="detail-hero-layout">
+
+                <div class="detail-hero-content">
+
+                    <p class="detail-category">
+                        AI · NLP · KOBERT · WEB SERVICE
+                    </p>
+
+                    <h1>자기소개서<br>감정 분석</h1>
+
+                    <p class="detail-subtitle">
+                        자기소개서의 감정과 자신감 표현을 분석하는
+                        KoBERT 기반 AI 웹 서비스
+                    </p>
+
+                    <p class="detail-description">
+                        사용자가 자기소개서 문장을 직접 입력하거나
+                        HWP·DOCX 파일을 업로드하면
+                        KoBERT 기반 모델이 긍정·부정·중립 감정과
+                        자신감 표현 여부를 분석합니다.
+                        분석 결과를 차트로 시각화하고,
+                        로그인 사용자는 기록 저장과 PDF 다운로드 기능도 이용할 수 있습니다.
+                    </p>
+
+                    <div class="detail-actions">
+
+                        <a href="https://github.com/jjian2/resume-sentiment-analysis"
+                           class="button button-primary"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub 보기
+                        </a>
+
+                        <a href="#overview"
+                           class="button button-link">
+                            프로젝트 살펴보기 ↓
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="detail-hero-visual">
+
+                    <div class="project-cover resume-cover">
+
+                        <div class="cover-grid"></div>
+
+                        <div class="cover-symbol">
+                            AI
+                        </div>
+
+                        <div class="cover-text">
+                            <span>COVER LETTER AI</span>
+                            <strong>
+                                KoBERT Emotion & Confidence Analysis
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="detail-summary">
+
+                <div>
+                    <span>개발 기간</span>
+                    <strong>2025.04 - 2025.06</strong>
+                </div>
+
+                <div>
+                    <span>프로젝트 형태</span>
+                    <strong>개인 프로젝트</strong>
+                </div>
+
+                <div>
+                    <span>기여도</span>
+                    <strong>100%</strong>
+                </div>
+
+                <div>
+                    <span>담당 역할</span>
+                    <strong>AI 모델 학습 · Backend · Frontend</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 프로젝트 개요 -->
+    <section class="detail-section"
+             id="overview">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>01. OVERVIEW</p>
+                <h2>프로젝트 개요</h2>
+            </div>
+
+            <div class="overview-grid">
+
+                <article class="overview-card">
+
+                    <span>어떤 서비스인가요?</span>
+
+                    <h3>
+                        자기소개서 문장의 감정과 자신감을 분석하는 AI 서비스
+                    </h3>
+
+                    <p>
+                        입력된 문장을 긍정·부정·중립으로 분류하고,
+                        자신감 있는 표현과 부족한 표현을 함께 분석해
+                        결과와 피드백을 제공합니다.
+                    </p>
+
+                </article>
+
+                <article class="overview-card">
+
+                    <span>왜 만들었나요?</span>
+
+                    <h3>
+                        자기소개서 표현을 객관적으로 확인하도록 돕기 위해
+                    </h3>
+
+                    <p>
+                        작성자가 자신의 문장을 객관적으로 평가하기 어렵다는 점에 주목해,
+                        감정과 자신감 표현을 시각적으로 확인할 수 있는 서비스를 구현했습니다.
+                    </p>
+
+                </article>
+
+                <article class="overview-card">
+
+                    <span>누구를 위한 서비스인가요?</span>
+
+                    <h3>
+                        취업 준비생과 자기소개서를 작성하는 사용자
+                    </h3>
+
+                    <p>
+                        문장의 분위기와 자신감 표현을 점검하고,
+                        자기소개서의 전달력을 개선하고 싶은 사용자를 대상으로 했습니다.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 담당 역할 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>02. MY ROLE</p>
+                <h2>담당 역할</h2>
+            </div>
+
+            <div class="role-layout">
+
+                <div class="role-introduction">
+
+                    <h3>
+                        데이터 구축부터 KoBERT 모델 학습,
+                        웹 화면, 분석 기록과 PDF 기능까지
+                        전체 서비스를 직접 기획하고 구현했습니다.
+                    </h3>
+
+                    <p>
+                        일반 감정 데이터셋만으로는 자기소개서 문체를 정확히 분류하기 어려워
+                        자기소개서 문장 약 1,000개를 직접 라벨링했습니다.
+                        이후 모델 학습, 임계값 조정, 웹 분석 기능과 결과 시각화까지
+                        전체 흐름을 직접 구현했습니다.
+                    </p>
+
+                </div>
+
+                <div class="role-list">
+
+                    <article class="role-item">
+
+                        <span>01</span>
+
+                        <div>
+                            <h3>자기소개서 데이터셋 구축</h3>
+
+                            <p>
+                                실제 자기소개서 문장에 가까운 데이터를 수집하고
+                                긍정·부정·중립과 자신감 여부를 직접 라벨링했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>02</span>
+
+                        <div>
+                            <h3>KoBERT 모델 학습 및 튜닝</h3>
+
+                            <p>
+                                감정 분류와 자신감 표현 분석을 위해
+                                KoBERT 모델을 학습하고 임계값과 확률 분포를 조정했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>03</span>
+
+                        <div>
+                            <h3>문장 입력 및 문서 업로드 기능</h3>
+
+                            <p>
+                                단일 문장 입력과 HWP·DOCX 파일 업로드 방식을 지원해
+                                다양한 형태의 자기소개서를 분석할 수 있도록 구현했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>04</span>
+
+                        <div>
+                            <h3>결과 시각화 및 AI 피드백</h3>
+
+                            <p>
+                                감정 비율과 자신감 표현 결과를
+                                원형 차트와 막대그래프로 시각화하고,
+                                분석 내용을 기반으로 피드백을 제공했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>05</span>
+
+                        <div>
+                            <h3>로그인·기록·PDF 다운로드</h3>
+
+                            <p>
+                                로그인 사용자의 분석 기록 저장,
+                                이전 분석 조회와 PDF 결과 다운로드 기능을 구현했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 기술 스택 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>03. TECH STACK</p>
+                <h2>사용 기술</h2>
+            </div>
+
+            <div class="detail-tech-grid">
+
+                <article class="detail-tech-card">
+
+                    <span>AI MODEL</span>
+
+                    <h3>KoBERT</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>KoBERT</span>
+                        <span>PyTorch</span>
+                        <span>Softmax</span>
+                        <span>Threshold Tuning</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>BACKEND</span>
+
+                    <h3>Python Web</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>REST API</span>
+                        <span>Session</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>FRONTEND</span>
+
+                    <h3>Web Interface</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Responsive UI</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>DATA & DOCUMENT</span>
+
+                    <h3>Document Processing</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>HWP</span>
+                        <span>DOCX</span>
+                        <span>PDF</span>
+                        <span>Text Preprocessing</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>DATABASE</span>
+
+                    <h3>User & History</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>MySQL</span>
+                        <span>User</span>
+                        <span>Analysis History</span>
+                        <span>Login</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>VISUALIZATION</span>
+
+                    <h3>Analysis Chart</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Matplotlib</span>
+                        <span>Pie Chart</span>
+                        <span>Bar Chart</span>
+                        <span>Result Report</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 아키텍처 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>04. ARCHITECTURE</p>
+                <h2>시스템 구조</h2>
+            </div>
+
+            <div class="architecture-box">
+
+                <div class="architecture-item">
+                    <span>USER</span>
+                    <strong>사용자</strong>
+                    <p>문장 입력 또는 HWP·DOCX 업로드</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>FRONTEND</span>
+                    <strong>HTML · CSS · JavaScript</strong>
+                    <p>분석 요청과 결과 화면 표시</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item architecture-main">
+                    <span>BACKEND</span>
+                    <strong>Python · Flask</strong>
+                    <p>문서 처리, 사용자 인증과 분석 요청</p>
+                </div>
+
+                <div class="architecture-branch">
+
+                    <div>
+                        <div class="architecture-arrow">↓</div>
+
+                        <div class="architecture-item">
+                            <span>AI MODEL</span>
+                            <strong>KoBERT</strong>
+                            <p>감정과 자신감 표현 분류</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="architecture-arrow">↓</div>
+
+                        <div class="architecture-item">
+                            <span>DATABASE</span>
+                            <strong>MySQL</strong>
+                            <p>사용자와 분석 기록 저장</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="architecture-arrow">↓</div>
+
+                        <div class="architecture-item">
+                            <span>REPORT</span>
+                            <strong>Charts · PDF</strong>
+                            <p>결과 시각화와 PDF 생성</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 핵심 기능 -->
+    <section class="detail-section"
+             id="features">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>05. FEATURES</p>
+                <h2>핵심 기능</h2>
+            </div>
+
+            <div class="feature-list">
+
+                <!-- 기능 1 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/cover-letter-ai/cover-letter-main.png}"
+                             alt="자기소개서 감정 분석 서비스 메인 화면">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 01</span>
+
+                        <h3>AI 분석 서비스 메인 화면</h3>
+
+                        <p>
+                            자기소개서 감정 분석 서비스의 목적과
+                            주요 기능을 한눈에 확인하고
+                            분석 페이지로 바로 이동할 수 있도록 구성했습니다.
+                        </p>
+
+                        <ul>
+                            <li>서비스 소개와 분석 시작 버튼</li>
+                            <li>KoBERT 기반 감정 분석 안내</li>
+                            <li>직관적인 단일 페이지 UI</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 2 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/cover-letter-ai/cover-letter-input.png}"
+                             alt="자기소개서 문장 입력과 문서 업로드 화면">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 02</span>
+
+                        <h3>문장 입력 및 문서 업로드</h3>
+
+                        <p>
+                            사용자는 자기소개서 문장을 직접 입력하거나
+                            HWP·DOCX 문서를 업로드해 분석을 요청할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>직접 문장 입력</li>
+                            <li>HWP·DOCX 파일 업로드</li>
+                            <li>로그인·비로그인 분석 방식 구분</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 3 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/cover-letter-ai/cover-letter-result.png}"
+                             alt="자기소개서 감정 분석 결과와 차트">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 03</span>
+
+                        <h3>감정·자신감 분석 및 시각화</h3>
+
+                        <p>
+                            KoBERT 모델이 감정과 자신감 표현을 분류하고,
+                            분석 결과와 AI 피드백을 차트와 함께 제공합니다.
+                        </p>
+
+                        <ul>
+                            <li>긍정·부정·중립 감정 분류</li>
+                            <li>자신감 있음·부족 분류</li>
+                            <li>원형 차트와 막대그래프 시각화</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 4 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/cover-letter-ai/cover-letter-history.png}"
+                             alt="자기소개서 감정 분석 기록 조회 화면">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 04</span>
+
+                        <h3>분석 기록 저장 및 조회</h3>
+
+                        <p>
+                            로그인 사용자는 분석한 문장과 결과를 저장하고,
+                            날짜별로 이전 분석 기록을 다시 확인할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>분석 시간과 입력 문장 저장</li>
+                            <li>감정과 자신감 결과 조회</li>
+                            <li>이전 자기소개서 분석 비교</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 5 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/cover-letter-ai/cover-letter-login-result.png}"
+                             alt="로그인 사용자 자기소개서 분석 결과 화면">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 05</span>
+
+                        <h3>로그인 사용자 PDF 저장</h3>
+
+                        <p>
+                            로그인 사용자는 분석 결과와 차트를
+                            PDF 파일로 저장하고 분석 기록을 관리할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>분석 결과 PDF 다운로드</li>
+                            <li>차트와 피드백 포함</li>
+                            <li>로그인 사용자 전용 기록 관리</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 트러블슈팅 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>06. TROUBLESHOOTING</p>
+                <h2>문제 해결 경험</h2>
+            </div>
+
+            <div class="troubleshooting-list">
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>01</span>
+                        <h3>일반 감정 데이터로는 자기소개서 문장을 정확히 분류하기 어려웠던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                NSMC와 영화 리뷰 기반 데이터로 학습했을 때
+                                자기소개서 문장의 감정 분류 정확도가 낮았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                일반 리뷰 문장과 자기소개서 문장은
+                                표현 방식과 문맥이 크게 달랐습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                자기소개서 형태의 문장 약 1,000개를 직접 구축하고
+                                긍정·부정·중립으로 라벨링해 재학습했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                실제 자기소개서 문장에 더 적합한
+                                감정 분석 결과를 제공할 수 있게 됐습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>02</span>
+                        <h3>자신감 표현 분류가 애매한 문장에서 흔들리는 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                자신감 여부가 명확하지 않은 문장에서
+                                결과가 기대와 다르게 분류됐습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                Softmax 최고 확률만으로 분류하면서
+                                문장 길이와 표현 강도를 충분히 반영하지 못했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                threshold를 조정하고 자신감 키워드,
+                                문장 강도와 확률 분포를 함께 검토했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                명확한 문장의 분류 안정성을 높였고,
+                                애매한 문장에 대한 한계도 파악할 수 있었습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>03</span>
+                        <h3>문서 업로드 형식별 텍스트 추출 방식이 달랐던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                HWP와 DOCX 파일의 구조가 달라
+                                동일한 방식으로 본문을 읽을 수 없었습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                파일 형식마다 텍스트 저장 구조와
+                                필요한 파서가 달랐습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                확장자에 따라 처리 로직을 분리하고,
+                                추출된 문장을 공통 전처리 형식으로 변환했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                직접 입력뿐 아니라 HWP·DOCX 문서도
+                                동일한 분석 과정으로 처리할 수 있게 됐습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>04</span>
+                        <h3>분석 결과와 차트를 PDF로 저장하는 과정의 레이아웃 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                화면에서는 정상적으로 보이던 차트와 텍스트가
+                                PDF에서는 잘리거나 위치가 어긋났습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                웹 화면의 CSS 크기와 PDF 생성 시 사용하는
+                                페이지 크기가 서로 달랐습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                PDF 전용 크기와 여백을 정의하고
+                                차트 이미지를 고정 비율로 변환해 배치했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                분석 결과와 시각화 자료를
+                                한 문서 안에 안정적으로 저장할 수 있게 됐습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 배운 점 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>07. LEARNED</p>
+                <h2>프로젝트를 통해 배운 점</h2>
+            </div>
+
+            <div class="learned-grid">
+
+                <article>
+
+                    <span>01</span>
+
+                    <h3>도메인 데이터의 중요성</h3>
+
+                    <p>
+                        모델 구조뿐 아니라 실제 서비스 문장과 유사한
+                        학습 데이터를 구축하는 것이 정확도에 큰 영향을 준다는 점을 배웠습니다.
+                    </p>
+
+                </article>
+
+                <article>
+
+                    <span>02</span>
+
+                    <h3>AI 모델과 웹 서비스 통합</h3>
+
+                    <p>
+                        학습된 모델을 웹 요청과 연결하고,
+                        결과를 사용자에게 이해하기 쉬운 형태로 전달하는 과정을 경험했습니다.
+                    </p>
+
+                </article>
+
+                <article>
+
+                    <span>03</span>
+
+                    <h3>문서 처리와 결과 관리</h3>
+
+                    <p>
+                        문장 입력뿐 아니라 문서 업로드, 기록 저장과 PDF 출력까지 구현하며
+                        실제 서비스에 필요한 부가 기능을 이해했습니다.
+                    </p>
+
+                </article>
+
+                <article>
+
+                    <span>04</span>
+
+                    <h3>모델 한계 분석</h3>
+
+                    <p>
+                        완벽한 분류보다 애매한 문장과 모델의 한계를 파악하고,
+                        임계값과 데이터 설계를 개선하는 과정이 중요하다는 점을 배웠습니다.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 다음 프로젝트 -->
+    <section class="next-project-section">
+
+        <div class="container">
+
+            <div class="next-project-box">
+
+                <div>
+
+                    <p>NEXT PROJECT</p>
+
+                    <h2>
+                        범죄 데이터를 시각화한
+                        <strong>사이버 범죄 대시보드</strong>
+                    </h2>
+
+                </div>
+
+                <a th:href="@{/projects/cyber-crime-dashboard}">
+                    다음 프로젝트 보기 →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="detail-footer">
+
+    <div class="container detail-footer-inner">
+
+        <div>
+
+            <a th:href="@{/}"
+               class="detail-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <p>
+                Spring Boot와 AI로 만든 개발자 포트폴리오
+            </p>
+
+        </div>
+
+        <div class="detail-footer-links">
+
+            <a th:href="@{/}">
+                Home
+            </a>
+
+            <a th:href="@{/projects}">
+                Projects
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
+

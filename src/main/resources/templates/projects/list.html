@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Projects | 최지안 포트폴리오</title>
+
+    <meta name="description"
+          content="백엔드 개발자 최지안의 전체 프로젝트 목록입니다.">
+
+    <link rel="stylesheet"
+          th:href="@{/css/common.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/projects.css}">
+</head>
+
+<body>
+
+<header class="projects-header">
+
+    <div class="projects-header-inner">
+
+        <a th:href="@{/}"
+           class="projects-logo">
+            JIAN<span>.</span>
+        </a>
+
+        <nav class="projects-nav">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/#about}">About</a>
+            <a th:href="@{/#skills}">Skills</a>
+            <a th:href="@{/projects}"
+               class="active">
+                Projects
+            </a>
+            <a th:href="@{/#contact}">Contact</a>
+        </nav>
+
+        <a th:href="@{/}"
+           class="back-home-button">
+            ← 메인으로
+        </a>
+
+    </div>
+
+</header>
+
+<main>
+
+    <!-- 프로젝트 상단 소개 -->
+    <section class="projects-hero">
+
+        <div class="projects-glow"></div>
+
+        <div class="container projects-hero-inner">
+
+            <p class="projects-label">
+                ALL PROJECTS
+            </p>
+
+            <h1>
+                아이디어를 실제 서비스로<br>
+                구현한 프로젝트입니다.
+            </h1>
+
+            <p class="projects-description">
+                웹 개발, AI, 데이터 분석 프로젝트를 수행하며
+                백엔드 개발부터 외부 API 연동, 데이터베이스,
+                AI 서버 연결까지 경험했습니다.
+            </p>
+
+            <div class="project-summary-box">
+
+                <div>
+                    <strong>9</strong>
+                    <span>전체 프로젝트</span>
+                </div>
+
+                <div>
+                    <strong>Spring Boot</strong>
+                    <span>주요 백엔드 기술</span>
+                </div>
+
+                <div>
+                    <strong>AI · RAG</strong>
+                    <span>AI 서비스 경험</span>
+                </div>
+
+                <div>
+                    <strong>Team & Personal</strong>
+                    <span>팀·개인 프로젝트</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 프로젝트 목록 -->
+    <section class="projects-list-section">
+
+        <div class="container">
+
+            <div class="projects-filter">
+
+                <button type="button"
+                        class="filter-button active"
+                        data-filter="all">
+                    전체
+                </button>
+
+                <button type="button"
+                        class="filter-button"
+                        data-filter="backend">
+                    백엔드
+                </button>
+
+                <button type="button"
+                        class="filter-button"
+                        data-filter="ai">
+                    AI
+                </button>
+
+                <button type="button"
+                        class="filter-button"
+                        data-filter="data">
+                    데이터 분석
+                </button>
+
+                <button type="button"
+                        class="filter-button"
+                        data-filter="web">
+                    웹 서비스
+                </button>
+
+            </div>
+
+            <div class="all-projects-grid">
+
+                <!-- 1. AI 여행 플래너 -->
+                <article class="all-project-card featured-project"
+                         data-category="backend ai web">
+
+                    <div class="project-thumbnail travel-thumbnail">
+
+                        <div class="project-badge">
+                            진행 중
+                        </div>
+
+                        <span class="project-number">
+                            01
+                        </span>
+
+                        <div class="thumbnail-symbol">
+                            ✈
+                        </div>
+
+                        <div class="thumbnail-title">
+                            <small>AI TRAVEL PLANNER</small>
+                            <strong>AI 여행 플래너</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="all-project-content">
+
+                        <div class="project-top-info">
+                            <span>개인 프로젝트</span>
+                            <span>2026.07 - 진행 중</span>
+                        </div>
+
+                        <h2>AI 여행 플래너</h2>
+
+                        <p class="project-introduction">
+                            사용자의 여행 지역, 기간, 선호 조건을 기반으로
+                            AI가 여행 일정을 생성하고 관광지와 맛집을
+                            지도에 표시하는 여행 계획 서비스입니다.
+                        </p>
+
+                        <div class="project-detail-info">
+
+                            <div>
+                                <span>담당 역할</span>
+                                <p>
+                                    프론트엔드 UI, Spring Boot 백엔드,
+                                    MySQL DB, FastAPI AI 연동
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>핵심 기능</span>
+                                <p>
+                                    AI 일정 생성, 장소 검색,
+                                    지도 마커 연동, 사용자 일정 저장
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="project-tech-list">
+                            <span>Java</span>
+                            <span>Spring Boot</span>
+                            <span>Spring Data JPA</span>
+                            <span>MySQL</span>
+                            <span>FastAPI</span>
+                            <span>Kakao Local API</span>
+                            <span>Google Maps API</span>
+                        </div>
+
+                        <div class="project-card-actions">
+
+                            <a th:href="@{/projects/ai-travel-planner}"
+                               class="detail-button">
+                                상세 보기 →
+                            </a>
+
+							<a href="https://github.com/jjian2/AI-Travel-Planner"
+							   class="text-link"
+							   target="_blank">
+							    GitHub
+							</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- 2. 대학 학사정보 챗봇 -->
+                <article class="all-project-card"
+                         data-category="ai backend web">
+
+                    <div class="project-thumbnail chatbot-thumbnail">
+
+                        <span class="project-number">
+                            02
+                        </span>
+
+                        <div class="thumbnail-symbol">
+                            AI
+                        </div>
+
+                        <div class="thumbnail-title">
+                            <small>YANGDONGI</small>
+                            <strong>대학 학사정보 AI 챗봇</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="all-project-content">
+
+                        <div class="project-top-info">
+                            <span>팀 프로젝트</span>
+                            <span>2025.04 - 2025.11</span>
+                        </div>
+
+                        <h2>대학 학사정보 챗봇 시스템</h2>
+
+                        <p class="project-introduction">
+                            학교 규정과 학과별 데이터를 검색하고,
+                            텍스트와 음성으로 질문할 수 있는
+                            동양미래대학교 전용 AI 챗봇입니다.
+                        </p>
+
+                        <div class="project-detail-info">
+
+                            <div>
+                                <span>담당 역할</span>
+                                <p>
+                                    프론트엔드 UI, Flask 로그인 서버,
+                                    MySQL 연동, FastAPI 통신 구조 구현
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>핵심 기능</span>
+                                <p>
+                                    RAG 검색, Whisper STT,
+                                    Edge-TTS, 사용자별 채팅 기록
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="project-tech-list">
+                            <span>Python</span>
+                            <span>Flask</span>
+                            <span>FastAPI</span>
+                            <span>MySQL</span>
+                            <span>RAG</span>
+                            <span>Whisper</span>
+                            <span>Edge-TTS</span>
+                            <span>ChromaDB</span>
+                        </div>
+
+                        <div class="project-card-actions">
+
+                            <a th:href="@{/projects/yangdongi}"
+                               class="detail-button">
+                                상세 보기 →
+                            </a>
+
+							<a href="https://github.com/jjian2/university-chatbot-"
+							   class="text-link"
+							   target="_blank">
+							    GitHub
+							</a>
+
+							<a href="https://www.youtube.com/embed/on1F1dIaOw0"
+							   class="text-link"
+							   target="_blank">
+							    시연 영상
+							</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- 3. 맛누리 -->
+                <article class="all-project-card"
+                         data-category="backend ai web">
+
+                    <div class="project-thumbnail restaurant-thumbnail">
+
+                        <span class="project-number">
+                            03
+                        </span>
+
+                        <div class="thumbnail-symbol">
+                            M
+                        </div>
+
+                        <div class="thumbnail-title">
+                            <small>MATNURI</small>
+                            <strong>맛집 추천 서비스</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="all-project-content">
+
+                        <div class="project-top-info">
+                            <span>팀 프로젝트</span>
+                            <span>2024.11 - 2025.03</span>
+                        </div>
+
+                        <h2>맛누리</h2>
+
+                        <p class="project-introduction">
+                            키워드로 음식점을 검색하고 지도와 카드에 표시하며,
+                            리뷰 수 순위와 AI 감정 분석 결과를 제공하는
+                            맛집 추천 서비스입니다.
+                        </p>
+
+                        <div class="project-detail-info">
+
+                            <div>
+                                <span>담당 역할</span>
+                                <p>
+                                    Spring Boot 백엔드, DB 설계,
+                                    로그인, 외부 API와 지도 연동
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>핵심 기능</span>
+                                <p>
+                                    음식점 검색, 지도 마커,
+                                    리뷰 순위, 게시글 CRUD, 감정 분석
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="project-tech-list">
+                            <span>Java</span>
+                            <span>Spring Boot</span>
+                            <span>Spring Security</span>
+                            <span>JPA</span>
+                            <span>MySQL</span>
+                            <span>FastAPI</span>
+                            <span>Kakao API</span>
+                            <span>Google Maps</span>
+                        </div>
+
+                        <div class="project-card-actions">
+
+                            <a th:href="@{/projects/matnuri}"
+                               class="detail-button">
+                                상세 보기 →
+                            </a>
+
+							<a href="https://github.com/jjian2/restaurant-recommendation-system"
+							   class="text-link"
+							   target="_blank">
+							    GitHub
+							</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- 4. 뉴스 요약 웹 서비스 -->
+                <article class="all-project-card"
+                         data-category="ai backend web">
+
+                    <div class="project-thumbnail news-thumbnail">
+
+                        <span class="project-number">
+                            04
+                        </span>
+
+                        <div class="thumbnail-symbol">
+                            N
+                        </div>
+
+                        <div class="thumbnail-title">
+                            <small>NEWS SUMMARY</small>
+                            <strong>뉴스 요약 웹 서비스</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="all-project-content">
+
+                        <div class="project-top-info">
+                            <span>팀 프로젝트</span>
+                            <span>2025.03 - 2025.05</span>
+                        </div>
+
+                        <h2>뉴스 요약 웹 서비스</h2>
+
+                        <p class="project-introduction">
+                            사용자가 입력한 뉴스 내용을 AI 요약 모델로 전달하고,
+                            요약 결과를 웹 화면에서 확인할 수 있도록 구현한
+                            뉴스 요약 서비스입니다.
+                        </p>
+
+                        <div class="project-detail-info">
+
+                            <div>
+                                <span>담당 역할</span>
+                                <p>
+                                    Flask API 구축, 요약 모델 연결,
+                                    프론트엔드와 백엔드 통신 구조 설계
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>핵심 기능</span>
+                                <p>
+                                    뉴스 입력, AI 요약,
+                                    비동기 API 통신, CORS 처리
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="project-tech-list">
+                            <span>Python</span>
+                            <span>Flask</span>
+                            <span>JSP</span>
+                            <span>JavaScript</span>
+                            <span>Hugging Face</span>
+                            <span>CORS</span>
+                        </div>
+
+                        <div class="project-card-actions">
+
+                            <a th:href="@{/projects/news-summary}"
+                               class="detail-button">
+                                상세 보기 →
+                            </a>
+
+							<a href="https://github.com/jjian2/news-summary-service"
+							   class="text-link"
+							   target="_blank">
+							    GitHub
+							</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- 5. 자기소개서 감정 분석 -->
+                <article class="all-project-card"
+                         data-category="ai backend web">
+
+                    <div class="project-thumbnail cover-letter-thumbnail">
+
+                        <span class="project-number">
+                            05
+                        </span>
+
+                        <div class="thumbnail-symbol">
+                            CL
+                        </div>
+
+                        <div class="thumbnail-title">
+                            <small>COVER LETTER AI</small>
+                            <strong>자기소개서 감정 분석</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="all-project-content">
+
+                        <div class="project-top-info">
+                            <span>개인 프로젝트</span>
+                            <span>2025.04 - 2025.06</span>
+                        </div>
+
+                        <h2>자기소개서 감정 분석</h2>
+
+                        <p class="project-introduction">
+                            KoBERT 기반으로 자기소개서 문장의
+                            긍정·부정·중립 감정과 자신감 표현을 분석하고,
+                            결과 시각화와 기록 관리, PDF 저장 기능을 제공하는 AI 웹 서비스입니다.
+                        </p>
+
+                        <div class="project-detail-info">
+
+                            <div>
+                                <span>담당 역할</span>
+                                <p>
+                                    데이터 구축, KoBERT 모델 학습,
+                                    Flask 백엔드, 화면 구현, 기록 및 PDF 기능 개발
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>핵심 기능</span>
+                                <p>
+                                    감정 분석, 자신감 분류,
+                                    HWP·DOCX 업로드, 차트 시각화, 분석 기록 저장
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="project-tech-list">
+                            <span>Python</span>
+                            <span>Flask</span>
+                            <span>KoBERT</span>
+                            <span>PyTorch</span>
+                            <span>MySQL</span>
+                            <span>HWP</span>
+                            <span>DOCX</span>
+                        </div>
+
+                        <div class="project-card-actions">
+
+                            <a th:href="@{/projects/cover-letter-ai}"
+                               class="detail-button">
+                                상세 보기 →
+                            </a>
+
+							<a href="https://github.com/jjian2/resume-sentiment-analysis"
+							   class="text-link"
+							   target="_blank">
+							    GitHub
+							</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+<!-- 6. 사이버 범죄 데이터 분석 -->
+                <article class="all-project-card"
+                         data-category="data ai">
+
+                    <div class="project-thumbnail data-thumbnail">
+
+                        <span class="project-number">
+                            06
+                        </span>
+
+                        <div class="thumbnail-symbol">
+                            D
+                        </div>
+
+                        <div class="thumbnail-title">
+                            <small>DATA DASHBOARD</small>
+                            <strong>사이버 범죄 분석</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="all-project-content">
+
+                        <div class="project-top-info">
+                            <span>팀 프로젝트</span>
+                            <span>2025.04 - 2025.06</span>
+                        </div>
+
+                        <h2>사이버 범죄 데이터 분석 대시보드</h2>
+
+                        <p class="project-introduction">
+                            사이버 범죄 데이터를 전처리하고 통계적으로 분석하여
+                            연도별·유형별 발생 현황을 시각화한
+                            데이터 분석 대시보드입니다.
+                        </p>
+
+                        <div class="project-detail-info">
+
+                            <div>
+                                <span>담당 역할</span>
+                                <p>
+                                    데이터 전처리, 통계 분석,
+                                    시각화 대시보드 구현, 팀장 역할
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>핵심 기능</span>
+                                <p>
+                                    데이터 필터링, 범죄 유형 비교,
+                                    연도별 추이, 인터랙티브 차트
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="project-tech-list">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Streamlit</span>
+                            <span>Matplotlib</span>
+                            <span>Plotly</span>
+                        </div>
+
+                        <div class="project-card-actions">
+
+                            <a th:href="@{/projects/cyber-crime-dashboard}"
+                               class="detail-button">
+                                상세 보기 →
+                            </a>
+
+							<a href="https://github.com/jjian2/cybercrime-dashboard"
+							   class="text-link"
+							   target="_blank">
+							    GitHub
+							</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- 7. 대학 홈페이지 웹 서비스 -->
+                <article class="all-project-card"
+                         data-category="backend web">
+
+                    <div class="project-thumbnail university-thumbnail">
+
+                        <span class="project-number">
+                            07
+                        </span>
+
+                        <div class="thumbnail-symbol">
+                            W
+                        </div>
+
+                        <div class="thumbnail-title">
+                            <small>UNIVERSITY WEB</small>
+                            <strong>대학 홈페이지 웹 서비스</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="all-project-content">
+
+                        <div class="project-top-info">
+                            <span>팀 프로젝트</span>
+                            <span>2024.04 - 2024.06</span>
+                        </div>
+
+                        <h2>대학 홈페이지 웹 서비스 구축</h2>
+
+                        <p class="project-introduction">
+                            대학 정보를 확인하고 지도와 로그인 기능을
+                            사용할 수 있도록 구현한 Java 기반
+                            대학 홈페이지 웹 서비스입니다.
+                        </p>
+
+                        <div class="project-detail-info">
+
+                            <div>
+                                <span>담당 역할</span>
+                                <p>
+                                    전체 페이지 구조 설계,
+                                    지도 API 연동, 로그인 시스템 구현
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>핵심 기능</span>
+                                <p>
+                                    로그인, 학교 정보,
+                                    지도 표시, 페이지 이동
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="project-tech-list">
+                            <span>Java</span>
+                            <span>JavaScript</span>
+                            <span>JSP</span>
+                            <span>SQL</span>
+                            <span>Naver Map API</span>
+                        </div>
+
+                        <div class="project-card-actions">
+
+                            <a th:href="@{/projects/university-web}"
+                               class="detail-button">
+                                상세 보기 →
+                            </a>
+
+							<a href="https://github.com/jjian2/university-web-service"
+							   class="text-link"
+							   target="_blank">
+							    GitHub
+							</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- 8. AI 이미지 인식 -->
+                <article class="all-project-card"
+                         data-category="ai data">
+
+                    <div class="project-thumbnail image-ai-thumbnail">
+
+                        <span class="project-number">
+                            08
+                        </span>
+
+                        <div class="thumbnail-symbol">
+                            CV
+                        </div>
+
+                        <div class="thumbnail-title">
+                            <small>HAPPY WHALE</small>
+                            <strong>AI 이미지 인식 프로젝트</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="all-project-content">
+
+                        <div class="project-top-info">
+                            <span>공모전 프로젝트</span>
+                            <span>2023.04 - 2023.06</span>
+                        </div>
+
+                        <h2>AI 이미지 인식 공모전 프로젝트</h2>
+
+                        <p class="project-introduction">
+                            이미지에서 객체의 특징을 추출하고 분류하기 위해
+                            여러 이미지 인식 알고리즘과 CNN 모델의
+                            성능을 비교한 프로젝트입니다.
+                        </p>
+
+                        <div class="project-detail-info">
+
+                            <div>
+                                <span>담당 역할</span>
+                                <p>
+                                    객체 탐지와 이미지 분류 알고리즘 분석,
+                                    CNN 모델 성능 비교
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>핵심 기능</span>
+                                <p>
+                                    이미지 전처리, 특징 추출,
+                                    모델 비교, 하이퍼파라미터 튜닝
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="project-tech-list">
+                            <span>Python</span>
+                            <span>CNN</span>
+                            <span>KNN</span>
+                            <span>ArcFace</span>
+                            <span>Image Classification</span>
+                        </div>
+
+                        <div class="project-card-actions">
+
+                            <a th:href="@{/projects/ai-literacy}"
+                               class="detail-button">
+                                상세 보기 →
+                            </a>
+
+							<a href="https://github.com/jjian2/happywhale-image-recognition"
+							   class="text-link"
+							   target="_blank">
+							    GitHub
+							</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- 9. 추천 알고리즘 PT -->
+                <article class="all-project-card"
+                         data-category="ai data">
+
+                    <div class="project-thumbnail recommendation-thumbnail">
+
+                        <span class="project-number">
+                            09
+                        </span>
+
+                        <div class="thumbnail-symbol">
+                            R
+                        </div>
+
+                        <div class="thumbnail-title">
+                            <small>RECOMMENDATION</small>
+                            <strong>추천 알고리즘 콘텐츠 PT</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="all-project-content">
+
+                        <div class="project-top-info">
+                            <span>팀 프로젝트</span>
+                            <span>2023.05 - 2023.06</span>
+                        </div>
+
+                        <h2>추천 알고리즘 콘텐츠 PT 프로젝트</h2>
+
+                        <p class="project-introduction">
+                            추천 알고리즘의 구조와 활용 사례를 조사하고
+                            시각 자료와 발표 자료로 구성해
+                            추천 시스템의 원리를 설명한 프로젝트입니다.
+                        </p>
+
+                        <div class="project-detail-info">
+
+                            <div>
+                                <span>담당 역할</span>
+                                <p>
+                                    추천 알고리즘 원리 정리,
+                                    시각 자료 제작, 발표 수행
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>핵심 내용</span>
+                                <p>
+                                    콘텐츠 기반 추천,
+                                    협업 필터링, 추천 구조 비교
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="project-tech-list">
+                            <span>Recommendation</span>
+                            <span>Algorithm Analysis</span>
+                            <span>PowerPoint</span>
+                            <span>Presentation</span>
+                        </div>
+
+                        <div class="project-card-actions">
+
+                            <a th:href="@{/projects/recommendation-presentation}"
+                               class="detail-button">
+                                상세 보기 →
+                            </a>
+
+							<a href="https://github.com/jjian2/recommender-system-visualization"
+							   class="text-link"
+							   target="_blank">
+							    GitHub
+							</a>
+
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="projects-footer">
+
+    <div class="container projects-footer-inner">
+
+        <div>
+            <a th:href="@{/}"
+               class="projects-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <p>
+                Spring Boot와 AI로 만든 개발자 포트폴리오
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a th:href="@{/}">Home</a>
+            <a href="https://github.com/본인깃허브아이디"
+               target="_blank"
+               rel="noopener noreferrer">
+                GitHub
+            </a>
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const filterButtons =
+            document.querySelectorAll(".filter-button");
+
+        const projectCards =
+            document.querySelectorAll(".all-project-card");
+
+        filterButtons.forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const selectedFilter =
+                    button.dataset.filter;
+
+                filterButtons.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+                projectCards.forEach(function (card) {
+
+                    const categories =
+                        card.dataset.category.split(" ");
+
+                    if (
+                        selectedFilter === "all" ||
+                        categories.includes(selectedFilter)
+                    ) {
+                        card.classList.remove("hidden");
+                    } else {
+                        card.classList.add("hidden");
+                    }
+
+                });
+
+            });
+
+        });
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>추천 알고리즘 콘텐츠 PT | 최지안 포트폴리오</title>
+
+    <meta name="description"
+          content="쇼핑, 유튜브, 음악, OTT 사례를 활용해 추천 알고리즘의 개념과 원리를 설명하고 장려상을 수상한 AI 콘텐츠 PT 프로젝트입니다.">
+
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/project-detail.css}">
+
+    <style>
+        /* 추천 알고리즘 PT 프로젝트 표지 */
+        .recommendation-cover {
+            background:
+                linear-gradient(
+                    135deg,
+                    #66558a,
+                    #9c84c3
+                );
+        }
+
+        /* PPT 미리보기 */
+        .presentation-preview {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            background: var(--surface);
+        }
+
+        .presentation-preview-header {
+            padding: 26px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .presentation-preview-header span {
+            display: block;
+            color: var(--primary-light);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+        }
+
+        .presentation-preview-header h3 {
+            margin-top: 8px;
+            font-size: 25px;
+        }
+
+        .presentation-preview-button {
+            flex-shrink: 0;
+            padding: 11px 16px;
+            border: 1px solid var(--border-strong);
+            border-radius: 10px;
+            background: rgba(116, 131, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .presentation-preview-button:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .presentation-thumbnail {
+            position: relative;
+            width: 100%;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #ffffff;
+            cursor: pointer;
+        }
+
+        .presentation-thumbnail img {
+            width: 100%;
+            height: 100%;
+            max-height: 720px;
+            display: block;
+            object-fit: contain;
+            object-position: center;
+            transition: transform 0.35s ease;
+        }
+
+        .presentation-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(5, 15, 30, 0.72);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .presentation-overlay span {
+            color: #d8d2ff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .presentation-overlay strong {
+            color: #ffffff;
+            font-size: 24px;
+        }
+
+        .presentation-thumbnail:hover img {
+            transform: scale(1.02);
+        }
+
+        .presentation-thumbnail:hover .presentation-overlay {
+            opacity: 1;
+        }
+
+        .presentation-notice {
+            padding: 16px 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        /* 프로젝트 이미지 */
+        #features .feature-image {
+            width: 100%;
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: #ffffff;
+        }
+
+        #features .feature-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 20px;
+        }
+
+        #features .feature-item:nth-child(2) .feature-image {
+            height: 500px;
+        }
+
+        @media (max-width: 900px) {
+            .presentation-preview-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .presentation-thumbnail {
+                min-height: 380px;
+            }
+
+            #features .feature-image,
+            #features .feature-item:nth-child(2) .feature-image {
+                height: auto;
+                min-height: 280px;
+            }
+
+            #features .feature-image img {
+                height: auto;
+                max-height: 650px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .presentation-preview-header,
+            .presentation-notice {
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+
+            .presentation-preview-header h3 {
+                font-size: 20px;
+            }
+
+            .presentation-thumbnail {
+                min-height: 260px;
+            }
+
+            .presentation-overlay {
+                opacity: 1;
+                background: rgba(5, 15, 30, 0.42);
+            }
+
+            .presentation-overlay strong {
+                font-size: 19px;
+            }
+
+            #features .feature-image,
+            #features .feature-item:nth-child(2) .feature-image {
+                min-height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="detail-header">
+    <div class="detail-header-inner">
+
+        <a th:href="@{/}" class="detail-logo">
+            JIAN<span>.</span>
+        </a>
+
+        <nav class="detail-nav">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/#skills}">Skills</a>
+            <a th:href="@{/#contact}">Contact</a>
+        </nav>
+
+        <a th:href="@{/projects}" class="back-projects-button">
+            ← 프로젝트 목록
+        </a>
+
+    </div>
+</header>
+
+<main>
+
+    <!-- 상단 소개 -->
+    <section class="project-detail-hero">
+
+        <div class="detail-glow"></div>
+
+        <div class="container">
+
+            <div class="detail-breadcrumb">
+                <a th:href="@{/projects}">Projects</a>
+                <span>/</span>
+                <span>추천 알고리즘 콘텐츠 PT</span>
+            </div>
+
+            <div class="detail-hero-layout">
+
+                <div class="detail-hero-content">
+
+                    <p class="detail-category">
+                        AI · RECOMMENDATION SYSTEM · PRESENTATION
+                    </p>
+
+                    <h1>
+                        추천 알고리즘<br>
+                        콘텐츠 PT
+                    </h1>
+
+                    <p class="detail-subtitle">
+                        쇼핑·유튜브·음악·OTT 사례로 추천 알고리즘을
+                        쉽게 설명한 AI 콘텐츠 발표 프로젝트
+                    </p>
+
+                    <p class="detail-description">
+                        추천 알고리즘의 정의와 작동 원리, 활용 사례를 조사하고
+                        학습자 관점에서 이해하기 쉬운 콘텐츠로 구성했습니다.
+                        협업 필터링과 콘텐츠 기반 필터링을 실생활 서비스 사례와 함께
+                        시각적으로 설명하고 팀 발표를 진행해 장려상을 수상했습니다.
+                    </p>
+
+                    <div class="detail-actions">
+
+                        <a href="https://github.com/jjian2/recommender-system-visualization"
+                           class="button button-primary"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub 보기
+                        </a>
+
+                        <a th:href="@{/files/recommendation-presentation.pptx}"
+                           class="button button-secondary"
+                           download>
+                            PPT 다운로드
+                        </a>
+
+                        <a href="#overview" class="button button-link">
+                            프로젝트 살펴보기 ↓
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="detail-hero-visual">
+
+                    <div class="project-cover recommendation-cover">
+
+                        <div class="cover-grid"></div>
+
+                        <div class="cover-symbol">
+                            R
+                        </div>
+
+                        <div class="cover-text">
+                            <span>RECOMMENDATION CONTENT</span>
+                            <strong>AI Introduction Presentation</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="detail-summary">
+
+                <div>
+                    <span>개발 기간</span>
+                    <strong>2023.05 - 2023.06</strong>
+                </div>
+
+                <div>
+                    <span>프로젝트 형태</span>
+                    <strong>팀 프로젝트</strong>
+                </div>
+
+                <div>
+                    <span>기여도</span>
+                    <strong>60%</strong>
+                </div>
+
+                <div>
+                    <span>성과</span>
+                    <strong>AI 콘텐츠 PT 경진대회 장려상</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 프로젝트 개요 -->
+    <section class="detail-section" id="overview">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>01. OVERVIEW</p>
+                <h2>프로젝트 개요</h2>
+            </div>
+
+            <div class="overview-grid">
+
+                <article class="overview-card">
+                    <span>어떤 프로젝트인가요?</span>
+                    <h3>추천 알고리즘을 설명하는 AI 콘텐츠 PT</h3>
+                    <p>
+                        추천 알고리즘의 개념, 작동 방식과 활용 사례를 조사하고
+                        학습자 눈높이에 맞는 발표자료로 제작한 프로젝트입니다.
+                    </p>
+                </article>
+
+                <article class="overview-card">
+                    <span>왜 만들었나요?</span>
+                    <h3>복잡한 추천 원리를 쉽게 전달하기 위해</h3>
+                    <p>
+                        협업 필터링과 콘텐츠 기반 필터링을
+                        쇼핑, 유튜브, 음악, OTT 사례로 시각화했습니다.
+                    </p>
+                </article>
+
+                <article class="overview-card">
+                    <span>결과는 어땠나요?</span>
+                    <h3>콘텐츠 구성력을 인정받아 장려상 수상</h3>
+                    <p>
+                        논리적인 발표 흐름과 시각적 전달력을 바탕으로
+                        AI 인트로덕션 콘텐츠 PT 경진대회 장려상을 수상했습니다.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 담당 역할 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>02. MY ROLE</p>
+                <h2>담당 역할</h2>
+            </div>
+
+            <div class="role-layout">
+
+                <div class="role-introduction">
+
+                    <h3>
+                        추천 알고리즘 원리와 서비스 사례를 조사하고,
+                        발표 자료 기획과 발표를 담당했습니다.
+                    </h3>
+
+                    <p>
+                        개념만 설명하는 대신 사용자가 실제로 접하는
+                        쇼핑몰, 유튜브, 음악 플랫폼, OTT 서비스를 예시로 선택했습니다.
+                        협업 필터링과 콘텐츠 기반 필터링의 차이가 한눈에 보이도록
+                        도식과 키워드를 중심으로 슬라이드를 구성했습니다.
+                    </p>
+
+                </div>
+
+                <div class="role-list">
+
+                    <article class="role-item">
+                        <span>01</span>
+                        <div>
+                            <h3>추천 알고리즘 자료 조사</h3>
+                            <p>
+                                추천 시스템의 정의, 종류, 작동 원리와
+                                기술 구성 요소를 조사했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>02</span>
+                        <div>
+                            <h3>실생활 사례 정리</h3>
+                            <p>
+                                쇼핑, 유튜브, 음악, OTT 서비스의
+                                추천 방식을 사례 중심으로 구성했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>03</span>
+                        <div>
+                            <h3>발표 자료 기획 및 제작</h3>
+                            <p>
+                                슬라이드의 전체 흐름과 시각 요소를 설계하고
+                                핵심 내용 위주로 PPT를 제작했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>04</span>
+                        <div>
+                            <h3>발표 대본 작성 및 발표</h3>
+                            <p>
+                                발표 순서에 맞게 대본을 작성하고
+                                팀 발표를 진행했습니다.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 핵심 개념 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>03. KEY CONCEPTS</p>
+                <h2>조사한 핵심 개념</h2>
+            </div>
+
+            <div class="detail-tech-grid">
+
+                <article class="detail-tech-card">
+                    <span>RECOMMENDATION</span>
+                    <h3>추천 시스템</h3>
+                    <div class="detail-tech-tags">
+                        <span>사용자 맞춤</span>
+                        <span>선호도 분석</span>
+                        <span>아이템 추천</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>COLLABORATIVE</span>
+                    <h3>협업 필터링</h3>
+                    <div class="detail-tech-tags">
+                        <span>User-Based</span>
+                        <span>Item-Based</span>
+                        <span>행동 데이터</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>CONTENT</span>
+                    <h3>콘텐츠 기반 필터링</h3>
+                    <div class="detail-tech-tags">
+                        <span>아이템 특징</span>
+                        <span>사용자 프로필</span>
+                        <span>유사도</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>SERVICE</span>
+                    <h3>활용 사례</h3>
+                    <div class="detail-tech-tags">
+                        <span>Shopping</span>
+                        <span>YouTube</span>
+                        <span>Music</span>
+                        <span>OTT</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>CONTENT DESIGN</span>
+                    <h3>시각적 콘텐츠</h3>
+                    <div class="detail-tech-tags">
+                        <span>Infographic</span>
+                        <span>Diagram</span>
+                        <span>Storytelling</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>PRESENTATION</span>
+                    <h3>PowerPoint</h3>
+                    <div class="detail-tech-tags">
+                        <span>발표 자료</span>
+                        <span>대본 작성</span>
+                        <span>팀 발표</span>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 제작 흐름 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>04. PROCESS</p>
+                <h2>콘텐츠 제작 흐름</h2>
+            </div>
+
+            <div class="architecture-box">
+
+                <div class="architecture-item">
+                    <span>STEP 01</span>
+                    <strong>주제 선정</strong>
+                    <p>추천 알고리즘을 발표 주제로 결정</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>STEP 02</span>
+                    <strong>자료 조사</strong>
+                    <p>정의, 종류, 원리와 활용 사례 조사</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item architecture-main">
+                    <span>STEP 03</span>
+                    <strong>콘텐츠 구조 설계</strong>
+                    <p>개념 → 원리 → 사례 순서로 발표 흐름 구성</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>STEP 04</span>
+                    <strong>PPT 제작</strong>
+                    <p>도식, 아이콘과 키워드를 활용한 시각화</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>STEP 05</span>
+                    <strong>발표 및 수상</strong>
+                    <p>팀 발표 진행 후 장려상 수상</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PPT 보기 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>05. PRESENTATION</p>
+                <h2>발표자료 보기</h2>
+            </div>
+
+            <div class="presentation-preview">
+
+                <div class="presentation-preview-header">
+
+                    <div>
+                        <span>AI INTRODUCTION CONTENT</span>
+                        <h3>추천 알고리즘 콘텐츠 PT 발표자료</h3>
+                    </div>
+
+                    <a th:href="@{/files/recommendation-presentation.pptx}"
+                       class="presentation-preview-button"
+                       download>
+                        PPT 다운로드 ↓
+                    </a>
+
+                </div>
+
+                <a th:href="@{/files/recommendation-presentation.pptx}"
+                   class="presentation-thumbnail"
+                   download>
+
+                    <img th:src="@{/images/projects/recommendation-presentation/recommendation-main.png}"
+                         alt="추천 알고리즘 콘텐츠 PT 미리보기">
+
+                    <div class="presentation-overlay">
+                        <span>AI INTRODUCTION CONTENT</span>
+                        <strong>PPT 다운로드 ↓</strong>
+                    </div>
+
+                </a>
+
+                <p class="presentation-notice">
+                    대표 이미지를 클릭하면 전체 발표자료 PPT가 다운로드됩니다.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 프로젝트 자료 -->
+    <section class="detail-section detail-section-dark" id="features">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>06. PROJECT MATERIALS</p>
+                <h2>프로젝트 자료</h2>
+            </div>
+
+            <div class="feature-list">
+
+                <article class="feature-item">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/recommendation-presentation/recommendation-main.png}"
+                             alt="추천 알고리즘 활용 발표 슬라이드">
+                    </div>
+
+                    <div class="feature-content">
+                        <span>MATERIAL 01</span>
+                        <h3>추천 알고리즘 활용 사례</h3>
+                        <p>
+                            쇼핑, 유튜브, 음악, OTT를 대표 사례로 선정해
+                            추천 시스템이 실생활에서 어떻게 사용되는지 표현했습니다.
+                        </p>
+                        <ul>
+                            <li>서비스별 추천 방식 비교</li>
+                            <li>아이콘과 키워드 중심 시각화</li>
+                            <li>학습자 관점의 쉬운 설명</li>
+                        </ul>
+                    </div>
+
+                </article>
+
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/recommendation-presentation/recommendation-award.jpg}"
+                             alt="AI 인트로덕션 콘텐츠 PT 경진대회 장려상">
+                    </div>
+
+                    <div class="feature-content">
+                        <span>RESULT 02</span>
+                        <h3>AI 콘텐츠 PT 경진대회 장려상</h3>
+                        <p>
+                            추천 알고리즘의 핵심 내용을 논리적으로 구성하고
+                            시각적으로 전달한 점을 인정받아 장려상을 수상했습니다.
+                        </p>
+                        <ul>
+                            <li>동양미래대학교 주관</li>
+                            <li>인공지능소프트웨어학과 B-2조</li>
+                            <li>2023년 6월 9일 수상</li>
+                        </ul>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 문제 해결 경험 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>07. TROUBLESHOOTING</p>
+                <h2>문제 해결 경험</h2>
+            </div>
+
+            <div class="troubleshooting-list">
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>01</span>
+                        <h3>추천 알고리즘의 종류와 원리를 짧게 설명하기 어려웠던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                협업 필터링과 콘텐츠 기반 필터링은
+                                설명해야 할 개념과 용어가 많았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                이론 중심으로 구성하면 발표 시간이 길어지고
+                                청중이 핵심 차이를 놓칠 수 있었습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                쇼핑과 OTT 등 익숙한 서비스 사례를 먼저 보여준 뒤
+                                각 사례에 적용된 원리를 설명하는 순서로 재구성했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                청중이 추천 알고리즘의 역할과 차이를
+                                보다 빠르게 이해할 수 있었습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>02</span>
+                        <h3>슬라이드의 글이 많아 시각적 전달력이 떨어졌던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                조사한 내용을 모두 넣으면서
+                                한 화면의 글자 수가 지나치게 많아졌습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                자료 조사 결과를 줄이지 않고
+                                그대로 슬라이드에 옮기려 했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                핵심 문장을 짧게 줄이고, 아이콘과 도식을 사용해
+                                서비스와 추천 방식의 관계를 시각화했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                발표 화면의 가독성이 향상되고
+                                핵심 메시지가 명확해졌습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+                        <span>03</span>
+                        <h3>첫 대학 발표에서 긴장해 내용을 충분히 전달하지 못했던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+                            <p>
+                                대학 입학 후 첫 공식 발표여서
+                                발표 속도가 빨라지고 준비한 내용을 놓쳤습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+                            <p>
+                                슬라이드 제작에는 익숙했지만
+                                실제 발표와 시간 조절 경험이 부족했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+                            <p>
+                                발표 이후 수업과 팀 프로젝트에서 발표 역할을 맡고,
+                                대본과 시간 단위로 반복 연습했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+                            <p>
+                                논리적인 전달력, 청중 시선 처리와
+                                발표 속도를 지속적으로 개선했습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 배운 점 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>08. LEARNED</p>
+                <h2>프로젝트를 통해 배운 점</h2>
+            </div>
+
+            <div class="learned-grid">
+
+                <article>
+                    <span>01</span>
+                    <h3>추천 알고리즘 기초 이해</h3>
+                    <p>
+                        협업 필터링과 콘텐츠 기반 필터링의
+                        개념과 활용 방식을 이해했습니다.
+                    </p>
+                </article>
+
+                <article>
+                    <span>02</span>
+                    <h3>사례 중심 설명</h3>
+                    <p>
+                        어려운 기술을 익숙한 서비스 사례와 연결하면
+                        이해도가 높아진다는 점을 배웠습니다.
+                    </p>
+                </article>
+
+                <article>
+                    <span>03</span>
+                    <h3>콘텐츠 시각화</h3>
+                    <p>
+                        긴 문장보다 도식, 아이콘과 핵심 키워드를 활용해
+                        정보를 효과적으로 전달하는 경험을 쌓았습니다.
+                    </p>
+                </article>
+
+                <article>
+                    <span>04</span>
+                    <h3>발표 역량 개선</h3>
+                    <p>
+                        첫 발표 경험을 바탕으로 대본, 속도와
+                        청중을 고려한 전달 방식을 개선했습니다.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 이전 프로젝트 -->
+    <section class="next-project-section">
+
+        <div class="container">
+
+            <div class="next-project-box">
+
+                <div>
+                    <p>PREVIOUS PROJECT</p>
+                    <h2>
+                        Happy Whale AI 대회를 분석한
+                        <strong>인공지능 리터러시 경진대회</strong>
+                    </h2>
+                </div>
+
+                <a th:href="@{/projects/ai-literacy}">
+                    이전 프로젝트 보기 →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="detail-footer">
+
+    <div class="container detail-footer-inner">
+
+        <div>
+            <a th:href="@{/}" class="detail-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <p>Spring Boot와 AI로 만든 개발자 포트폴리오</p>
+        </div>
+
+        <div class="detail-footer-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

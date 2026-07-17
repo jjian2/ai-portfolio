@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>인공지능 리터러시 경진대회 | 최지안 포트폴리오</title>
+
+    <meta name="description"
+          content="Happy Whale 고래와 돌고래 식별 AI 대회를 분석하고 객체 탐지, 이미지 분류, KNN, ArcFace 기술을 조사해 우수상을 수상한 프로젝트입니다.">
+
+    <link rel="stylesheet"
+          th:href="@{/css/common.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/project-detail.css}">
+
+    <style>
+  		/* =========================
+		   리터러시 프로젝트 표지
+		========================= */
+		.literacy-cover {
+		    background:
+		        linear-gradient(
+		            135deg,
+		            #244f7e,
+		            #6f94c2
+		        );
+		}
+		
+		
+		/* =========================
+		   발표자료 PDF 미리보기
+		========================= */
+		.presentation-preview {
+		    overflow: hidden;
+		
+		    border: 1px solid var(--border);
+		    border-radius: 24px;
+		
+		    background: var(--surface);
+		}
+		
+		
+		/* 발표자료 상단 제목 영역 */
+		.presentation-preview-header {
+		    padding: 26px 30px;
+		
+		    display: flex;
+		    align-items: center;
+		    justify-content: space-between;
+		    gap: 20px;
+		
+		    border-bottom: 1px solid var(--border);
+		}
+		
+		
+		.presentation-preview-header span {
+		    display: block;
+		
+		    color: var(--primary-light);
+		
+		    font-size: 11px;
+		    font-weight: 800;
+		    letter-spacing: 0.14em;
+		}
+		
+		
+		.presentation-preview-header h3 {
+		    margin-top: 8px;
+		
+		    font-size: 25px;
+		}
+		
+		
+		/* 새 창에서 크게 보기 버튼 */
+		.presentation-preview-button {
+		    flex-shrink: 0;
+		
+		    padding: 11px 16px;
+		
+		    border: 1px solid var(--border-strong);
+		    border-radius: 10px;
+		
+		    background: rgba(116, 131, 255, 0.1);
+		    color: var(--text-primary);
+		
+		    font-size: 12px;
+		    font-weight: 700;
+		
+		    transition:
+		        background 0.25s ease,
+		        transform 0.25s ease;
+		}
+		
+		
+		.presentation-preview-button:hover {
+		    background: var(--primary);
+		    transform: translateY(-2px);
+		}
+		
+		
+		/* =========================
+		   PDF 대표 이미지 영역
+		========================= */
+		.presentation-thumbnail {
+		    position: relative;
+		
+		    width: 100%;
+		    min-height: 520px;
+		
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		
+		    overflow: hidden;
+		
+		    background: #ffffff;
+		
+		    cursor: pointer;
+		}
+		
+		
+		/* 발표자료 대표 이미지 */
+		.presentation-thumbnail img {
+		    width: 100%;
+		    height: 100%;
+		    max-height: 720px;
+		
+		    display: block;
+		
+		    object-fit: contain;
+		    object-position: center;
+		
+		    transition: transform 0.35s ease;
+		}
+		
+		
+		/* 마우스를 올렸을 때 표시되는 어두운 화면 */
+		.presentation-overlay {
+		    position: absolute;
+		    inset: 0;
+		
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    justify-content: center;
+		    gap: 8px;
+		
+		    background: rgba(5, 15, 30, 0.72);
+		
+		    opacity: 0;
+		
+		    transition: opacity 0.25s ease;
+		}
+		
+		
+		.presentation-overlay span {
+		    color: #c7d2fe;
+		
+		    font-size: 13px;
+		    font-weight: 700;
+		    letter-spacing: 0.08em;
+		}
+		
+		
+		.presentation-overlay strong {
+		    color: #ffffff;
+		
+		    font-size: 24px;
+		}
+		
+		
+		/* 이미지 확대 효과 */
+		.presentation-thumbnail:hover img {
+		    transform: scale(1.02);
+		}
+		
+		
+		/* 마우스를 올리면 PDF 열기 안내 표시 */
+		.presentation-thumbnail:hover .presentation-overlay {
+		    opacity: 1;
+		}
+		
+		
+		/* 발표자료 하단 설명 */
+		.presentation-notice {
+		    padding: 16px 30px;
+		
+		    border-top: 1px solid var(--border);
+		
+		    color: var(--text-muted);
+		
+		    font-size: 12px;
+		    line-height: 1.7;
+		}
+		
+		
+		/* =========================
+		   프로젝트 이미지 3장
+		========================= */
+		#features .feature-image {
+		    width: 100%;
+		    height: 410px;
+		
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		
+		    padding: 0;
+		    overflow: hidden;
+		
+		    border: 1px solid var(--border);
+		    border-radius: 20px;
+		
+		    background: #ffffff;
+		}
+		
+		
+		#features .feature-image img {
+		    width: 100%;
+		    height: 100%;
+		
+		    display: block;
+		
+		    object-fit: contain;
+		    object-position: center;
+		
+		    border-radius: 20px;
+		}
+		
+		
+		/* 두 번째 이미지: 데이터 분석 */
+		#features .feature-item:nth-child(2) .feature-image {
+		    height: 360px;
+		}
+		
+		
+		/* 세 번째 이미지: 상장 */
+		#features .feature-item:nth-child(3) .feature-image {
+		    height: 520px;
+		}
+		
+		
+		/* =========================
+		   태블릿
+		========================= */
+		@media (max-width: 900px) {
+		
+		    .presentation-preview-header {
+		        align-items: flex-start;
+		        flex-direction: column;
+		    }
+		
+		
+		    .presentation-thumbnail {
+		        min-height: 400px;
+		    }
+		
+		
+		    .presentation-thumbnail img {
+		        height: auto;
+		        max-height: 600px;
+		    }
+		
+		
+		    #features .feature-image,
+		    #features .feature-item:nth-child(2) .feature-image,
+		    #features .feature-item:nth-child(3) .feature-image {
+		        height: auto;
+		        min-height: 280px;
+		    }
+		
+		
+		    #features .feature-image img {
+		        height: auto;
+		        max-height: 620px;
+		    }
+		}
+		
+		
+		/* =========================
+		   모바일
+		========================= */
+		@media (max-width: 600px) {
+		
+		    .presentation-preview-header,
+		    .presentation-notice {
+		        padding-right: 20px;
+		        padding-left: 20px;
+		    }
+		
+		
+		    .presentation-preview-header h3 {
+		        font-size: 20px;
+		    }
+		
+		
+		    .presentation-thumbnail {
+		        min-height: 280px;
+		    }
+		
+		
+		    .presentation-thumbnail img {
+		        max-height: 420px;
+		    }
+		
+		
+		    /* 모바일은 hover가 없어서 안내문을 항상 표시 */
+		    .presentation-overlay {
+		        opacity: 1;
+		
+		        background: rgba(5, 15, 30, 0.42);
+		    }
+		
+		
+		    .presentation-overlay strong {
+		        font-size: 19px;
+		    }
+		
+		
+		    #features .feature-image,
+		    #features .feature-item:nth-child(2) .feature-image,
+		    #features .feature-item:nth-child(3) .feature-image {
+		        min-height: 220px;
+		    }
+		}
+    </style>
+</head>
+
+<body>
+
+<header class="detail-header">
+
+    <div class="detail-header-inner">
+
+        <a th:href="@{/}"
+           class="detail-logo">
+            JIAN<span>.</span>
+        </a>
+
+        <nav class="detail-nav">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/#skills}">Skills</a>
+            <a th:href="@{/#contact}">Contact</a>
+        </nav>
+
+        <a th:href="@{/projects}"
+           class="back-projects-button">
+            ← 프로젝트 목록
+        </a>
+
+    </div>
+
+</header>
+
+<main>
+
+    <section class="project-detail-hero">
+
+        <div class="detail-glow"></div>
+
+        <div class="container">
+
+            <div class="detail-breadcrumb">
+                <a th:href="@{/projects}">Projects</a>
+                <span>/</span>
+                <span>인공지능 리터러시 경진대회</span>
+            </div>
+
+            <div class="detail-hero-layout">
+
+                <div class="detail-hero-content">
+
+                    <p class="detail-category">
+                        AI · COMPUTER VISION · PRESENTATION
+                    </p>
+
+                    <h1>
+                        인공지능 리터러시<br>
+                        경진대회
+                    </h1>
+
+                    <p class="detail-subtitle">
+                        Happy Whale 고래·돌고래 개체 식별 대회를 분석하고
+                        AI 기술을 시각적으로 설명한 발표 프로젝트
+                    </p>
+
+                    <p class="detail-description">
+                        Happy Whale 대회의 데이터 구조와 평가 방식,
+                        객체 탐지와 이미지 분류, KNN, ArcFace 등의 핵심 기술을 조사했습니다.
+                        복잡한 AI 알고리즘을 비전공자도 이해할 수 있도록 시각적으로 정리하고
+                        팀 발표를 진행해 우수상을 수상했습니다.
+                    </p>
+
+                    <div class="detail-actions">
+
+                        <a href="https://github.com/jjian2/happywhale-image-recognition"
+                           class="button button-primary"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub 보기
+                        </a>
+
+                        <a th:href="@{/files/ai-literacy-presentation.pdf}"
+                           class="button button-secondary"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            발표자료 전체 보기
+                        </a>
+
+                        <a href="#overview"
+                           class="button button-link">
+                            프로젝트 살펴보기 ↓
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="detail-hero-visual">
+
+                    <div class="project-cover literacy-cover">
+
+                        <div class="cover-grid"></div>
+
+                        <div class="cover-symbol">
+                            AI
+                        </div>
+
+                        <div class="cover-text">
+                            <span>HAPPY WHALE</span>
+                            <strong>AI Literacy Competition</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="detail-summary">
+
+                <div>
+                    <span>개발 기간</span>
+                    <strong>2023.04 - 2023.06</strong>
+                </div>
+
+                <div>
+                    <span>프로젝트 형태</span>
+                    <strong>팀 프로젝트</strong>
+                </div>
+
+                <div>
+                    <span>기여도</span>
+                    <strong>60%</strong>
+                </div>
+
+                <div>
+                    <span>성과</span>
+                    <strong>인공지능 리터러시 경진대회 우수상</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="detail-section"
+             id="overview">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>01. OVERVIEW</p>
+                <h2>프로젝트 개요</h2>
+            </div>
+
+            <div class="overview-grid">
+
+                <article class="overview-card">
+                    <span>어떤 프로젝트인가요?</span>
+                    <h3>Happy Whale 고래·돌고래 개체 식별 AI 대회 분석</h3>
+                    <p>
+                        국제 AI 대회의 데이터셋과 평가 방식, 사용 기술을 조사하고
+                        발표 자료로 구성한 인공지능 리터러시 프로젝트입니다.
+                    </p>
+                </article>
+
+                <article class="overview-card">
+                    <span>왜 만들었나요?</span>
+                    <h3>복잡한 AI 기술을 쉽게 설명하기 위해</h3>
+                    <p>
+                        객체 탐지, 이미지 분류, KNN, ArcFace와 같은 기술을
+                        발표 대상자가 이해하기 쉬운 이미지와 사례 중심으로 정리했습니다.
+                    </p>
+                </article>
+
+                <article class="overview-card">
+                    <span>결과는 어땠나요?</span>
+                    <h3>발표 구성과 전달력을 인정받아 우수상 수상</h3>
+                    <p>
+                        데이터 분석과 기술 설명을 시각적으로 구성하고
+                        체계적인 발표를 진행해 경진대회 우수상을 수상했습니다.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>02. MY ROLE</p>
+                <h2>담당 역할</h2>
+            </div>
+
+            <div class="role-layout">
+
+                <div class="role-introduction">
+
+                    <h3>
+                        Happy Whale 대회의 데이터셋 구조와 AI 기술을 조사하고,
+                        발표 자료 기획과 발표를 담당했습니다.
+                    </h3>
+
+                    <p>
+                        단순히 기술 이름을 나열하는 방식이 아니라,
+                        실제 대회에서 어떤 데이터가 사용되고 모델이 개체를 어떻게 구분하는지
+                        흐름 중심으로 설명했습니다. 특히 KNN, ArcFace, 하이퍼파라미터와
+                        MAP@5 평가 방식을 시각 자료로 구성했습니다.
+                    </p>
+
+                </div>
+
+                <div class="role-list">
+
+                    <article class="role-item">
+                        <span>01</span>
+                        <div>
+                            <h3>Happy Whale 대회 조사</h3>
+                            <p>대회 목적과 주최기관, 데이터셋, 상금과 평가 방식을 분석했습니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>02</span>
+                        <div>
+                            <h3>데이터셋 구조 분석</h3>
+                            <p>이미지, 종, 개체 ID의 관계를 정리하고 학습 데이터 구조를 분석했습니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>03</span>
+                        <div>
+                            <h3>AI 기술 조사</h3>
+                            <p>객체 탐지, 이미지 분류, KNN, ArcFace와 하이퍼파라미터를 조사했습니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>04</span>
+                        <div>
+                            <h3>발표 자료 기획 및 제작</h3>
+                            <p>복잡한 개념을 이미지와 도식으로 설명하도록 전체 발표 흐름과 슬라이드를 구성했습니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>05</span>
+                        <div>
+                            <h3>팀 발표 진행</h3>
+                            <p>발표 자료를 바탕으로 AI 대회의 구조와 기술 활용 방식을 설명했습니다.</p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>03. TECH STACK</p>
+                <h2>조사 기술</h2>
+            </div>
+
+            <div class="detail-tech-grid">
+
+                <article class="detail-tech-card">
+                    <span>AI FIELD</span>
+                    <h3>Computer Vision</h3>
+                    <div class="detail-tech-tags">
+                        <span>Object Detection</span>
+                        <span>Image Classification</span>
+                        <span>Feature Extraction</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>ALGORITHM</span>
+                    <h3>KNN</h3>
+                    <div class="detail-tech-tags">
+                        <span>K-Nearest Neighbors</span>
+                        <span>Classification</span>
+                        <span>Distance</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>EMBEDDING</span>
+                    <h3>ArcFace</h3>
+                    <div class="detail-tech-tags">
+                        <span>Embedding</span>
+                        <span>Class Distance</span>
+                        <span>Feature Vector</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>MODEL</span>
+                    <h3>Hyperparameter</h3>
+                    <div class="detail-tech-tags">
+                        <span>Learning Rate</span>
+                        <span>Batch Size</span>
+                        <span>Epochs</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>EVALUATION</span>
+                    <h3>MAP@5</h3>
+                    <div class="detail-tech-tags">
+                        <span>Ranking</span>
+                        <span>Precision</span>
+                        <span>Top 5</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>PRESENTATION</span>
+                    <h3>PowerPoint</h3>
+                    <div class="detail-tech-tags">
+                        <span>Visual Storytelling</span>
+                        <span>Team Presentation</span>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>04. ANALYSIS FLOW</p>
+                <h2>분석 흐름</h2>
+            </div>
+
+            <div class="architecture-box">
+
+                <div class="architecture-item">
+                    <span>STEP 01</span>
+                    <strong>대회 조사</strong>
+                    <p>주최기관, 목표, 상금과 평가 방식 분석</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>STEP 02</span>
+                    <strong>데이터 구조 분석</strong>
+                    <p>이미지, 종, 개체 ID 관계 파악</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item architecture-main">
+                    <span>STEP 03</span>
+                    <strong>AI 기술 조사</strong>
+                    <p>객체 탐지, 이미지 분류, KNN, ArcFace</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>STEP 04</span>
+                    <strong>시각 자료 제작</strong>
+                    <p>복잡한 알고리즘을 도식과 사례로 표현</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>STEP 05</span>
+                    <strong>발표 및 수상</strong>
+                    <p>팀 발표 진행 후 우수상 수상</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 발표자료 PDF 전체 미리보기 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>05. PRESENTATION</p>
+                <h2>발표자료 전체 보기</h2>
+            </div>
+
+            <div class="presentation-preview">
+
+                <div class="presentation-preview-header">
+
+                    <div>
+                        <span>HAPPY WHALE PRESENTATION</span>
+                        <h3>인공지능 리터러시 경진대회 발표자료</h3>
+                    </div>
+
+                    <a th:href="@{/files/ai-literacy-presentation.pdf}"
+                       class="presentation-preview-button"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        새 창에서 크게 보기 ↗
+                    </a>
+
+                </div>
+
+				<a th:href="@{/files/ai-literacy-presentation.pdf}"
+				   class="presentation-thumbnail"
+				   target="_blank"
+				   rel="noopener noreferrer">
+				
+				    <img th:src="@{/images/projects/ai-literacy/literacy-timeline.png}"
+				         alt="인공지능 리터러시 경진대회 발표자료 미리보기">
+				
+				    <div class="presentation-overlay">
+				
+				        <span>
+				            HAPPY WHALE PRESENTATION
+				        </span>
+				
+				        <strong>
+				            발표자료 PDF 열기 ↗
+				        </strong>
+				
+				    </div>
+				
+				</a>
+
+                <p class="presentation-notice">
+                    브라우저에서 PDF 미리보기가 보이지 않으면
+                    위의 ‘새 창에서 크게 보기’ 버튼을 눌러 확인할 수 있습니다.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="detail-section detail-section-dark"
+             id="features">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>06. PROJECT MATERIALS</p>
+                <h2>프로젝트 자료</h2>
+            </div>
+
+            <div class="feature-list">
+
+                <article class="feature-item">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/ai-literacy/literacy-timeline.png}"
+                             alt="인공지능 연대표 발표자료">
+                    </div>
+
+                    <div class="feature-content">
+                        <span>MATERIAL 01</span>
+                        <h3>인공지능 연대표 발표자료</h3>
+                        <p>
+                            AI의 역사와 주요 발전 과정을 연표 형태로 구성해
+                            발표의 도입부에서 인공지능 기술의 흐름을 설명했습니다.
+                        </p>
+                        <ul>
+                            <li>AI 발전 역사 시각화</li>
+                            <li>연도별 주요 사건 정리</li>
+                            <li>발표 흐름을 고려한 인포그래픽 구성</li>
+                        </ul>
+                    </div>
+
+                </article>
+
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/ai-literacy/literacy-data.png}"
+                             alt="Happy Whale 데이터 분석 자료">
+                    </div>
+
+                    <div class="feature-content">
+                        <span>MATERIAL 02</span>
+                        <h3>Happy Whale 데이터 구조 분석</h3>
+                        <p>
+                            학습 이미지와 species, individual_id 컬럼의 관계를 분석하고,
+                            이미지 입력부터 개체 구분과 고유 ID 부여까지의 흐름을 정리했습니다.
+                        </p>
+                        <ul>
+                            <li>훈련 이미지 데이터 구조 분석</li>
+                            <li>고래·돌고래 종 분류 과정 정리</li>
+                            <li>개체별 고유 ID 생성 흐름 설명</li>
+                        </ul>
+                    </div>
+
+                </article>
+
+                <article class="feature-item">
+
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/ai-literacy/literacy-award.jpg}"
+                             alt="인공지능 리터러시 경진대회 우수상 상장">
+                    </div>
+
+                    <div class="feature-content">
+                        <span>RESULT 03</span>
+                        <h3>인공지능 리터러시 경진대회 우수상</h3>
+                        <p>
+                            데이터 분석과 AI 기술 설명, 발표 구성과 전달력을 인정받아
+                            인공지능 리터러시 경진대회에서 우수상을 수상했습니다.
+                        </p>
+                        <ul>
+                            <li>동양미래대학교 주관</li>
+                            <li>팀 B-2조</li>
+                            <li>발표 및 자료 구성 우수 평가</li>
+                        </ul>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>07. TROUBLESHOOTING</p>
+                <h2>문제 해결 경험</h2>
+            </div>
+
+            <div class="troubleshooting-list">
+
+                <article class="trouble-card">
+                    <div class="trouble-title">
+                        <span>01</span>
+                        <h3>복잡한 AI 알고리즘을 짧은 발표 시간 안에 설명하기 어려웠던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+                        <div>
+                            <span>문제</span>
+                            <p>ArcFace, KNN, MAP@5와 같은 기술은 비전공자가 한 번에 이해하기 어려웠습니다.</p>
+                        </div>
+                        <div>
+                            <span>원인</span>
+                            <p>수식과 전문 용어 중심으로 설명하면 발표 시간이 길어지고 핵심 내용이 흐려졌습니다.</p>
+                        </div>
+                        <div>
+                            <span>해결</span>
+                            <p>수식 설명을 최소화하고 그림, 사례와 비교 구조를 활용해 각 기술의 핵심 동작만 시각적으로 전달했습니다.</p>
+                        </div>
+                        <div>
+                            <span>결과</span>
+                            <p>발표 대상자가 기술의 차이와 역할을 빠르게 이해할 수 있도록 개선했습니다.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="trouble-card">
+                    <div class="trouble-title">
+                        <span>02</span>
+                        <h3>데이터셋의 종과 개체 ID 구조를 구분하기 어려웠던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+                        <div>
+                            <span>문제</span>
+                            <p>species와 individual_id가 동시에 존재해 종 분류와 개체 식별의 차이를 설명하기 어려웠습니다.</p>
+                        </div>
+                        <div>
+                            <span>원인</span>
+                            <p>같은 종 안에서도 개체별 지느러미 패턴이 다르다는 데이터 특성을 먼저 이해해야 했습니다.</p>
+                        </div>
+                        <div>
+                            <span>해결</span>
+                            <p>이미지 입력 → 종 확인 → 지느러미 특징 분석 → 개체 ID 부여 순서로 데이터 흐름을 재구성했습니다.</p>
+                        </div>
+                        <div>
+                            <span>결과</span>
+                            <p>종 분류와 개체 식별의 차이를 단계적으로 설명할 수 있었습니다.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="trouble-card">
+                    <div class="trouble-title">
+                        <span>03</span>
+                        <h3>발표 자료의 정보량이 많아 핵심이 눈에 들어오지 않았던 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+                        <div>
+                            <span>문제</span>
+                            <p>조사한 내용을 모두 넣으면서 한 슬라이드에 글과 이미지가 과도하게 많아졌습니다.</p>
+                        </div>
+                        <div>
+                            <span>원인</span>
+                            <p>정보 전달보다 조사 내용 전체를 보여주는 데 집중했습니다.</p>
+                        </div>
+                        <div>
+                            <span>해결</span>
+                            <p>슬라이드마다 하나의 핵심 메시지만 남기고 강조 색상과 번호 구조를 사용해 시선을 정리했습니다.</p>
+                        </div>
+                        <div>
+                            <span>결과</span>
+                            <p>발표 흐름이 명확해지고 중요한 내용이 빠르게 전달되도록 개선했습니다.</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+                <p>08. LEARNED</p>
+                <h2>프로젝트를 통해 배운 점</h2>
+            </div>
+
+            <div class="learned-grid">
+
+                <article>
+                    <span>01</span>
+                    <h3>AI 데이터 구조 이해</h3>
+                    <p>이미지, 종과 개체 ID가 어떻게 연결되는지 분석하며 컴퓨터 비전 데이터셋의 구조를 이해했습니다.</p>
+                </article>
+
+                <article>
+                    <span>02</span>
+                    <h3>알고리즘 비교 능력</h3>
+                    <p>KNN과 ArcFace의 차이와 활용 목적을 조사하면서 알고리즘을 비교하고 정리하는 능력을 키웠습니다.</p>
+                </article>
+
+                <article>
+                    <span>03</span>
+                    <h3>시각적 전달력</h3>
+                    <p>어려운 기술을 수식보다 그림과 사례로 설명하며 발표 자료의 시각적 전달력을 높였습니다.</p>
+                </article>
+
+                <article>
+                    <span>04</span>
+                    <h3>협업과 발표 경험</h3>
+                    <p>팀원과 조사 범위를 나누고 자료를 통합하며 협업과 발표 진행 경험을 쌓았습니다.</p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="next-project-section">
+
+        <div class="container">
+
+            <div class="next-project-box">
+
+                <div>
+                    <p>NEXT PROJECT</p>
+                    <h2>
+                        사용자 맞춤 추천 원리를 설명한
+                        <strong>추천 알고리즘 콘텐츠 PT</strong>
+                    </h2>
+                </div>
+
+                <a th:href="@{/projects/recommendation-presentation}">
+                    다음 프로젝트 보기 →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="detail-footer">
+
+    <div class="container detail-footer-inner">
+
+        <div>
+            <a th:href="@{/}"
+               class="detail-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <p>Spring Boot와 AI로 만든 개발자 포트폴리오</p>
+        </div>
+
+        <div class="detail-footer-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

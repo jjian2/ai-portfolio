@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뉴스 요약 서비스 | 최지안 포트폴리오</title>
+    <meta name="description" content="Java JSP와 Python Flask, KoBART를 연동해 뉴스 기사 URL을 요약하는 뉴스 요약 서비스 프로젝트입니다.">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/project-detail.css}">
+</head>
+<body>
+
+<header class="detail-header">
+    <div class="detail-header-inner">
+        <a th:href="@{/}" class="detail-logo">JIAN<span>.</span></a>
+        <nav class="detail-nav">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/#skills}">Skills</a>
+            <a th:href="@{/#contact}">Contact</a>
+        </nav>
+        <a th:href="@{/projects}" class="back-projects-button">← 프로젝트 목록</a>
+    </div>
+</header>
+
+<main>
+    <section class="project-detail-hero">
+        <div class="detail-glow"></div>
+        <div class="container">
+            <div class="detail-breadcrumb">
+                <a th:href="@{/projects}">Projects</a>
+                <span>/</span>
+                <span>뉴스 요약 서비스</span>
+            </div>
+
+            <div class="detail-hero-layout">
+                <div class="detail-hero-content">
+                    <p class="detail-category">AI · NLP · FLASK · WEB SERVICE</p>
+                    <h1>뉴스 요약</h1>
+                    <p class="detail-subtitle">
+                        뉴스 기사 URL을 입력하면<br>
+                        핵심 내용을 자동으로 요약하는 웹 서비스
+                    </p>
+                    <p class="detail-description">
+                        사용자가 뉴스 기사 URL을 입력하면 Java 기반 JSP 웹페이지가
+                        Flask API 서버로 요청을 전달합니다. Flask 서버는 기사 본문을
+                        수집하고 KoBART 기반 요약 모델로 핵심 문장을 생성한 뒤
+                        결과를 웹 화면에 표시합니다.
+                    </p>
+						<div class="detail-actions">
+						
+						    <a href="https://github.com/jjian2/news-summary-service"
+						       class="button button-primary"
+						       target="_blank"
+						       rel="noopener noreferrer">
+						        GitHub 보기
+						    </a>
+						
+						    <a href="#overview"
+						       class="button button-link">
+						        프로젝트 살펴보기 ↓
+						    </a>
+						
+						</div>
+						                </div>
+
+                <div class="detail-hero-visual">
+                    <div class="project-cover news-cover">
+                        <div class="cover-grid"></div>
+                        <div class="cover-symbol">N</div>
+                        <div class="cover-text">
+                            <span>NEWS SUMMARY</span>
+                            <strong>KoBART AI News Summarization Service</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-summary">
+                <div><span>개발 기간</span><strong>2025.03 - 2025.05</strong></div>
+                <div><span>프로젝트 형태</span><strong>개인 프로젝트</strong></div>
+                <div><span>기여도</span><strong>100%</strong></div>
+                <div><span>담당 역할</span><strong>전체 설계 · API 연동 · 모델 적용</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="detail-section" id="overview">
+        <div class="container">
+            <div class="detail-section-heading">
+                <p>01. OVERVIEW</p>
+                <h2>프로젝트 개요</h2>
+            </div>
+
+            <div class="overview-grid">
+                <article class="overview-card">
+                    <span>어떤 서비스인가요?</span>
+                    <h3>URL 기반 뉴스 기사 자동 요약 서비스</h3>
+                    <p>
+                        사용자가 뉴스 기사 URL을 입력하면 기사 본문을 자동으로 수집하고,
+                        자연어처리 모델이 핵심 내용을 짧은 문장으로 요약해 보여줍니다.
+                    </p>
+                </article>
+
+                <article class="overview-card">
+                    <span>왜 만들었나요?</span>
+                    <h3>긴 뉴스 기사를 빠르게 파악하기 위해</h3>
+                    <p>
+                        긴 기사를 모두 읽기 어려운 사용자가 원문과 핵심 요약을
+                        한 화면에서 확인할 수 있도록 간단한 URL 입력 방식으로 구현했습니다.
+                    </p>
+                </article>
+
+                <article class="overview-card">
+                    <span>누구를 위한 서비스인가요?</span>
+                    <h3>짧은 시간에 뉴스 핵심을 확인하고 싶은 사용자</h3>
+                    <p>
+                        여러 기사를 빠르게 비교하거나 긴 기사에서 핵심 정보만
+                        확인하고 싶은 사용자를 대상으로 했습니다.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="detail-section detail-section-dark">
+        <div class="container">
+            <div class="detail-section-heading">
+                <p>02. MY ROLE</p>
+                <h2>담당 역할</h2>
+            </div>
+
+            <div class="role-layout">
+                <div class="role-introduction">
+                    <h3>
+                        서비스 구조 설계부터 프론트엔드·백엔드 연결,
+                        요약 모델 적용과 테스트까지 전체 과정을 직접 수행했습니다.
+                    </h3>
+                    <p>
+                        JSP 화면에서 입력받은 URL을 Flask API로 전달하고,
+                        Flask가 기사 수집과 모델 추론을 수행한 뒤 요약 결과를
+                        다시 JSP 페이지에 표시하도록 구성했습니다.
+                    </p>
+                </div>
+
+                <div class="role-list">
+                    <article class="role-item">
+                        <span>01</span>
+                        <div>
+                            <h3>전체 서비스 구조 설계</h3>
+                            <p>JSP 웹페이지, Flask API 서버, 기사 수집과 요약 모델의 요청·응답 흐름을 설계했습니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>02</span>
+                        <div>
+                            <h3>뉴스 URL 입력 화면 구현</h3>
+                            <p>사용자가 기사 URL을 입력하고 요약 요청을 보낼 수 있는 간단한 웹 화면을 구현했습니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>03</span>
+                        <div>
+                            <h3>Flask API 및 기사 본문 수집</h3>
+                            <p>JSP 요청을 Flask에서 수신하고 뉴스 URL에서 본문을 추출해 모델 입력 데이터로 변환했습니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="role-item">
+                        <span>04</span>
+                        <div>
+                            <h3>KoBART 요약 모델 적용</h3>
+                            <p>Hugging Face 기반 요약 모델을 연결하고 기사 본문을 핵심 문장으로 압축해 반환하도록 구현했습니다.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="detail-section">
+        <div class="container">
+            <div class="detail-section-heading">
+                <p>03. TECH STACK</p>
+                <h2>사용 기술</h2>
+            </div>
+
+            <div class="detail-tech-grid">
+                <article class="detail-tech-card">
+                    <span>FRONTEND</span>
+                    <h3>JSP Web</h3>
+                    <div class="detail-tech-tags">
+                        <span>JSP</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>JAVA WEB</span>
+                    <h3>Java Backend</h3>
+                    <div class="detail-tech-tags">
+                        <span>Java</span><span>Servlet</span><span>HTTP Request</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>AI SERVER</span>
+                    <h3>Python & Flask</h3>
+                    <div class="detail-tech-tags">
+                        <span>Python</span><span>Flask</span><span>Flask-CORS</span><span>REST API</span>
+                    </div>
+                </article>
+
+                <article class="detail-tech-card">
+                    <span>NLP MODEL</span>
+                    <h3>KoBART</h3>
+                    <div class="detail-tech-tags">
+                        <span>Hugging Face</span><span>KoBART</span><span>Summarization</span><span>Pipeline</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="detail-section detail-section-dark">
+        <div class="container">
+            <div class="detail-section-heading">
+                <p>04. ARCHITECTURE</p>
+                <h2>시스템 구조</h2>
+            </div>
+
+            <div class="architecture-box">
+                <div class="architecture-item">
+                    <span>USER</span>
+                    <strong>사용자</strong>
+                    <p>뉴스 기사 URL 입력</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>WEB PAGE</span>
+                    <strong>Java · JSP</strong>
+                    <p>URL 입력과 결과 화면 출력</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item architecture-main">
+                    <span>AI API SERVER</span>
+                    <strong>Python · Flask</strong>
+                    <p>기사 본문 수집, 전처리와 모델 호출</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>NLP MODEL</span>
+                    <strong>KoBART Summarization</strong>
+                    <p>기사 본문을 핵심 문장으로 요약</p>
+                </div>
+
+                <div class="architecture-arrow">↓</div>
+
+                <div class="architecture-item">
+                    <span>RESULT</span>
+                    <strong>요약 결과 반환</strong>
+                    <p>원문 기사와 요약문을 JSP 화면에 표시</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="detail-section" id="features">
+        <div class="container">
+            <div class="detail-section-heading">
+                <p>05. FEATURES</p>
+                <h2>핵심 기능</h2>
+            </div>
+
+            <div class="feature-list">
+                <article class="feature-item">
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/news-summary/news-summary-main.png}"
+                             alt="뉴스 요약 서비스 URL 입력 화면">
+                    </div>
+
+                    <div class="feature-content">
+                        <span>FEATURE 01</span>
+                        <h3>뉴스 기사 URL 입력</h3>
+                        <p>
+                            사용자가 뉴스 기사 URL을 입력하고 요약 버튼을 누르면
+                            Flask API 서버로 요청을 전달합니다.
+                        </p>
+                        <ul>
+                            <li>기사 URL 입력 방식</li>
+                            <li>간단한 단일 화면 UI</li>
+                            <li>Flask API 요청</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="feature-item feature-reverse">
+                    <div class="feature-image">
+                        <img th:src="@{/images/projects/news-summary/news-summary-result.png}"
+                             alt="뉴스 원문과 요약 결과 화면">
+                    </div>
+
+                    <div class="feature-content">
+                        <span>FEATURE 02</span>
+                        <h3>원문 기사와 요약 결과 비교</h3>
+                        <p>
+                            추출한 기사 본문과 AI가 생성한 요약문을 한 페이지에 함께 표시해
+                            사용자가 결과를 쉽게 비교하도록 했습니다.
+                        </p>
+                        <ul>
+                            <li>원문 기사 본문 출력</li>
+                            <li>KoBART 요약 결과 표시</li>
+                            <li>다시 요약하기 이동 기능</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="detail-section detail-section-dark">
+        <div class="container">
+            <div class="detail-section-heading">
+                <p>06. TROUBLESHOOTING</p>
+                <h2>문제 해결 경험</h2>
+            </div>
+
+            <div class="troubleshooting-list">
+                <article class="trouble-card">
+                    <div class="trouble-title">
+                        <span>01</span>
+                        <h3>JSP와 Flask 사이에서 CORS 오류가 발생한 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+                        <div>
+                            <span>문제</span>
+                            <p>JSP에서 Flask API를 호출했지만 브라우저가 서로 다른 서버 간 요청을 차단했습니다.</p>
+                        </div>
+                        <div>
+                            <span>원인</span>
+                            <p>Java 웹 서버와 Flask 서버의 포트가 달라 교차 출처 요청으로 인식됐습니다.</p>
+                        </div>
+                        <div>
+                            <span>해결</span>
+                            <p>Flask-CORS를 설치하고 허용 출처와 요청 방식을 설정했습니다.</p>
+                        </div>
+                        <div>
+                            <span>결과</span>
+                            <p>기사 URL과 요약 결과가 정상적으로 전달되도록 개선했습니다.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="trouble-card">
+                    <div class="trouble-title">
+                        <span>02</span>
+                        <h3>한글 뉴스 본문이 깨져 출력된 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+                        <div>
+                            <span>문제</span>
+                            <p>기사 본문과 요약 결과 일부가 깨진 문자로 표시됐습니다.</p>
+                        </div>
+                        <div>
+                            <span>원인</span>
+                            <p>JSP와 Flask의 요청·응답 문자 인코딩 설정이 일치하지 않았습니다.</p>
+                        </div>
+                        <div>
+                            <span>해결</span>
+                            <p>양쪽의 Content-Type과 문자 인코딩을 UTF-8로 통일했습니다.</p>
+                        </div>
+                        <div>
+                            <span>결과</span>
+                            <p>한글 기사와 요약문이 정상적으로 표시됐습니다.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="trouble-card">
+                    <div class="trouble-title">
+                        <span>03</span>
+                        <h3>Hugging Face 모델 접근 오류가 발생한 문제</h3>
+                    </div>
+
+                    <div class="trouble-process">
+                        <div>
+                            <span>문제</span>
+                            <p>기존에 사용하던 요약 모델이 비공개로 전환되면서 모델을 내려받지 못했습니다.</p>
+                        </div>
+                        <div>
+                            <span>원인</span>
+                            <p>모델 저장소의 접근 권한이 변경되어 인증 없이 사용할 수 없게 됐습니다.</p>
+                        </div>
+                        <div>
+                            <span>해결</span>
+                            <p>공개된 한국어 요약 모델을 검토하고 기본 pipeline 방식으로 교체했습니다.</p>
+                        </div>
+                        <div>
+                            <span>결과</span>
+                            <p>별도의 접근 권한 없이도 요약 서비스를 다시 실행할 수 있었습니다.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="detail-section">
+        <div class="container">
+            <div class="detail-section-heading">
+                <p>07. LEARNED</p>
+                <h2>프로젝트를 통해 배운 점</h2>
+            </div>
+
+            <div class="learned-grid">
+                <article>
+                    <span>01</span>
+                    <h3>서버 간 API 통신</h3>
+                    <p>Java 기반 웹 서버와 Python Flask 서버를 REST API로 연결하는 구조를 경험했습니다.</p>
+                </article>
+
+                <article>
+                    <span>02</span>
+                    <h3>문자 인코딩과 CORS</h3>
+                    <p>서로 다른 기술 스택 사이에서 발생하는 CORS와 한글 인코딩 문제를 직접 해결했습니다.</p>
+                </article>
+
+                <article>
+                    <span>03</span>
+                    <h3>AI 모델 의존성 관리</h3>
+                    <p>외부 모델의 접근 권한 변화에 대비해 대체 가능한 모델과 호출 구조가 필요하다는 점을 배웠습니다.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="next-project-section">
+        <div class="container">
+            <div class="next-project-box">
+                <div>
+                    <p>NEXT PROJECT</p>
+                    <h2>자기소개서 문장을 분석하는 <strong>감정 분석 서비스</strong></h2>
+                </div>
+                <a th:href="@{/projects/cover-letter-ai}">다음 프로젝트 보기 →</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="detail-footer">
+    <div class="container detail-footer-inner">
+        <div>
+            <a th:href="@{/}" class="detail-logo">JIAN<span>.</span></a>
+            <p>Spring Boot와 AI로 만든 개발자 포트폴리오</p>
+        </div>
+
+        <div class="detail-footer-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>양동이 | 최지안 포트폴리오</title>
+
+    <meta name="description"
+          content="Flask, FastAPI, RAG, Whisper STT와 Edge-TTS를 활용한 동양미래대학교 전용 학사정보 AI 챗봇 양동이 프로젝트 상세 페이지입니다.">
+
+    <link rel="stylesheet"
+          th:href="@{/css/common.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/project-detail.css}">
+</head>
+<style>
+    /* 양동이 시연 영상 전용 레이아웃 */
+    #demo.feature-demo {
+        width: 100%;
+
+        display: grid !important;
+        grid-template-columns:
+            minmax(0, 1.35fr)
+            minmax(340px, 0.65fr) !important;
+
+        align-items: center !important;
+        gap: 55px !important;
+    }
+
+    #demo .youtube-frame {
+        position: relative;
+
+        width: 100% !important;
+        min-width: 0;
+        aspect-ratio: 16 / 9;
+
+        overflow: hidden;
+
+        border: 1px solid var(--border);
+        border-radius: 20px;
+
+        background: #000000;
+    }
+
+    #demo .youtube-frame iframe {
+        position: absolute;
+        inset: 0;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        display: block;
+
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    #demo .feature-content {
+        width: 100% !important;
+        min-width: 0;
+    }
+
+    @media (max-width: 800px) {
+        #demo.feature-demo {
+            grid-template-columns: 1fr !important;
+            gap: 30px !important;
+        }
+    }
+</style>
+<body>
+
+<header class="detail-header">
+
+    <div class="detail-header-inner">
+
+        <a th:href="@{/}"
+           class="detail-logo">
+            JIAN<span>.</span>
+        </a>
+
+        <nav class="detail-nav">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/projects}">Projects</a>
+            <a th:href="@{/#skills}">Skills</a>
+            <a th:href="@{/#contact}">Contact</a>
+        </nav>
+
+        <a th:href="@{/projects}"
+           class="back-projects-button">
+            ← 프로젝트 목록
+        </a>
+
+    </div>
+
+</header>
+
+<main>
+
+    <!-- 상단 소개 -->
+    <section class="project-detail-hero">
+
+        <div class="detail-glow"></div>
+
+        <div class="container">
+
+            <div class="detail-breadcrumb">
+
+                <a th:href="@{/projects}">
+                    Projects
+                </a>
+
+                <span>/</span>
+
+                <span>양동이</span>
+
+            </div>
+
+            <div class="detail-hero-layout">
+
+                <div class="detail-hero-content">
+
+                    <p class="detail-category">
+                        AI · RAG · VOICE CHATBOT · WEB SERVICE
+                    </p>
+
+                    <h1>양동이</h1>
+
+                    <p class="detail-subtitle">
+                        학사정보를 음성과 텍스트로 안내하는
+                        동양미래대학교 전용 AI 챗봇
+                    </p>
+
+                    <p class="detail-description">
+                        학교 규정, 학과 정보, 학사 일정과 자주 묻는 질문을
+                        학생이 텍스트 또는 음성으로 질문하면 관련 자료를 검색해
+                        답변하는 대학 전용 AI 챗봇입니다.
+                        Flask 기반 웹 서버와 FastAPI AI 서버를 분리하고,
+                        RAG, Whisper STT, Edge-TTS를 연결해
+                        실제 학사 서비스 형태로 구현했습니다.
+                    </p>
+                    
+                    
+
+                    <div class="detail-actions">
+
+                        <a href="#demo"
+                           class="button button-primary">
+                            시연 영상 보기
+                        </a>
+                        
+					    <a href="https://github.com/jjian2/university-chatbot-"
+						   class="button button-primary"
+						   target="_blank"
+						   rel="noopener noreferrer">
+						    GitHub 보기 ↗
+						</a>
+
+                        <a href="#overview"
+                           class="button button-link">
+                            프로젝트 살펴보기 ↓
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="detail-hero-visual">
+
+                    <div class="project-cover chatbot-cover">
+
+                        <div class="cover-grid"></div>
+
+                        <div class="cover-symbol">
+                            AI
+                        </div>
+
+                        <div class="cover-text">
+                            <span>YANGDONGI</span>
+                            <strong>
+                                University Academic Information AI Chatbot
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="detail-summary">
+
+                <div>
+                    <span>개발 기간</span>
+                    <strong>2025.04 - 2025.11</strong>
+                </div>
+
+                <div>
+                    <span>프로젝트 형태</span>
+                    <strong>팀 프로젝트</strong>
+                </div>
+
+                <div>
+                    <span>기여도</span>
+                    <strong>80%</strong>
+                </div>
+
+                <div>
+                    <span>담당 역할</span>
+                    <strong>프론트엔드 · Flask · AI 연동</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 프로젝트 개요 -->
+    <section class="detail-section"
+             id="overview">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>01. OVERVIEW</p>
+
+                <h2>
+                    프로젝트 개요
+                </h2>
+
+            </div>
+
+            <div class="overview-grid">
+
+                <article class="overview-card">
+
+                    <span>어떤 서비스인가요?</span>
+
+                    <h3>
+                        대학 학사정보를 안내하는 AI 챗봇
+                    </h3>
+
+                    <p>
+                        학생이 학교 규정, 학사 일정, 시간표,
+                        도서관, 졸업 요건 등을 질문하면
+                        학교 데이터를 기반으로 답변하는 웹 서비스입니다.
+                    </p>
+
+                </article>
+
+                <article class="overview-card">
+
+                    <span>왜 만들었나요?</span>
+
+                    <h3>
+                        흩어진 학교 정보를 빠르게 찾도록 돕기 위해
+                    </h3>
+
+                    <p>
+                        학교 홈페이지와 공지사항에 정보가 분산되어 있어
+                        학생이 필요한 내용을 찾는 데 시간이 걸리는 문제를
+                        하나의 대화형 서비스로 해결하고자 했습니다.
+                    </p>
+
+                </article>
+
+                <article class="overview-card">
+
+                    <span>누구를 위한 서비스인가요?</span>
+
+                    <h3>
+                        동양미래대학교 재학생과 예비 학생
+                    </h3>
+
+                    <p>
+                        학사정보를 빠르게 확인하고 싶은 재학생과
+                        학교 및 학과 정보를 찾는 예비 학생이
+                        PC 환경에서 편리하게 사용할 수 있도록 구성했습니다.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 담당 역할 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>02. MY ROLE</p>
+
+                <h2>
+                    담당 역할
+                </h2>
+
+            </div>
+
+            <div class="role-layout">
+
+                <div class="role-introduction">
+
+                    <h3>
+                        전체 웹 UI·UX와 Flask 서버,
+                        FastAPI AI 서버 연결을 중심으로 담당했습니다.
+                    </h3>
+
+                    <p>
+                        메인 화면, 사이드바, 로그인, 개인정보,
+                        학사정보 카드와 채팅 화면을 구현했습니다.
+                        또한 Flask와 FastAPI 사이의 요청·응답 형식을 맞추고,
+                        음성 입력과 출력, 로그인 사용자 정보,
+                        대화 기록이 하나의 서비스 흐름으로 연결되도록 조정했습니다.
+                    </p>
+
+                </div>
+
+                <div class="role-list">
+
+                    <article class="role-item">
+
+                        <span>01</span>
+
+                        <div>
+                            <h3>전체 UI·UX 및 프론트엔드 개발</h3>
+
+                            <p>
+                                메인, 사이드바, 로그인, 회원가입,
+                                개인정보, 학사 일정과 채팅 화면을 설계하고 구현했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>02</span>
+
+                        <div>
+                            <h3>Flask 로그인 및 사용자 데이터 연동</h3>
+
+                            <p>
+                                회원가입, 로그인, 세션 유지,
+                                사용자 정보 표시와 최근 대화 기록 저장 기능을 구현했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>03</span>
+
+                        <div>
+                            <h3>Flask · FastAPI 비동기 통신</h3>
+
+                            <p>
+                                웹 서버에서 AI 서버의 채팅, STT, TTS API를 호출하고
+                                응답을 화면에 표시하는 통신 구조를 구현했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>04</span>
+
+                        <div>
+                            <h3>백엔드·AI 팀 인터페이스 조율</h3>
+
+                            <p>
+                                요청 데이터 형식, 응답 JSON 구조,
+                                오류 메시지와 음성 데이터 전달 방식을 팀과 조정했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="role-item">
+
+                        <span>05</span>
+
+                        <div>
+                            <h3>반응형 UI와 서비스 통합 테스트</h3>
+
+                            <p>
+                                다양한 화면 크기에서 레이아웃을 점검하고,
+                                로그인부터 AI 답변까지 전체 흐름을 반복 테스트했습니다.
+                            </p>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 기술 스택 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>03. TECH STACK</p>
+
+                <h2>
+                    사용 기술
+                </h2>
+
+            </div>
+
+            <div class="detail-tech-grid">
+
+                <article class="detail-tech-card">
+
+                    <span>FRONTEND</span>
+
+                    <h3>Web Interface</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Responsive UI</span>
+                        <span>Twemoji</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>WEB BACKEND</span>
+
+                    <h3>Flask</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>Session</span>
+                        <span>bcrypt</span>
+                        <span>Requests</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>AI SERVER</span>
+
+                    <h3>FastAPI & RAG</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>FastAPI</span>
+                        <span>RAG</span>
+                        <span>ChromaDB</span>
+                        <span>MongoDB</span>
+                        <span>LLM</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>VOICE AI</span>
+
+                    <h3>STT & TTS</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>Whisper</span>
+                        <span>faster-whisper</span>
+                        <span>Edge-TTS</span>
+                        <span>MP3 Base64</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>DATABASE</span>
+
+                    <h3>MySQL</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>MySQL</span>
+                        <span>Users</span>
+                        <span>Login Logs</span>
+                        <span>Chat History</span>
+                    </div>
+
+                </article>
+
+                <article class="detail-tech-card">
+
+                    <span>AI MODEL</span>
+
+                    <h3>LLM Integration</h3>
+
+                    <div class="detail-tech-tags">
+                        <span>OpenAI API</span>
+                        <span>Llama</span>
+                        <span>Prompt Design</span>
+                        <span>Source Grounding</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 아키텍처 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>04. ARCHITECTURE</p>
+
+                <h2>
+                    시스템 구조
+                </h2>
+
+            </div>
+
+            <div class="architecture-box">
+
+                <div class="architecture-item">
+
+                    <span>USER</span>
+
+                    <strong>학생 사용자</strong>
+
+                    <p>
+                        텍스트 질문, 음성 질문,
+                        로그인과 학사정보 조회
+                    </p>
+
+                </div>
+
+                <div class="architecture-arrow">
+                    ↓
+                </div>
+
+                <div class="architecture-item">
+
+                    <span>FRONTEND</span>
+
+                    <strong>HTML · CSS · JavaScript</strong>
+
+                    <p>
+                        메인 화면, 채팅 UI,
+                        음성 입력과 결과 표시
+                    </p>
+
+                </div>
+
+                <div class="architecture-arrow">
+                    ↓
+                </div>
+
+                <div class="architecture-item architecture-main">
+
+                    <span>WEB SERVER</span>
+
+                    <strong>Flask : 8001</strong>
+
+                    <p>
+                        로그인, 세션, 사용자 정보,
+                        대화 기록과 AI 서버 프록시
+                    </p>
+
+                </div>
+
+                <div class="architecture-branch">
+
+                    <div>
+
+                        <div class="architecture-arrow">
+                            ↓
+                        </div>
+
+                        <div class="architecture-item">
+
+                            <span>DATABASE</span>
+
+                            <strong>MySQL</strong>
+
+                            <p>
+                                사용자, 로그인 기록,
+                                최근 대화 기록
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <div class="architecture-arrow">
+                            ↓
+                        </div>
+
+                        <div class="architecture-item">
+
+                            <span>AI SERVER</span>
+
+                            <strong>FastAPI : 9000</strong>
+
+                            <p>
+                                채팅, STT, TTS,
+                                RAG 검색과 답변 생성
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <div class="architecture-arrow">
+                            ↓
+                        </div>
+
+                        <div class="architecture-item">
+
+                            <span>AI DATA</span>
+
+                            <strong>ChromaDB · MongoDB</strong>
+
+                            <p>
+                                학교 규정 PDF와
+                                학과별 수집 데이터
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 핵심 기능 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>05. FEATURES</p>
+
+                <h2>
+                    핵심 기능
+                </h2>
+
+            </div>
+
+            <div class="feature-list">
+
+                <!-- 기능 1 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/yangdongi/yangdongi-concept.png}"
+                             alt="양동이 로그인 화면과 캐릭터 디자인 컨셉">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 01</span>
+
+                        <h3>학교 전용 캐릭터와 로그인 UI</h3>
+
+                        <p>
+                            학교의 친근한 이미지를 전달할 수 있도록
+                            양동이 캐릭터와 로그인 화면의 디자인 컨셉을 제작했습니다.
+                            로그인 후 사용자 이름과 학과 정보를 반영합니다.
+                        </p>
+
+                        <ul>
+                            <li>학교 전용 캐릭터 디자인 활용</li>
+                            <li>로그인·회원가입 화면 구현</li>
+                            <li>사용자 이름과 학과 정보 표시</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 2 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/yangdongi/yangdongi-ui.png}"
+                             alt="양동이 메인 화면과 채팅 화면 구성">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 02</span>
+
+                        <h3>학사정보 메인 화면과 채팅 UI</h3>
+
+                        <p>
+                            시간표, 자격증, 학점 조회, eClass,
+                            도서관과 졸업 이수 정보를 카드로 구성했습니다.
+                            질문을 시작하면 채팅 중심 화면으로 전환됩니다.
+                        </p>
+
+                        <ul>
+                            <li>학사정보 바로가기 카드 제공</li>
+                            <li>사이드바와 최근 대화 목록</li>
+                            <li>채팅 시작 시 화면 구조 자동 전환</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 3 -->
+                <article class="feature-item">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/yangdongi/yangdongi-menu.png}"
+                             alt="양동이 로그인 및 비로그인 메뉴 화면 구성도">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 03</span>
+
+                        <h3>로그인·비로그인 사용자별 메뉴 구성</h3>
+
+                        <p>
+                            로그인 여부에 따라 사용할 수 있는 기능을 분리했습니다.
+                            로그인 사용자는 대화 기록, 즐겨찾기와 개인정보를 이용하고,
+                            비로그인 사용자는 기본 채팅과 설정 기능을 사용할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li>로그인 사용자 전용 기능 구분</li>
+                            <li>게스트 모드 제공</li>
+                            <li>사이드바 메뉴와 서비스 흐름 설계</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 4 -->
+                <article class="feature-item feature-reverse">
+
+                    <div class="feature-image">
+
+                        <img th:src="@{/images/projects/yangdongi/yangdongi-architecture.png}"
+                             alt="양동이 AI DB 관리자 보안 시스템 기능 구성도">
+
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 04</span>
+
+                        <h3>AI·DB·관리자 기능 통합 구조</h3>
+
+                        <p>
+                            사용자 유형에 따라 학사정보, 도서관,
+                            LMS와 챗봇 기능을 제공하도록 구성했습니다.
+                            DB와 관리자 기능, 보안 시스템을 연결해
+                            실제 서비스 운영을 고려했습니다.
+                        </p>
+
+                        <ul>
+                            <li>학사·행정·공지 데이터 연동 구조</li>
+                            <li>챗봇 응답과 대화 기록 관리</li>
+                            <li>세션 관리와 자동 로그아웃 구조</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <!-- 기능 5 -->
+                <article class="feature-item feature-demo"
+                         id="demo">
+
+				<div class="youtube-frame">
+				
+				    <iframe
+				        src="https://www.youtube.com/embed/on1F1dIaOw0"
+				        title="양동이 대학 학사정보 AI 챗봇 시연 영상"
+				        loading="lazy"
+				        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				        referrerpolicy="strict-origin-when-cross-origin"
+				        allowfullscreen>
+				    </iframe>
+				
+				</div>
+
+                    <div class="feature-content">
+
+                        <span>FEATURE 05</span>
+
+                        <h3>음성·텍스트 AI 챗봇 시연</h3>
+
+                        <p>
+                            사용자는 텍스트 또는 음성으로 학사정보를 질문할 수 있습니다.
+                            Whisper가 음성을 텍스트로 변환하고,
+                            RAG와 LLM이 답변을 생성한 뒤
+                            Edge-TTS가 음성으로 결과를 출력합니다.
+                        </p>
+
+                        <ul>
+                            <li>Whisper 기반 음성 인식</li>
+                            <li>학교 데이터 기반 RAG 답변</li>
+                            <li>Edge-TTS 음성 응답 재생</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 트러블슈팅 -->
+    <section class="detail-section detail-section-dark">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>06. TROUBLESHOOTING</p>
+
+                <h2>
+                    문제 해결 경험
+                </h2>
+
+            </div>
+
+            <div class="troubleshooting-list">
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+
+                        <span>01</span>
+
+                        <h3>
+                            Flask와 FastAPI의 요청·응답 형식이 달라 통신이 실패한 문제
+                        </h3>
+
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+
+                            <p>
+                                프론트엔드에서 보낸 요청이 Flask를 거쳐
+                                FastAPI에 전달될 때 필드명과 데이터 형식이 달라
+                                정상 응답을 받지 못했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+
+                            <p>
+                                웹 서버와 AI 서버에서 사용하는
+                                JSON 키, 파일 전송 방식과 응답 구조가
+                                통일되지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+
+                            <p>
+                                텍스트 채팅, 음성 채팅과 TTS API별로
+                                요청·응답 규격을 정리하고
+                                Flask 프록시에서 데이터를 변환했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+
+                            <p>
+                                텍스트와 음성 요청이 동일한 UI에서
+                                안정적으로 처리되도록 개선했습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+
+                        <span>02</span>
+
+                        <h3>
+                            STT·TTS 처리 방식 차이로 응답이 지연된 문제
+                        </h3>
+
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+
+                            <p>
+                                음성 파일 업로드, STT 변환,
+                                AI 답변과 TTS 생성이 순차적으로 실행되어
+                                사용자가 오래 기다려야 했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+
+                            <p>
+                                여러 서버의 처리 단계가 많고
+                                비동기 요청 상태를 화면에서
+                                제대로 안내하지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+
+                            <p>
+                                요청 단계별 로딩 상태를 표시하고,
+                                음성 데이터 전송과 응답 처리 흐름을
+                                비동기 방식으로 정리했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+
+                            <p>
+                                사용자가 처리 상태를 확인할 수 있고
+                                채팅 화면이 멈춘 것처럼 보이는 현상을 줄였습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+
+                        <span>03</span>
+
+                        <h3>
+                            모바일에서 사이드바와 채팅 화면이 겹치는 문제
+                        </h3>
+
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+
+                            <p>
+                                작은 화면에서 사이드바, 채팅 박스와
+                                입력창이 겹치거나 일부 내용이 화면 밖으로
+                                잘리는 문제가 반복되었습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+
+                            <p>
+                                PC 화면의 고정 좌표와 너비를
+                                모바일에서도 동일하게 사용하고 있었습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+
+                            <p>
+                                모바일에서는 사이드바를 오버레이 방식으로 변경하고,
+                                입력창과 채팅 박스의 위치와 너비를
+                                화면 크기에 따라 계산하도록 수정했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+
+                            <p>
+                                PC와 작은 화면에서 메뉴와 채팅 기능을
+                                보다 자연스럽게 사용할 수 있게 됐습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="trouble-card">
+
+                    <div class="trouble-title">
+
+                        <span>04</span>
+
+                        <h3>
+                            RAG 답변에 학교 자료의 출처가 표시되지 않은 문제
+                        </h3>
+
+                    </div>
+
+                    <div class="trouble-process">
+
+                        <div>
+                            <span>문제</span>
+
+                            <p>
+                                장학금과 학칙을 질문해도 일반적인 답변만 제공되고,
+                                검색된 학교 자료와 출처가 화면에 나타나지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>원인</span>
+
+                            <p>
+                                문서 인덱스 상태와 검색 필터,
+                                top-k 설정이 데이터 구조와 맞지 않았습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>해결</span>
+
+                            <p>
+                                문서 인덱스를 다시 생성하고
+                                학과·데이터셋 필터와 검색 개수를 조정했으며,
+                                답변 JSON에 출처 정보를 포함하도록 했습니다.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>결과</span>
+
+                            <p>
+                                학교 규정과 학과 데이터를 기반으로 답변하고,
+                                참고한 자료를 함께 표시할 수 있도록 개선했습니다.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 배운 점 -->
+    <section class="detail-section">
+
+        <div class="container">
+
+            <div class="detail-section-heading">
+
+                <p>07. LEARNED</p>
+
+                <h2>
+                    프로젝트를 통해 배운 점
+                </h2>
+
+            </div>
+
+            <div class="learned-grid">
+
+                <article>
+
+                    <span>01</span>
+
+                    <h3>분리된 서버의 통합</h3>
+
+                    <p>
+                        프론트엔드, Flask와 FastAPI가 분리된 환경에서
+                        요청과 응답 규격을 맞추고
+                        하나의 서비스로 통합하는 경험을 했습니다.
+                    </p>
+
+                </article>
+
+                <article>
+
+                    <span>02</span>
+
+                    <h3>음성 AI 서비스 구조</h3>
+
+                    <p>
+                        STT, LLM, RAG와 TTS를 연결하며
+                        음성 입력에서 음성 출력까지 이어지는
+                        전체 처리 구조를 이해했습니다.
+                    </p>
+
+                </article>
+
+                <article>
+
+                    <span>03</span>
+
+                    <h3>팀 간 인터페이스 조율</h3>
+
+                    <p>
+                        프론트엔드, 백엔드와 AI 팀이 사용하는
+                        데이터 형식과 역할을 조정하는 과정에서
+                        협업과 문서화의 중요성을 배웠습니다.
+                    </p>
+
+                </article>
+
+                <article>
+
+                    <span>04</span>
+
+                    <h3>실제 사용자 중심 UI 개선</h3>
+
+                    <p>
+                        다양한 화면에서 반복 테스트하며
+                        고정된 디자인보다 서비스 흐름과 사용성을 고려한
+                        UI 설계가 중요하다는 것을 배웠습니다.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 다음 프로젝트 -->
+    <section class="next-project-section">
+
+        <div class="container">
+
+            <div class="next-project-box">
+
+                <div>
+
+                    <p>NEXT PROJECT</p>
+
+                    <h2>
+                        현재 개발 중인
+                        <strong>AI 여행 플래너</strong>
+                    </h2>
+
+                </div>
+
+                <a th:href="@{/projects/ai-travel-planner}">
+                    다음 프로젝트 보기 →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="detail-footer">
+
+    <div class="container detail-footer-inner">
+
+        <div>
+
+            <a th:href="@{/}"
+               class="detail-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <p>
+                Spring Boot와 AI로 만든 개발자 포트폴리오
+            </p>
+
+        </div>
+
+        <div class="detail-footer-links">
+
+            <a th:href="@{/}">
+                Home
+            </a>
+
+            <a th:href="@{/projects}">
+                Projects
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
+

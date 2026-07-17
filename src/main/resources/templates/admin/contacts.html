@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>문의 관리 | JIAN Portfolio</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/admin.css}">
+</head>
+
+<body class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="admin-header-inner">
+
+            <a th:href="@{/}"
+               class="admin-logo">
+                JIAN<span>.</span>
+            </a>
+
+            <nav class="admin-navigation">
+
+                <a th:href="@{/admin/contacts}"
+                   class="active">
+                    문의 관리
+                </a>
+
+                <a th:href="@{/}"
+                   target="_blank">
+                    포트폴리오 보기 ↗
+                </a>
+
+                <form th:action="@{/admin/logout}"
+                      method="post">
+
+                    <button type="submit"
+                            class="admin-logout-button">
+                        로그아웃
+                    </button>
+
+                </form>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <main class="admin-main">
+
+        <section class="admin-dashboard-heading">
+
+            <div>
+                <span>CONTACT MANAGEMENT</span>
+
+                <h1>문의 목록</h1>
+
+                <p>
+                    포트폴리오 Contact 폼을 통해 접수된 문의입니다.
+                </p>
+            </div>
+
+            <div class="admin-count-card">
+                <span>전체 문의</span>
+
+                <strong th:text="${#lists.size(contacts)}">
+                    0
+                </strong>
+            </div>
+
+        </section>
+
+        <div th:if="${successMessage}"
+             class="admin-alert admin-alert-success"
+             th:text="${successMessage}">
+        </div>
+
+        <div th:if="${errorMessage}"
+             class="admin-alert admin-alert-error"
+             th:text="${errorMessage}">
+        </div>
+
+        <section th:if="${#lists.isEmpty(contacts)}"
+                 class="admin-empty-state">
+
+            <span>📭</span>
+            <h2>아직 접수된 문의가 없습니다.</h2>
+            <p>새로운 문의가 접수되면 이곳에 표시됩니다.</p>
+
+        </section>
+
+        <section th:unless="${#lists.isEmpty(contacts)}"
+                 class="admin-contact-list">
+
+            <article th:each="contact : ${contacts}"
+                     class="admin-contact-card">
+
+                <div class="admin-contact-header">
+
+                    <div>
+                        <span class="admin-contact-id"
+                              th:text="'문의 #' + ${contact.id}">
+                            문의 #1
+                        </span>
+
+                        <h2 th:text="${contact.name}">
+                            문의자 이름
+                        </h2>
+                    </div>
+
+                    <time th:text="${#temporals.format(contact.createdAt, 'yyyy.MM.dd HH:mm')}">
+                        2026.07.11 19:00
+                    </time>
+
+                </div>
+
+                <a class="admin-contact-email"
+                   th:href="'mailto:' + ${contact.email}"
+                   th:text="${contact.email}">
+                    example@email.com
+                </a>
+
+                <p class="admin-contact-message"
+                   th:text="${contact.message}">
+                    문의 내용입니다.
+                </p>
+
+                <div class="admin-contact-actions">
+
+                    <a th:href="'mailto:' + ${contact.email}"
+                       class="admin-reply-button">
+                        이메일 답장
+                    </a>
+
+                    <form th:action="@{/admin/contacts/{id}/delete(id=${contact.id})}"
+                          method="post"
+                          onsubmit="return confirm('이 문의를 삭제하시겠습니까?');">
+
+                        <button type="submit"
+                                class="admin-delete-button">
+                            삭제
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
